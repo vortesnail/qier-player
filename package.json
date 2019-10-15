@@ -1,0 +1,67 @@
+{
+  "name": "qier",
+  "version": "0.0.1",
+  "description": ":clapper:  A multifunctional and beautiful React-based web video player.",
+  "main": "release/index.bundle.js",
+  "scripts": {
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -w -r 0",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "release": "webpack --config ./webpack.prod.config.js",
+    "start": "webpack-dev-server  --inline --config ./webpack.dev.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vortesnail/Qier.git"
+  },
+  "keywords": [
+    "video",
+    "player",
+    "react"
+  ],
+  "author": "vortesnail",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vortesnail/Qier/issues"
+  },
+  "homepage": "https://github.com/vortesnail/Qier#readme",
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-react": "^7.6.3",
+    "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.2.0",
+    "html-webpack-plugin": "^3.2.0",
+    "less": "^3.10.3",
+    "less-loader": "^5.0.0",
+    "mini-css-extract-plugin": "^0.8.0",
+    "style-loader": "^1.0.0",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "validate-commit-msg": "^2.14.0",
+    "webpack": "^4.41.1",
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.8.2",
+    "webpack-merge": "^4.2.2"
+  },
+  "dependencies": {
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2"
+  },
+  "config": {
+    "validate-commit-msg": {
+      "types": ["feat", "fix", "docs", "style", "refactor", "perf", "test", "build", "ci", "chore", "revert"],
+      "scope": {
+        "required": false,
+        "allowed": ["*"],
+        "validate": false,
+        "multiple": false
+      },
+      "warnOnFail": false,
+      "maxSubjectLength": 100,
+      "subjectPattern": ".+",
+      "subjectPatternErrorMsg": "subject does not match subject pattern!",
+      "helpMessage": "",
+      "autoFix": false
+    }
+  }
+}

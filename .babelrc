@@ -1,0 +1,19 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          // 大于相关浏览器版本无需用到 preset-env
+          "edge": 17,
+          "firefox": 60,
+          "chrome": 67,
+          "safari": 11.1
+        },
+        // 根据代码逻辑中用到的 ES6+语法进行方法的导入，而不是全部导入
+        "useBuiltIns": "usage"
+      }
+    ],
+    "@babel/preset-react"
+  ]
+}
