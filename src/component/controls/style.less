@@ -1,0 +1,38 @@
+.controls-container {
+  @icon-font-size: 18px;
+  @font-color: #fff;
+  @container-height: 42px;
+  width: 100%;
+  height: @container-height;
+  color: @font-color;
+  .play-pause-timeline {
+    height: 100%;
+    float: left;
+    text-align: center;
+    line-height: @container-height;
+    .play-pause {
+      font-size: @icon-font-size;
+      vertical-align: middle;
+      padding: 0 10px 0 17px;
+    }
+    .time-wrap {
+      font-size: 14px;
+      vertical-align: middle;
+      padding-right: 20px;
+    }
+  }
+  .multifunction {
+    height: 100%;
+    float: right;
+    text-align: center;
+    line-height: 42px;
+    .multifunction-volume,
+    .multifunction-quality,
+    .multifunction-setting,
+    .multifunction-fullscreen {
+      font-size: 16px;
+      vertical-align: middle;
+      padding: 0 10px 0 10px;
+    }
+  }
+}
