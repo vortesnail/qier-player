@@ -1,2 +1,2 @@
 # Qier
-:clapper:  A React-based web video player.
+:clapper:  A multifunctional and beautiful react-based web video player.
