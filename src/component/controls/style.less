@@ -1,6 +1,6 @@
 .controls-container {
   @icon-font-size: 18px;
-  @font-color: #fff;
+  @font-color: rgb(238, 238, 238);
   @container-height: 42px;
   width: 100%;
   height: @container-height;
@@ -14,6 +14,10 @@
       font-size: @icon-font-size;
       vertical-align: middle;
       padding: 0 10px 0 17px;
+      &:hover {
+        color: #fff;
+        cursor: pointer;
+      }
     }
     .time-wrap {
       font-size: 14px;
@@ -25,14 +29,22 @@
     height: 100%;
     float: right;
     text-align: center;
-    line-height: 42px;
+    line-height: @container-height;
+    &:hover {
+      cursor: pointer;
+    }
     .multifunction-volume,
     .multifunction-quality,
     .multifunction-setting,
     .multifunction-fullscreen {
+      display: inline-block;
       font-size: 16px;
       vertical-align: middle;
       padding: 0 10px 0 10px;
+      &:hover {
+        color: #fff;
+        cursor: pointer;
+      }
     }
   }
 }
