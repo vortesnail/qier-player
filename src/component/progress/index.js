@@ -11,6 +11,7 @@ class Progress extends Component {
     this.state = {
       isMovingProgress: false,
       currentTime: '00:00',
+      currentTimeSec: 0,
       positionX: 0,
       // 视频帧预览，未实现
       imgSrc: ''
@@ -19,6 +20,8 @@ class Progress extends Component {
     this.popCurrentVideoImgBox = this.popCurrentVideoImgBox.bind(this);
     this.hideCurrentVideoImgBox = this.hideCurrentVideoImgBox.bind(this);
     this.getCurrentClickTime = this.getCurrentClickTime.bind(this);
+    this.changeCurrentTime = this.changeCurrentTime.bind(this);
+    this.clearInterval = this.clearInterval.bind(this);
   }
 
   calculateProcessPercent() {
@@ -31,6 +34,50 @@ class Progress extends Component {
     return (videoBufferedTime / videoDuration * 100).toString();
   }
 
+  componentDidMount() {
+    window.onmousemove = (e) => {
+      this.windowClientX = e.clientX;
+    }
+    window.onmouseup = () => {
+      this.whenMouseUpDo();
+    }
+  }
+
+  changeCurrentTime(e) {
+    this.interval = setInterval(() => {
+      this.seekPositionX = this.windowClientX - this.leftDis + 1;
+      if (this.seekPositionX >= 0 && this.seekPositionX <= this.progressSeekMaskElem.offsetWidth) {
+        this.progressPercent = this.seekPositionX / this.progressSeekMaskElem.offsetWidth;
+        this.props.videoRef.current.currentTime = percentToSeconds(this.progressPercent, this.props.videoDuration);
+        this.setState({
+          isMovingProgress: true,
+          currentTime: percentToMinutesAndSeconds(this.progressPercent, this.props.videoDuration),
+          positionX: this.seekPositionX
+        })
+      }
+      if (this.seekPositionX < 0) {
+        this.props.videoRef.current.currentTime = 0;
+      }
+      if (this.seekPositionX > this.progressSeekMaskElem.offsetWidth) {
+        this.props.videoRef.current.currentTime = this.props.videoDuration;
+      }
+    }, 1);
+  }
+
+  clearInterval() {
+    this.whenMouseUpDo();
+  }
+
+  whenMouseUpDo() {
+    this.interval && clearInterval(this.interval);
+    if (this.props.videoRef.current.currentTime < this.props.videoDuration) {
+      this.props.videoRef.current.play();
+    }
+    this.setState({
+      isMovingProgress: false,
+    })
+  }
+
   popCurrentVideoImgBox(e) {
     this.progressSeekMaskElem = this.progressSeekMaskRef.current;
     // 当前元素离页面左边的距离
@@ -39,7 +86,7 @@ class Progress extends Component {
     this.seekPositionX = e.clientX - this.leftDis + 1;
     // 进度条百分比
     this.progressPercent = this.seekPositionX / this.progressSeekMaskElem.offsetWidth;
-
+    // console.log(e.clientX)
     this.setState({
       isMovingProgress: true,
       currentTime: percentToMinutesAndSeconds(this.progressPercent, this.props.videoDuration),
@@ -54,7 +101,6 @@ class Progress extends Component {
   }
 
   getCurrentClickTime() {
-    // percentToSeconds
     this.updateCurrentTime = percentToSeconds(this.progressPercent, this.props.videoDuration);
     this.props.videoRef.current.currentTime = this.updateCurrentTime;
   }
@@ -70,6 +116,8 @@ class Progress extends Component {
           <div
             className="progress-seek-mask"
             ref={this.progressSeekMaskRef}
+            onMouseDown={this.changeCurrentTime}
+            onMouseUp={this.clearInterval}
             onMouseMove={this.popCurrentVideoImgBox}
             onMouseLeave={this.hideCurrentVideoImgBox}
             onClick={this.getCurrentClickTime}

@@ -17,7 +17,7 @@ class Controls extends Component {
     // 设置定时器判断是否停止
     this.interval = setInterval(() => {
       videoElem.paused ? this.setState({ isPlay: false }) : this.setState({ isPlay: true });
-    }, 100);
+    }, 1);
   }
 
   componentWillUnmount() {

@@ -9,8 +9,10 @@ import test2 from './test2.mp4';
 class QierPlayer extends Component {
   constructor(props) {
     super(props);
+
     this.videoRef = React.createRef();
   }
+
   render() {
     return (
       <div className="qier-player-bg">
