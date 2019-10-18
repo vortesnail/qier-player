@@ -46,5 +46,86 @@
         cursor: pointer;
       }
     }
+    .multifunction-volume {
+      position: relative;
+      padding: 0;
+      .volume {
+        padding: 10px;
+      }
+      .volume-pause-mask {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+      }
+      .volume-box {
+        position: absolute;
+        top: -130px;
+        left: 50%;
+        margin-left: -16px;
+        width: 32px;
+        height: 120px;
+        border-radius: 3px;
+        background-color: rgba(0, 0, 0, .7);
+        .current-volume {
+          @current-volume-height: 24px;
+          width: 100%;
+          height: @current-volume-height;
+          margin: 0;
+          line-height: @current-volume-height;
+          text-align: center;
+          &:hover {
+            cursor: default;
+          }
+          .volume-value {
+            font-size: 13px;
+            font-style: normal;
+          }
+        }
+        .volume-slider {
+          width: 100%;
+          height: 96px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          .volume-slider-bg {
+            width: 2px;
+            height: 86px;
+            border-radius: 1px;
+            background-color: #fff;
+            position: relative;
+            .volume-slider-op {
+              position: absolute;
+              z-index: 1;
+              bottom: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              border-radius: 1px;
+              background-color: #fbc100;
+              .volume-slider-op-circle {
+                @volume-slider-op-circle: 10px;
+                position: absolute;
+                top: -(@volume-slider-op-circle/2);
+                left: 50%;
+                margin-left: -(@volume-slider-op-circle/2);
+                width: @volume-slider-op-circle;
+                height: @volume-slider-op-circle;
+                border-radius: 50%;
+                background-color: #fbc100;
+              }
+            }
+            .volume-slider-mirror {
+              position: absolute;
+              z-index: 2;
+              bottom: 0;
+              left: -15px;
+              width: 32px;
+              height: calc(~'100% + 5px');
+            }
+          }
+        }
+      }
+    }
+
   }
 }

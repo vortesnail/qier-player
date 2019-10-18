@@ -15,6 +15,16 @@ class Controller extends Component {
   }
 
   componentDidMount() {
+    // 将这window的move事件所得值传递给子组件
+    window.addEventListener('mousemove', (e) => {
+      this.windowClientX = e.clientX;
+      this.windowClientY = e.clientY;
+    })
+    // window.onmousemove = (e) => {
+    //   this.windowClientX = e.clientX;
+    //   this.windowClientY = e.clientY;
+    // }
+
     const videoElem = this.props.videoRef.current;
     videoElem.oncanplay = () => {
       this.setState({
@@ -51,11 +61,15 @@ class Controller extends Component {
           videoCurrentTime={this.state.currentTime} 
           videoDuration={this.state.duration} 
           videoBufferedTime={this.state.bufferedTime}
+          windowClientX={this.windowClientX}
+          windowClientY={this.windowClientY}
         />
         <Controls 
           {...this.props} 
           videoCurrentTime={this.state.currentTime} 
           videoDuration={this.state.duration}
+          windowClientX={this.windowClientX}
+          windowClientY={this.windowClientY}
         />
       </div>
     );

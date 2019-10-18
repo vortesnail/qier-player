@@ -10,6 +10,7 @@ class Progress extends Component {
     super(props);
     this.state = {
       isMovingProgress: false,
+      isDrag: false,
       currentTime: '00:00',
       currentTimeSec: 0,
       positionX: 0,
@@ -35,24 +36,27 @@ class Progress extends Component {
   }
 
   componentDidMount() {
-    window.onmousemove = (e) => {
-      this.windowClientX = e.clientX;
-    }
-    window.onmouseup = () => {
+    window.addEventListener('mouseup', () => {
       this.whenMouseUpDo();
-    }
+    })
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('mouseup');
   }
 
   changeCurrentTime(e) {
     this.interval = setInterval(() => {
-      this.seekPositionX = this.windowClientX - this.leftDis + 1;
+      this.seekPositionX = this.props.windowClientX - this.leftDis + 1;
+
       if (this.seekPositionX >= 0 && this.seekPositionX <= this.progressSeekMaskElem.offsetWidth) {
         this.progressPercent = this.seekPositionX / this.progressSeekMaskElem.offsetWidth;
         this.props.videoRef.current.currentTime = percentToSeconds(this.progressPercent, this.props.videoDuration);
         this.setState({
           isMovingProgress: true,
           currentTime: percentToMinutesAndSeconds(this.progressPercent, this.props.videoDuration),
-          positionX: this.seekPositionX
+          positionX: this.seekPositionX,
+          isDrag: true
         })
       }
       if (this.seekPositionX < 0) {
@@ -70,8 +74,9 @@ class Progress extends Component {
 
   whenMouseUpDo() {
     this.interval && clearInterval(this.interval);
-    if (this.props.videoRef.current.currentTime < this.props.videoDuration) {
+    if (this.props.videoRef.current.currentTime < this.props.videoDuration && this.isDrag) {
       this.props.videoRef.current.play();
+      this.setState({isDrag: false})
     }
     this.setState({
       isMovingProgress: false,
