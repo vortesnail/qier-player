@@ -18,6 +18,8 @@ class Progress extends Component {
       imgSrc: ''
     }
     this.progressSeekMaskRef = React.createRef();
+    this.progressBgRef = React.createRef();
+    this.progressScrubberRef = React.createRef();
     this.popCurrentVideoImgBox = this.popCurrentVideoImgBox.bind(this);
     this.hideCurrentVideoImgBox = this.hideCurrentVideoImgBox.bind(this);
     this.getCurrentClickTime = this.getCurrentClickTime.bind(this);
@@ -39,10 +41,21 @@ class Progress extends Component {
     window.addEventListener('mouseup', () => {
       this.whenMouseUpDo();
     })
+
+    this.intervalToJudgeIsMovingProgress = setInterval(() => {
+      if (this.state.isMovingProgress) {
+        this.progressBgRef.current.style.height = '5px';
+        this.progressScrubberRef.current.style.opacity = '1';
+        return;
+      }
+      this.progressBgRef.current.style.height = '3px';
+      this.progressScrubberRef.current.style.opacity = '0';
+    }, 100);
   }
 
   componentWillUnmount() {
     window.removeEventListener('mouseup');
+    this.intervalToJudgeIsMovingProgress && clearInterval(this.intervalToJudgeIsMovingProgress);
   }
 
   changeCurrentTime(e) {
@@ -108,15 +121,18 @@ class Progress extends Component {
   getCurrentClickTime() {
     this.updateCurrentTime = percentToSeconds(this.progressPercent, this.props.videoDuration);
     this.props.videoRef.current.currentTime = this.updateCurrentTime;
+    this.setState({
+      isMovingProgress: true
+    })
   }
 
   render() {
     return (
-      <div className="progress-container">
-        <div className="progress-bg">
+      <div className="progress-container"  style={{opacity: `${this.props.isShowController ? 1 : 0}`}}>
+        <div className="progress-bg" ref={this.progressBgRef}>
           <div className="progress-buffered" style={{ width: `${this.calculateBufferedPercent()}%` }}></div>
           <div className="progress-played" style={{ width: `${this.calculateProcessPercent()}%` }}>
-            <i className="progress-scrubber"></i>
+            <i className="progress-scrubber" ref={this.progressScrubberRef}></i>
           </div>
           <div
             className="progress-seek-mask"

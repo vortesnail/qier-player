@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import screenfull from 'screenfull'
 import './style.less';
 import { secondsToMinutesAndSecondes } from '../../utils/timeControl';
 
@@ -8,26 +9,45 @@ class Controls extends Component {
     this.state = {
       isHoverToVolume: false,
       isHoverToVolumePopbox: false,
+      isHoverToQuality: false,
+      isHoverToQualityPopbox: false,
+      isHoverToSetting: false,
+      isHoverToSettingPopbox: false,
 
+      isLightOff: false,
       isMuted: false,
       isPlay: false,
       volume: 100,
       isSlideVolume: false,
+      currentQuality: '清晰度'
     }
 
     this.tempVolume = 100;
 
     this.changeIsVolumeHoverToTrue = this.changeIsVolumeHoverToTrue.bind(this);
     this.changeIsVolumeHoverToFalse = this.changeIsVolumeHoverToFalse.bind(this);
+    this.changeIsQualityHoverToTrue = this.changeIsQualityHoverToTrue.bind(this);
+    this.changeIsQualityHoverToFalse = this.changeIsQualityHoverToFalse.bind(this);
+    this.changeIsSettingHoverToTrue = this.changeIsSettingHoverToTrue.bind(this);
+    this.changeIsSettingHoverToFalse = this.changeIsSettingHoverToFalse.bind(this);
 
     this.volumeSliderMirror = React.createRef();
+
     this.handleChangePlayState = this.handleChangePlayState.bind(this);
     this.changeCurrentVolume = this.changeCurrentVolume.bind(this);
     this.slideCurrentVolume = this.slideCurrentVolume.bind(this);
     this.clearVolumeInterval = this.clearVolumeInterval.bind(this);
     this.setIsMute = this.setIsMute.bind(this);
-    this.changeIsHoverToPopboxToTrue = this.changeIsHoverToPopboxToTrue.bind(this);
-    this.changeIsHoverToPopboxToFalse = this.changeIsHoverToPopboxToFalse.bind(this);
+    this.changeIsHoverToVolumePopboxToTrue = this.changeIsHoverToVolumePopboxToTrue.bind(this);
+    this.changeIsHoverToVolumePopboxToFalse = this.changeIsHoverToVolumePopboxToFalse.bind(this);
+    this.requestFullScreen = this.requestFullScreen.bind(this);
+    this.selectVideoQuality = this.selectVideoQuality.bind(this);
+    this.changeIsHoverToQualityPopboxToTrue = this.changeIsHoverToQualityPopboxToTrue.bind(this);
+    this.changeIsHoverToQualityPopboxToFalse = this.changeIsHoverToQualityPopboxToFalse.bind(this);
+    this.changeIsHoverToSettingPopboxToTrue = this.changeIsHoverToSettingPopboxToTrue.bind(this);
+    this.changeIsHoverToSettingPopboxToFalse = this.changeIsHoverToSettingPopboxToFalse.bind(this);
+    this.selectPlayRate = this.selectPlayRate.bind(this);
+    this.lightOffModeSwitch = this.lightOffModeSwitch.bind(this);
   }
 
   changeIsVolumeHoverToTrue() {
@@ -43,6 +63,38 @@ class Controls extends Component {
           isHoverToVolume: false
         })
       }
+    }, 100);
+  }
+
+  changeIsQualityHoverToTrue() {
+    this.setState({
+      isHoverToQuality: true
+    })
+  }
+
+  changeIsQualityHoverToFalse() {
+    this.timeoutQuality = setTimeout(() => {
+      if (!this.state.isHoverToQualityPopbox) {
+        this.setState({
+          isHoverToQuality: false
+        })
+      }
+    }, 200);
+  }
+
+  changeIsSettingHoverToTrue() {
+    this.setState({
+      isHoverToSetting: true
+    })
+  }
+
+  changeIsSettingHoverToFalse() {
+    this.timeoutSetting = setTimeout(() => {
+      if (!this.state.isHoverToSettingPopbox) {
+        this.setState({
+          isHoverToSetting: false
+        })
+      }
     }, 200);
   }
 
@@ -56,11 +108,15 @@ class Controls extends Component {
     // 设置定时器判断是否停止
     this.interval = setInterval(() => {
       videoElem.paused ? this.setState({ isPlay: false }) : this.setState({ isPlay: true });
+      
     }, 1);
   }
 
   componentWillUnmount() {
     this.interval && clearInterval(this.interval);
+    this.timeoutVolume && clearTimeout(this.timeoutVolume);
+    this.timeoutQuality && clearTimeout(this.timeoutQuality);
+    this.timeoutSetting && clearTimeout(this.timeoutSetting);
     window.removeEventListener('mouseup');
   }
 
@@ -165,21 +221,115 @@ class Controls extends Component {
     }
   }
 
-  changeIsHoverToPopboxToTrue() {
+  changeIsHoverToVolumePopboxToTrue() {
     this.setState({
       isHoverToVolumePopbox: true,
     })
   }
 
-  changeIsHoverToPopboxToFalse() {
+  changeIsHoverToVolumePopboxToFalse() {
     this.setState({
       isHoverToVolumePopbox: false
     })
   }
 
+  requestFullScreen() {
+    const videoElem = this.props.videoContainerRef.current;
+    if (screenfull.isFullscreen) {
+      screenfull.exit();
+    } else {
+      if (screenfull.isEnabled) {
+        screenfull.request(videoElem);
+      } else {
+        alert("Sorry, present video can't fullscreen.");
+      }
+    }
+  }
+
+  changeIsHoverToQualityPopboxToTrue() {
+    this.setState({
+      isHoverToQualityPopbox: true,
+    })
+  }
+
+  changeIsHoverToQualityPopboxToFalse() {
+    this.setState({
+      isHoverToQualityPopbox: false
+    })
+  }
+
+  selectVideoQuality(e) {
+    const videoEle = this.props.videoRef.current;
+    // 记录当前播放到的时间
+    const videoCurTimeTemp = videoEle.currentTime;
+    // 记录当前视频是否暂停
+    const videoPlayState = videoEle.paused;
+    const currentQulityStr = e.target.getAttribute("id");
+    // 转换当前视频清晰度
+    videoEle.src = this.props[`src${e.target.getAttribute("id")}`];
+    switch (currentQulityStr) {
+      case 'Origin':
+        this.setState({currentQuality: '原画'});
+        break;
+      case '4k':
+        this.setState({currentQuality: '4K'});
+        break;
+      case '2k':
+        this.setState({currentQuality: '2K'});
+        break;
+      case '1080p':
+        this.setState({currentQuality: '1080P'});
+        break;
+      case '720p':
+        this.setState({currentQuality: '720P'});
+        break;
+      case '480p':
+        this.setState({currentQuality: '480P'});
+        break;
+      default:
+        this.setState({currentQuality: '无'})
+        break;
+    }
+    videoEle.currentTime = videoCurTimeTemp;
+    videoPlayState ? videoEle.pause() : videoEle.play();
+  }
+
+  changeIsHoverToSettingPopboxToTrue() {
+    this.setState({
+      isHoverToSettingPopbox: true,
+    })
+  }
+
+  changeIsHoverToSettingPopboxToFalse() {
+    this.setState({
+      isHoverToSettingPopbox: false,
+    })
+  }
+
+  selectPlayRate(e) {
+    const videoEle = this.props.videoRef.current;
+    const currentPlayRateStr = e.target.getAttribute("id");
+    videoEle.playbackRate = Number(currentPlayRateStr);
+  }
+
+  lightOffModeSwitch(e) {
+    const lightOffMaskElem = this.props.lightOffMaskRef.current;
+    if (this.state.isLightOff) {
+      lightOffMaskElem.style.display = 'none';
+      this.setState({
+        isLightOff: false
+      })
+      return;
+    }
+    lightOffMaskElem.style.display = 'block';
+    this.setState({
+      isLightOff: true
+    })
+  }
+
   render() {
     return (
-      <div className="controls-container">
+      <div className="controls-container" style={{opacity: `${this.props.isShowController ? 1 : 0}`}}>
         <div className="play-pause-timeline">
           <i
             onClick={this.handleChangePlayState}
@@ -200,17 +350,16 @@ class Controls extends Component {
             className="multifunction-volume"
             onMouseEnter={this.changeIsVolumeHoverToTrue}
             onMouseLeave={this.changeIsVolumeHoverToFalse}
-            
-          >{
-            this.state.isMuted ? 
-            <i className="iconfont volume" onClick={this.setIsMute}>&#xe71c;</i> : 
+
+          >{this.state.isMuted ?
+            <i className="iconfont volume" onClick={this.setIsMute}>&#xe71c;</i> :
             <i className="iconfont volume" onClick={this.setIsMute}>&#xe614;</i>}
             {
               this.state.isHoverToVolume ?
-                <div 
+                <div
                   className="volume-box"
-                  onMouseEnter={this.changeIsHoverToPopboxToTrue}
-                  onMouseLeave={this.changeIsHoverToPopboxToFalse}
+                  onMouseEnter={this.changeIsHoverToVolumePopboxToTrue}
+                  onMouseLeave={this.changeIsHoverToVolumePopboxToFalse}
                 >
                   <p className="current-volume"><span className="volume-value">{Math.floor(this.state.volume)}</span></p>
                   <div className="volume-slider">
@@ -234,9 +383,70 @@ class Controls extends Component {
             }
 
           </i>
-          <span className="multifunction-quality">720P</span>
-          <i className="iconfont multifunction-setting">&#xe71b;</i>
-          <i className="iconfont multifunction-fullscreen">&#xe627;</i>
+          {
+            this.props.showVideoQuality ? 
+            <span
+              className="multifunction-quality"
+              onMouseEnter={this.changeIsQualityHoverToTrue}
+              onMouseLeave={this.changeIsQualityHoverToFalse}
+            ><span className="quality">{this.state.currentQuality}</span>
+              {
+                this.state.isHoverToQuality ?
+                  <div
+                    className="quality-box"
+                    onClick={this.selectVideoQuality}
+                    onMouseEnter={this.changeIsHoverToQualityPopboxToTrue}
+                    onMouseLeave={this.changeIsHoverToQualityPopboxToFalse}
+                  >
+                    {this.props.srcOrigin && <div className="quality-value" id="Origin">原画</div>}
+                    {this.props.src4k && <div className="quality-value" id="4k">4K</div>}
+                    {this.props.src2k && <div className="quality-value" id="2k">2K</div>}
+                    {this.props.src1080p && <div className="quality-value" id="1080p">1080P</div>}
+                    {this.props.src720p && <div className="quality-value" id="720p">720P</div>}
+                    {this.props.src480p && <div className="quality-value" id="480p">480P</div>}
+                  </div> : ''
+              }
+            </span> : ''
+          }
+          <i 
+            className="multifunction-setting"
+            onMouseEnter={this.changeIsSettingHoverToTrue}
+            onMouseLeave={this.changeIsSettingHoverToFalse}
+          ><i className="iconfont setting">&#xe71b;</i>
+            {
+              this.state.isHoverToSetting ?
+                <div 
+                  className="setting-box"
+                  onMouseEnter={this.changeIsHoverToSettingPopboxToTrue}
+                  onMouseLeave={this.changeIsHoverToSettingPopboxToFalse}
+                >
+                  <div 
+                    className="play-rate"
+                    onClick={this.selectPlayRate}
+                  >
+                    <p className="setting-title play-rate-title">播放速度:</p>
+                    <li className="play-rate-value" id="0.5">0.5</li>
+                    <li className="play-rate-value" id="0.75">0.75</li>
+                    <li className="play-rate-value" id="1">1</li>
+                    <li className="play-rate-value" id="1.25">1.25</li>
+                    <li className="play-rate-value" id="1.5">1.5</li>
+                    <li className="play-rate-value" id="2">2</li>
+                  </div>
+                  <div className="light-off-mode">
+                    <p className="setting-title light-off-mode-title">其他设置:</p>
+                    <p 
+                      className="light-off-mode-switch"
+                      onClick={this.lightOffModeSwitch}
+                    >关灯模式&nbsp;{this.state.isLightOff ? <span className="iconfont">&#xe666;</span> : ''}</p>
+                  </div>
+                </div> : ''
+            }
+            
+          </i>
+          <i
+            className="iconfont multifunction-fullscreen"
+            onClick={this.requestFullScreen}
+          >&#xe627;</i>
         </div>
       </div>
     );

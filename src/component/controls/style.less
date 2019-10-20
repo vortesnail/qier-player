@@ -5,6 +5,9 @@
   width: 100%;
   height: @container-height;
   color: @font-color;
+  &:hover {
+    cursor: default;
+  }
   .play-pause-timeline {
     height: 100%;
     float: left;
@@ -46,6 +49,7 @@
         cursor: pointer;
       }
     }
+    @popbox-bottom: 58px;
     .multifunction-volume {
       position: relative;
       padding: 0;
@@ -59,7 +63,7 @@
       }
       .volume-box {
         position: absolute;
-        top: -130px;
+        bottom: @popbox-bottom;
         left: 50%;
         margin-left: -16px;
         width: 32px;
@@ -126,6 +130,97 @@
         }
       }
     }
-
+    .multifunction-quality {
+      position: relative;
+      padding: 0;
+      font-size: 14px;
+      .quality {
+        padding: 10px;
+      }
+      .quality-box {
+        position: absolute;
+        width: 100px;
+        bottom: @popbox-bottom;
+        left: 50%;
+        margin-left: -50px;
+        border-radius: 3px;
+        background-color: rgba(0, 0, 0, .7);
+        overflow: hidden;
+        .quality-value {
+          width: 100%;
+          height: 34px;
+          line-height: 34px;
+          &:hover {
+            background-color: rgba(251, 193, 0, .5);
+          }
+        }
+      }
+    }
+    .multifunction-setting {
+      position: relative;
+      padding: 0;
+      .setting {
+        padding: 10px;
+      }
+      .setting-box {
+        position: absolute;
+        width: 100px;
+        bottom: @popbox-bottom;
+        left: 50%;
+        margin-left: -50px;
+        border-radius: 3px;
+        background-color: rgba(0, 0, 0, .7);
+        overflow: hidden;
+        list-style: none;
+        font-style: normal;
+        font-size: 14px;
+        text-align: left;
+        .play-rate {
+          .play-rate-value {
+            width: 100%;
+            height: 30px;
+            margin: 0;
+            padding: 0 10px;
+            line-height: 30px;
+            &:hover {
+              background-color: rgba(251, 193, 0, .5);
+            }
+          }
+        }
+        .light-off-mode {
+          .light-off-mode-switch {
+            width: 100%;
+            height: 30px;
+            margin: 0;
+            padding: 0 10px;
+            line-height: 30px;
+            position: relative;
+            &:hover {
+              cursor: pointer;
+              background-color: rgba(251, 193, 0, .5);
+            }
+            .light-off-mode-switch-btn {
+              position: absolute;
+              right: 24px;
+              top: 6px;
+            }
+            input[type="checkbox"] {
+              background-color: #fbc100;
+            }
+          }
+        }
+        .setting-title {
+          width: 100%;
+          height: 34px;
+          margin: 0;
+          padding: 0 10px;
+          line-height: 34px;
+          border-bottom: 1px solid #707070;
+          &:hover {
+            cursor: default;
+          }
+        }
+      }
+    }
   }
 }

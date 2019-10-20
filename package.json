@@ -47,7 +47,9 @@
   },
   "dependencies": {
     "core-js": "^2.6.10",
+    "prop-types": "^15.7.2",
     "react": "^16.10.2",
-    "react-dom": "^16.10.2"
+    "react-dom": "^16.10.2",
+    "screenfull": "^5.0.0"
   }
 }

@@ -10,8 +10,14 @@ class Controller extends Component {
     this.state = {
       currentTime: 0,
       duration: 0,
-      bufferedTime: 0
+      bufferedTime: 0,
+      showController: false,
+      showController: false
     }
+
+    this.handleShowController = this.handleShowController.bind(this);
+    this.handleHideController = this.handleHideController.bind(this);
+    this.handlePlayOrPauseVideo = this.handlePlayOrPauseVideo.bind(this);
   }
 
   componentDidMount() {
@@ -20,10 +26,6 @@ class Controller extends Component {
       this.windowClientX = e.clientX;
       this.windowClientY = e.clientY;
     })
-    // window.onmousemove = (e) => {
-    //   this.windowClientX = e.clientX;
-    //   this.windowClientY = e.clientY;
-    // }
 
     const videoElem = this.props.videoRef.current;
     videoElem.oncanplay = () => {
@@ -53,28 +55,59 @@ class Controller extends Component {
     this.interval && clearInterval(this.interval);
   }
 
+  handleShowController() {
+    this.setState({
+      showController: true
+    })
+  }
+
+  handleHideController() {
+    this.setState({
+      showController: false
+    })
+  }
+
+  handlePlayOrPauseVideo() {
+    const videoElem = this.props.videoRef.current;
+    videoElem.paused ? videoElem.play() : videoElem.pause();
+  }
+
   render() {
     return (
-      <div className="controller-container">
-        <Progress 
-          {...this.props} 
-          videoCurrentTime={this.state.currentTime} 
-          videoDuration={this.state.duration} 
-          videoBufferedTime={this.state.bufferedTime}
-          windowClientX={this.windowClientX}
-          windowClientY={this.windowClientY}
-        />
-        <Controls 
-          {...this.props} 
-          videoCurrentTime={this.state.currentTime} 
-          videoDuration={this.state.duration}
-          windowClientX={this.windowClientX}
-          windowClientY={this.windowClientY}
-        />
-      </div>
+        <div
+          className="controller-container"
+          onMouseEnter={this.handleShowController}
+          onMouseLeave={this.handleHideController}
+        >
+          <div className="click-to-play-or-pause" onClick={this.handlePlayOrPauseVideo}></div>
+          {
+            this.props.videoRef.current ? 
+              (this.props.videoRef.current.paused ? 
+                <i className="iconfont play-icon">&#xe6ac;</i> : '') : ''
+          }
+          <div className="progress-and-controls-wrap">
+            <Progress
+              {...this.props}
+              videoCurrentTime={this.state.currentTime}
+              videoDuration={this.state.duration}
+              videoBufferedTime={this.state.bufferedTime}
+              windowClientX={this.windowClientX}
+              windowClientY={this.windowClientY}
+              isShowController={this.state.showController}
+            />
+            <Controls
+              {...this.props}
+              videoCurrentTime={this.state.currentTime}
+              videoDuration={this.state.duration}
+              windowClientX={this.windowClientX}
+              windowClientY={this.windowClientY}
+              isShowController={this.state.showController}
+            />
+          </div>
+        </div>
     );
   }
-  
+
 }
 
 export default Controller;
