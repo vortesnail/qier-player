@@ -6,8 +6,8 @@ module.exports = {
   },
   devtool: 'cheap-module-eval-source-map',
   output: {
-    filename: 'js/[name].bundle.js',
-    path: path.resolve(__dirname, 'release'),
+    filename: '[name].js',
+    path: path.resolve(__dirname, 'dist'),
     // libraryTarget: 'commonjs2'
   },
   module: {

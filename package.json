@@ -1,12 +1,10 @@
 {
-  "name": "qier",
-  "version": "0.0.1",
-  "description": ":clapper:  A multifunctional and beautiful React-based web video player.",
-  "main": "release/index.bundle.js",
+  "name": "qier-player",
+  "version": "1.0.2",
+  "description": "A multifunctional and beautiful React-based web video player.",
+  "main": "dist/js/index.bundle.js",
   "scripts": {
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -w -r 0",
-    "lint": "eslint --ext .js src",
-    "release": "webpack --config ./webpack.prod.config.js",
+    "build": "webpack --config ./webpack.prod.config.js",
     "start": "webpack-dev-server  --inline --config ./webpack.dev.config.js"
   },
   "repository": {
@@ -14,9 +12,14 @@
     "url": "git+https://github.com/vortesnail/Qier.git"
   },
   "keywords": [
+    "vortesnail",
+    "qier",
+    "video-player",
     "video",
     "player",
-    "react"
+    "react",
+    "react-components",
+    "html5-video-player"
   ],
   "author": "vortesnail",
   "license": "MIT",

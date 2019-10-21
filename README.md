@@ -1,5 +1,5 @@
 # Qier
-:clapper:  A multifunctional and beautiful react-based web video player.
+:clapper: 一款轻量且精致的、基于React的H5播放器
 
 
 ## 特别感谢

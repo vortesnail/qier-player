@@ -5,21 +5,8 @@
   width: 100%;
   height: @container-height;
   color: @font-color;
-  position: relative;
   &:hover {
     cursor: default;
-  }
-  &:after {
-    content: '';
-    width: 740px;
-    height: 100%;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    z-index: -1;
-    transform: translateX(-50%);
-    background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
-
   }
   .play-pause-timeline {
     height: 100%;
