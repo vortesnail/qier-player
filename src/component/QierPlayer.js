@@ -4,9 +4,6 @@ import './style.less';
 
 import Controller from './controller/index';
 
-import test1 from './test1.mp4';
-import test2 from './test2.mp4';
-
 class QierPlayer extends Component {
   constructor(props) {
     super(props);
@@ -59,12 +56,12 @@ QierPlayer.propTypes = {
 
 QierPlayer.defaultProps = {
   showVideoQuality: true,
-  src480p: test1,
-  src720p: test2,
+  src480p: false,
+  src720p: false,
   src1080p: false,
   src2k: false,
   src4k: false,
-  srcOrigin: test2
+  srcOrigin: false
 }
 
 // module.exports =  QierPlayer;
