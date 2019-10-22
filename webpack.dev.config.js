@@ -7,11 +7,16 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = merge(common, {
   mode: 'development',
-  // output: {
-  //   filename: 'js/[name].bundle.js',
-  // },
+  entry: {
+    app: './example/src/app.js',
+  },
+  output: {
+    filename: '[name].js',
+    path: path.resolve(__dirname, 'dist'),
+    // libraryTarget: 'commonjs2'
+  },
   devServer: {
-    contentBase: path.resolve(__dirname, 'release'),
+    contentBase: path.resolve(__dirname, 'dist'),
     open: true,
     port: 9000,
     compress: true,
@@ -38,7 +43,7 @@ module.exports = merge(common, {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'src/index.html',
+      template: 'example/src/index.html',
       inject: 'body',
       hash: false
     }),

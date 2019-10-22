@@ -64,5 +64,4 @@ QierPlayer.defaultProps = {
   srcOrigin: false
 }
 
-// module.exports =  QierPlayer;
 export default QierPlayer;

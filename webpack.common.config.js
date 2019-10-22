@@ -1,15 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: {
-    index: './src/index.js',
-  },
   devtool: 'cheap-module-eval-source-map',
-  output: {
-    filename: '[name].js',
-    path: path.resolve(__dirname, 'dist'),
-    // libraryTarget: 'commonjs2'
-  },
   module: {
     rules: [
       {
