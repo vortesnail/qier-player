@@ -27,13 +27,15 @@ ReactDOM.render(<QierPlayer srcOringin="你的视频地址"/>, document.getEleme
 ```
 
 ## 接口
-`showVideoQuality`: 值为 bool ，默认为 true，用于控制是否显示清晰度选项
-`src480p`: 值为 string 或 bool ，默认为 false，用于提供清晰度为 480P 的视频源切换
-`src720p`: 值为 string 或 bool ，默认为 false，用于提供清晰度为 720P 的视频源切换
-`src1080p`: 值为 string 或 bool ，默认为 false，用于提供清晰度为 1080P 的视频源切换
-`src2k`: 值为 string 或 bool ，默认为 false，用于提供清晰度为 2K 的视频源切换
-`src4k`: 值为 string 或 bool ，默认为 false，用于提供清晰度为 4K 的视频源切换
-`srcOrigin`: 值为 string 或 bool ，默认为 false，用于提供清晰度为 origin(原画) 的视频源切换，如果仅有一个视频播放源，建议配置此选项，其它全设置为 false
+| 参数  |  说明 | 类型  | 默认值  |
+| ------------ | ------------ | ------------ | ------------ |
+| showVideoQuality  | 用于控制是否显示清晰度选项  | boolean  |  false |
+| src480p  |  用于提供清晰度为 480P 的视频源切换 | boolean &#124; string   | false  |
+| src720p  |  用于提供清晰度为 720P 的视频源切换 | boolean &#124; string   | false  |
+| src1080p  |  用于提供清晰度为 1080P 的视频源切换 | boolean &#124; string   | false  |
+| src2k  |  用于提供清晰度为 2K 的视频源切换 | boolean &#124; string   | false  |
+| src4k  |  用于提供清晰度为 4K 的视频源切换 | boolean &#124; string   | false  |
+| srcOrigin  |  用于提供清晰度为 origin(原画) 的视频源切换，如果仅有一个视频播放源，建议配置此选项，其它全设置为 false | boolean &#124; string   | false  |
 
 ## 更新记录
 ### 1.0.3 (2019-10-20)
