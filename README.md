@@ -8,6 +8,8 @@
 ## 介绍
 qier-player 是一个基于 React 编写的在线视频播放器组件，界面简洁，操作流畅，具有大部分视频播放器的基础功能。支持视频清晰度的切换，提供了原画、4K、2K、1080P、720P、480P 的视频源接口。
 
+[演示官网](https://vortesnail.github.io/qier-player-demo/)(tip: 演示的视频没有放cdn，下载比较慢，比较卡，需要等它加载完)
+
 ## 示例
 ![整体样式](https://i0.hdslb.com/bfs/album/dc46482ec425ebf78f8501fb44f05f8b01cbda4b.png)
 
@@ -23,7 +25,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import QierPlayer from 'qier-player';
 
-ReactDOM.render(<QierPlayer srcOringin="你的视频地址"/>, document.getElementById('root'));
+ReactDOM.render(<QierPlayer srcOrigin="你的视频地址"/>, document.getElementById('root'));
 ```
 
 ## 接口
