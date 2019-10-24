@@ -19,10 +19,13 @@ class Controls extends Component {
       isPlay: false,
       volume: 100,
       isSlideVolume: false,
-      currentQuality: '清晰度'
+      currentQuality: '清晰度',
+      isScreentFull: false
     }
 
     this.tempVolume = 100;
+    this.controlContainerWidth = 740;
+    this.controlContainerHeight = 420;
 
     this.changeIsVolumeHoverToTrue = this.changeIsVolumeHoverToTrue.bind(this);
     this.changeIsVolumeHoverToFalse = this.changeIsVolumeHoverToFalse.bind(this);
@@ -108,8 +111,18 @@ class Controls extends Component {
     // 设置定时器判断是否停止
     this.interval = setInterval(() => {
       videoElem.paused ? this.setState({ isPlay: false }) : this.setState({ isPlay: true });
-      
     }, 1);
+
+    screenfull.on('change', () => {
+      if (screenfull.isFullscreen) {
+        this.setState({isScreentFull: true})
+      } else {
+        this.props.controllerContainerRef.current.style.width = `${this.controlContainerWidth}px`;
+        this.props.controllerContainerRef.current.style.height = `${this.controlContainerHeight}px`
+        this.props.progressAndControlsWrapRef.current.style.width = 'calc((100% - 26px))';
+        this.setState({isScreentFull: false});
+      }
+    });
   }
 
   componentWillUnmount() {
@@ -118,6 +131,7 @@ class Controls extends Component {
     this.timeoutQuality && clearTimeout(this.timeoutQuality);
     this.timeoutSetting && clearTimeout(this.timeoutSetting);
     window.removeEventListener('mouseup');
+    screenfull.off('change');
   }
 
   transTimeFormat(seconds) {
@@ -235,10 +249,15 @@ class Controls extends Component {
 
   requestFullScreen() {
     const videoElem = this.props.videoContainerRef.current;
-    if (screenfull.isFullscreen) {
+    if (this.state.isScreentFull) {
       screenfull.exit();
     } else {
       if (screenfull.isEnabled) {
+        setTimeout(() => {
+          this.props.controllerContainerRef.current.style.width = '100vw';
+          this.props.controllerContainerRef.current.style.height = '100vh';
+          this.props.progressAndControlsWrapRef.current.style.width = '100vw';
+        }, 100);
         screenfull.request(videoElem);
       } else {
         alert("Sorry, present video can't fullscreen.");
@@ -269,25 +288,25 @@ class Controls extends Component {
     videoEle.src = this.props[`src${e.target.getAttribute("id")}`];
     switch (currentQulityStr) {
       case 'Origin':
-        this.setState({currentQuality: '原画'});
+        this.setState({ currentQuality: '原画' });
         break;
       case '4k':
-        this.setState({currentQuality: '4K'});
+        this.setState({ currentQuality: '4K' });
         break;
       case '2k':
-        this.setState({currentQuality: '2K'});
+        this.setState({ currentQuality: '2K' });
         break;
       case '1080p':
-        this.setState({currentQuality: '1080P'});
+        this.setState({ currentQuality: '1080P' });
         break;
       case '720p':
-        this.setState({currentQuality: '720P'});
+        this.setState({ currentQuality: '720P' });
         break;
       case '480p':
-        this.setState({currentQuality: '480P'});
+        this.setState({ currentQuality: '480P' });
         break;
       default:
-        this.setState({currentQuality: '无'})
+        this.setState({ currentQuality: '无' })
         break;
     }
     videoEle.currentTime = videoCurTimeTemp;
@@ -329,7 +348,7 @@ class Controls extends Component {
 
   render() {
     return (
-      <div className="controls-container" style={{opacity: `${this.props.isShowController ? 1 : 0}`}}>
+      <div className="controls-container" style={{ opacity: `${this.props.isShowController ? 1 : 0}` }}>
         <div className="play-pause-timeline">
           <i
             onClick={this.handleChangePlayState}
@@ -384,43 +403,43 @@ class Controls extends Component {
 
           </i>
           {
-            this.props.showVideoQuality ? 
-            <span
-              className="multifunction-quality"
-              onMouseEnter={this.changeIsQualityHoverToTrue}
-              onMouseLeave={this.changeIsQualityHoverToFalse}
-            ><span className="quality">{this.state.currentQuality}</span>
-              {
-                this.state.isHoverToQuality ?
-                  <div
-                    className="quality-box"
-                    onClick={this.selectVideoQuality}
-                    onMouseEnter={this.changeIsHoverToQualityPopboxToTrue}
-                    onMouseLeave={this.changeIsHoverToQualityPopboxToFalse}
-                  >
-                    {this.props.srcOrigin && <div className="quality-value" id="Origin">原画</div>}
-                    {this.props.src4k && <div className="quality-value" id="4k">4K</div>}
-                    {this.props.src2k && <div className="quality-value" id="2k">2K</div>}
-                    {this.props.src1080p && <div className="quality-value" id="1080p">1080P</div>}
-                    {this.props.src720p && <div className="quality-value" id="720p">720P</div>}
-                    {this.props.src480p && <div className="quality-value" id="480p">480P</div>}
-                  </div> : ''
-              }
-            </span> : ''
+            this.props.showVideoQuality ?
+              <span
+                className="multifunction-quality"
+                onMouseEnter={this.changeIsQualityHoverToTrue}
+                onMouseLeave={this.changeIsQualityHoverToFalse}
+              ><span className="quality">{this.state.currentQuality}</span>
+                {
+                  this.state.isHoverToQuality ?
+                    <div
+                      className="quality-box"
+                      onClick={this.selectVideoQuality}
+                      onMouseEnter={this.changeIsHoverToQualityPopboxToTrue}
+                      onMouseLeave={this.changeIsHoverToQualityPopboxToFalse}
+                    >
+                      {this.props.srcOrigin && <div className="quality-value" id="Origin">原画</div>}
+                      {this.props.src4k && <div className="quality-value" id="4k">4K</div>}
+                      {this.props.src2k && <div className="quality-value" id="2k">2K</div>}
+                      {this.props.src1080p && <div className="quality-value" id="1080p">1080P</div>}
+                      {this.props.src720p && <div className="quality-value" id="720p">720P</div>}
+                      {this.props.src480p && <div className="quality-value" id="480p">480P</div>}
+                    </div> : ''
+                }
+              </span> : ''
           }
-          <i 
+          <i
             className="multifunction-setting"
             onMouseEnter={this.changeIsSettingHoverToTrue}
             onMouseLeave={this.changeIsSettingHoverToFalse}
           ><i className="iconfont setting">&#xe71b;</i>
             {
               this.state.isHoverToSetting ?
-                <div 
+                <div
                   className="setting-box"
                   onMouseEnter={this.changeIsHoverToSettingPopboxToTrue}
                   onMouseLeave={this.changeIsHoverToSettingPopboxToFalse}
                 >
-                  <div 
+                  <div
                     className="play-rate"
                     onClick={this.selectPlayRate}
                   >
@@ -434,14 +453,14 @@ class Controls extends Component {
                   </div>
                   <div className="light-off-mode">
                     <p className="setting-title light-off-mode-title">其他设置:</p>
-                    <p 
+                    <p
                       className="light-off-mode-switch"
                       onClick={this.lightOffModeSwitch}
                     >关灯模式&nbsp;{this.state.isLightOff ? <span className="iconfont">&#xe666;</span> : ''}</p>
                   </div>
                 </div> : ''
             }
-            
+
           </i>
           <i
             className="iconfont multifunction-fullscreen"

@@ -39,7 +39,12 @@ ReactDOM.render(<QierPlayer srcOrigin="你的视频地址"/>, document.getElemen
 | src4k  |  用于提供清晰度为 4K 的视频源切换 | boolean &#124; string   | false  |
 | srcOrigin  |  用于提供清晰度为 origin(原画) 的视频源切换，如果仅有一个视频播放源，建议配置此选项，其它全设置为 false | boolean &#124; string   | false  |
 
-## 更新记录
+## 近期更新记录
+## 1.0.4 (2019-10-24)
+- 调整了不同浏览器对视频格式的兼容性
+- 修复全屏之后，控制蓝长宽不变的问题
+- 修复全屏之后，点击屏幕某些
+
 ### 1.0.3 (2019-10-20)
 - 实现播放速度调节功能
 - 实现关灯模式
@@ -61,8 +66,6 @@ ReactDOM.render(<QierPlayer srcOrigin="你的视频地址"/>, document.getElemen
 - 完成了播放器基本的布局样式
 - 完成播放/暂停，更新当前时间的逻辑
 
-### 0.0.1 (2019-10-15)
-- 配置相关环境支持react组件
 
 ## 特别感谢
 - 感谢[kaiseixd](https://github.com/kaiseixd)在遇到困难时提供的灵感

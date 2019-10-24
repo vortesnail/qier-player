@@ -14,6 +14,8 @@ class Controller extends Component {
       showController: false,
       showController: false
     }
+    this.controllerContainerRef = React.createRef();
+    this.progressAndControlsWrapRef = React.createRef();
 
     this.handleShowController = this.handleShowController.bind(this);
     this.handleHideController = this.handleHideController.bind(this);
@@ -76,16 +78,20 @@ class Controller extends Component {
     return (
         <div
           className="controller-container"
+          ref={this.controllerContainerRef}
           onMouseEnter={this.handleShowController}
           onMouseLeave={this.handleHideController}
         >
-          <div className="click-to-play-or-pause" onClick={this.handlePlayOrPauseVideo}></div>
+          <div 
+            className="click-to-play-or-pause" 
+            onClick={this.handlePlayOrPauseVideo}
+          ></div>
           {
             this.props.videoRef.current ? 
               (this.props.videoRef.current.paused ? 
                 <i className="iconfont play-icon">&#xe6ac;</i> : '') : ''
           }
-          <div className="progress-and-controls-wrap">
+          <div className="progress-and-controls-wrap" ref={this.progressAndControlsWrapRef}>
             <Progress
               {...this.props}
               videoCurrentTime={this.state.currentTime}
@@ -102,6 +108,8 @@ class Controller extends Component {
               windowClientX={this.windowClientX}
               windowClientY={this.windowClientY}
               isShowController={this.state.showController}
+              controllerContainerRef={this.controllerContainerRef}
+              progressAndControlsWrapRef={this.progressAndControlsWrapRef}
             />
           </div>
         </div>

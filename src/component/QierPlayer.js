@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import './style.less';
 
@@ -13,6 +13,16 @@ class QierPlayer extends Component {
     this.videoContainerRef = React.createRef();
   }
 
+  returnVideoSource(videoSrc) {
+    return (
+      <Fragment>
+        <source src={videoSrc} type="video/mp4" /> 
+        <source src={videoSrc} type="video/ogg" />
+        <source src={videoSrc} type="video/webm" />
+      </Fragment>
+    )
+  }
+
   render() {
     return (
       <figure
@@ -24,12 +34,12 @@ class QierPlayer extends Component {
           className="qier-player"
           ref={this.videoRef}
         >
-          {this.props.src480p && <source src={this.props.src480p} type="video/mp4" />}
-          {this.props.src720p && <source src={this.props.src720p} type="video/mp4" />}
-          {this.props.src1080p && <source src={this.props.src1080p} type="video/mp4" />}
-          {this.props.src2k && <source src={this.props.src2k} type="video/mp4" />}
-          {this.props.src4k && <source src={this.props.src4k} type="video/mp4" />}
-          {this.props.srcOrigin && <source src={this.props.srcOrigin} type="video/mp4" />}
+          {this.props.src480p && this.returnVideoSource(this.props.src480p)}
+          {this.props.src720p && this.returnVideoSource(this.props.src720p)}
+          {this.props.src1080p && this.returnVideoSource(this.props.src1080p)}
+          {this.props.src2k && this.returnVideoSource(this.props.src2k)}
+          {this.props.src4k && this.returnVideoSource(this.props.src4k)}
+          {this.props.srcOrigin && this.returnVideoSource(this.props.srcOrigin)}
         </video>
 
         {/* 控制器组件 */}
