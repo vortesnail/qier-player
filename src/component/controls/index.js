@@ -254,8 +254,8 @@ class Controls extends Component {
     } else {
       if (screenfull.isEnabled) {
         setTimeout(() => {
-          this.props.controllerContainerRef.current.style.width = '100vw';
-          this.props.controllerContainerRef.current.style.height = '100vh';
+          this.props.controllerContainerRef.current.style.width = 'calc(100vw - 2px)';
+          this.props.controllerContainerRef.current.style.height = 'calc(100vh - 2px)';
           this.props.progressAndControlsWrapRef.current.style.width = '100vw';
         }, 100);
         screenfull.request(videoElem);

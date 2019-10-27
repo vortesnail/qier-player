@@ -16,10 +16,13 @@ class Controller extends Component {
     }
     this.controllerContainerRef = React.createRef();
     this.progressAndControlsWrapRef = React.createRef();
+    this.playOrPauseRef = React.createRef();
 
     this.handleShowController = this.handleShowController.bind(this);
     this.handleHideController = this.handleHideController.bind(this);
     this.handlePlayOrPauseVideo = this.handlePlayOrPauseVideo.bind(this);
+    this.setKeycode = this.setKeycode.bind(this);
+    this.removeKeycode = this.removeKeycode.bind(this);
   }
 
   componentDidMount() {
@@ -51,6 +54,26 @@ class Controller extends Component {
         currentTime: videoElem.currentTime,
       })
     }, 1);
+
+    document.onkeydown = () => {
+      console.log()
+      if('play-or-pause-mask' === document.activeElement.id) {
+        const keyCode = window.event.keyCode;
+        if(!window.event.altKey && !window.event.ctrlKey) {
+          switch (keyCode) {
+            case 38:
+              // ⬆ ⬇ ⬅ ➡
+              break;
+          
+            default:
+              break;
+          }
+        }
+        if(window.event.keyCode == 83) {
+          console.log(111);
+        }
+      }
+    }
   }
 
   componentWillUnmount() {
@@ -74,6 +97,15 @@ class Controller extends Component {
     videoElem.paused ? videoElem.play() : videoElem.pause();
   }
 
+  setKeycode(e) {
+
+  }
+
+  removeKeycode() {
+
+  }
+
+
   render() {
     return (
         <div
@@ -83,8 +115,13 @@ class Controller extends Component {
           onMouseLeave={this.handleHideController}
         >
           <div 
+            id="play-or-pause-mask"
             className="click-to-play-or-pause" 
+            ref={this.playOrPauseRef}
             onClick={this.handlePlayOrPauseVideo}
+            onFocus={this.setKeycode}
+            tabIndex="0"
+            onBlur={this.removeKeycode}
           ></div>
           {
             this.props.videoRef.current ? 
