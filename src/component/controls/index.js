@@ -51,6 +51,7 @@ class Controls extends Component {
     this.changeIsHoverToSettingPopboxToFalse = this.changeIsHoverToSettingPopboxToFalse.bind(this);
     this.selectPlayRate = this.selectPlayRate.bind(this);
     this.lightOffModeSwitch = this.lightOffModeSwitch.bind(this);
+    this.showVolumeBox = this.showVolumeBox.bind(this);
   }
 
   changeIsVolumeHoverToTrue() {
@@ -108,11 +109,12 @@ class Controls extends Component {
 
     const videoElem = this.props.videoRef.current;
 
-    // 设置定时器判断是否停止
+    // 设置定时器判断 video 是否停止
     this.interval = setInterval(() => {
       videoElem.paused ? this.setState({ isPlay: false }) : this.setState({ isPlay: true });
     }, 1);
 
+    // 当全屏\全屏状态发生变化时
     screenfull.on('change', () => {
       if (screenfull.isFullscreen) {
         this.setState({isScreentFull: true})
@@ -123,9 +125,56 @@ class Controls extends Component {
         this.setState({isScreentFull: false});
       }
     });
+
+    // 快捷键
+    document.onkeydown = () => {
+      if('play-or-pause-mask' === document.activeElement.id) {
+        const keyCode = window.event.keyCode;
+        if(!window.event.altKey && !window.event.ctrlKey) {
+          let currentVolumePercent = videoElem.volume;
+          switch (keyCode) {
+            case 38:                            // ⬆
+              currentVolumePercent += 0.05;
+              this.showVolumeBox(currentVolumePercent);
+              break;
+            case 40:                            // ⬇
+              currentVolumePercent -= 0.05;
+              this.showVolumeBox(currentVolumePercent);
+              break;
+            case 37:                            // ⬅
+              videoElem.currentTime -= 3;
+              break;
+            case 39:                            // ➡
+              videoElem.currentTime += 3;
+              break;
+            case 32:                            // space
+              this.handleChangePlayState();
+              break;
+            default:
+              break;
+          }
+        }
+      }
+    }
+  }
+
+  showVolumeBox(currentVolumePercent) {
+    let volumeBoxElem = this.props.volumeBoxRef.current;
+    volumeBoxElem.classList.remove("show-animation");
+    // 这句话异常重要，不然你会发现 remove 不掉 class
+    // 参考：https://css-tricks.com/restart-css-animation/
+    void volumeBoxElem.offsetWidth;
+    let p = new Promise(resolve => {
+      this.updateCurrentVolume(currentVolumePercent);
+      resolve();
+    })
+    p.then(() => {
+      volumeBoxElem.classList.add("show-animation");
+    })
   }
 
   componentWillUnmount() {
+    // 清除定时器和事件监听
     this.interval && clearInterval(this.interval);
     this.timeoutVolume && clearTimeout(this.timeoutVolume);
     this.timeoutQuality && clearTimeout(this.timeoutQuality);
@@ -142,6 +191,10 @@ class Controls extends Component {
     if (this.state.isPlay) {
       this.props.videoRef.current.pause();
       this.setState({ isPlay: false })
+      // 这条 return 语句必须的加，不然下面的代码也会执行。。
+      // 黑科技。。
+      // 不是说 setState 是异步吗？？？
+      return;
     }
     if (!this.state.isPlay) {
       this.props.videoRef.current.play();
@@ -149,6 +202,7 @@ class Controls extends Component {
     }
   }
 
+  // 改变当前音量
   changeCurrentVolume(e) {
     // 获取音量区域高度
     const volumeAreaHeight = this.volumeSliderMirror.current.offsetHeight;
@@ -158,6 +212,7 @@ class Controls extends Component {
     this.updateCurrentVolume(volumePercent);
   }
 
+  // 滑动音量控制条
   slideCurrentVolume() {
     // 获取音量区域高度
     const volumeAreaHeight = this.volumeSliderMirror.current.offsetHeight;
@@ -172,6 +227,7 @@ class Controls extends Component {
     }, 1);
   }
 
+  // 更新当前音量控制条
   updateCurrentVolume(volumePercent) {
     if (volumePercent >= 0 && volumePercent <= 1) {
       this.props.videoRef.current.volume = volumePercent;
@@ -200,6 +256,7 @@ class Controls extends Component {
     this.whenMouseUpDo();
   }
 
+  // 当鼠标抬起时
   whenMouseUpDo() {
     this.volumeInterval && clearInterval(this.volumeInterval);
     this.setState({
@@ -247,6 +304,7 @@ class Controls extends Component {
     })
   }
 
+  // 请求获得全屏状态
   requestFullScreen() {
     const videoElem = this.props.videoContainerRef.current;
     if (this.state.isScreentFull) {
@@ -277,6 +335,7 @@ class Controls extends Component {
     })
   }
 
+  // 选取视频清晰度
   selectVideoQuality(e) {
     const videoEle = this.props.videoRef.current;
     // 记录当前播放到的时间

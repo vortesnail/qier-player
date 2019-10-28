@@ -38,4 +38,37 @@
     left: 50%;
     transform: translateX(-50%);
   }
+  .volume-show-box {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+    width: 80px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 4px;
+    opacity: 0;
+    .volume-percent {
+      padding-left: 10px;
+    }
+  }
+  .show-animation {
+    animation: show-volume-box 1s ease;
+  }
+}
+
+@keyframes show-volume-box {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }

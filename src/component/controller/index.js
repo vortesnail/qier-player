@@ -17,6 +17,7 @@ class Controller extends Component {
     this.controllerContainerRef = React.createRef();
     this.progressAndControlsWrapRef = React.createRef();
     this.playOrPauseRef = React.createRef();
+    this.volumeBoxRef = React.createRef();
 
     this.handleShowController = this.handleShowController.bind(this);
     this.handleHideController = this.handleHideController.bind(this);
@@ -54,26 +55,6 @@ class Controller extends Component {
         currentTime: videoElem.currentTime,
       })
     }, 1);
-
-    document.onkeydown = () => {
-      console.log()
-      if('play-or-pause-mask' === document.activeElement.id) {
-        const keyCode = window.event.keyCode;
-        if(!window.event.altKey && !window.event.ctrlKey) {
-          switch (keyCode) {
-            case 38:
-              // ⬆ ⬇ ⬅ ➡
-              break;
-          
-            default:
-              break;
-          }
-        }
-        if(window.event.keyCode == 83) {
-          console.log(111);
-        }
-      }
-    }
   }
 
   componentWillUnmount() {
@@ -147,7 +128,12 @@ class Controller extends Component {
               isShowController={this.state.showController}
               controllerContainerRef={this.controllerContainerRef}
               progressAndControlsWrapRef={this.progressAndControlsWrapRef}
+              volumeBoxRef={this.volumeBoxRef}
             />
+          </div>
+          <div className="volume-show-box" ref={this.volumeBoxRef}>
+            <i className="iconfont">&#xe614;</i>
+            <span className="volume-percent">{this.props.videoRef.current ? Math.floor(this.props.videoRef.current.volume * 100) : ''}%</span>
           </div>
         </div>
     );
