@@ -7,10 +7,53 @@ import Controller from './controller/index';
 class QierPlayer extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      isVideoUseful: true,
+      isBufferring: false,
+    }
 
     this.lightOffMaskRef = React.createRef();
     this.videoRef = React.createRef();
     this.videoContainerRef = React.createRef();
+  }
+
+  componentDidMount() {
+    const videoElem = this.videoRef.current;
+    // 设置定时器检测 3 秒后视频是否可用
+    this.timerToCheckVideoUseful = setTimeout(() => {
+      // 当视频未初始化时（即不可用时）
+      if (videoElem.networkState === 0) {
+        // console.log('can not find');
+        this.setState({
+          isVideoUseful: false,
+        })
+      }
+    }, 3000);
+    // 监听是否在缓冲
+    videoElem.addEventListener('waiting', (e) => {
+      changeWaitingState(true);
+    });
+    // 当开始播放时更改waiting状态
+    
+    videoElem.addEventListener('playing', () => {
+      changeWaitingState(false);
+    })
+  }
+
+  componentWillUnmount() {
+    this.timerToCheckVideoUseful && clearTimeout(this.timerToCheckVideoUseful);
+    this.videoRef.current.removeEventListener('waiting');
+    this.videoRef.current.removeEventListener('playing');
+  }
+
+  changeWaitingState(boolTemp) {
+    boolTemp ? 
+    this.setState({
+      isBufferring: true
+    }) :
+    this.setState({
+      isBufferring: false
+    });
   }
 
   returnVideoSource(videoSrc) {
@@ -30,6 +73,13 @@ class QierPlayer extends Component {
         ref={this.videoContainerRef}
       >
         <div className="light-off-mask" ref={this.lightOffMaskRef}></div>
+        {
+          this.state.isVideoUseful ? '' : <p className="video-no-useful-tip">抱歉！视频找不到了  (｡ ́︿ ̀｡)</p>
+        }
+        {
+          this.state.isBufferring ? <p className="buffering-animation">正在缓冲<span className="bufferring-dot">...</span></p> : ''
+        }
+        
         <video
           className="qier-player"
           ref={this.videoRef}
@@ -40,6 +90,7 @@ class QierPlayer extends Component {
           {this.props.src2k && this.returnVideoSource(this.props.src2k)}
           {this.props.src4k && this.returnVideoSource(this.props.src4k)}
           {this.props.srcOrigin && this.returnVideoSource(this.props.srcOrigin)}
+          抱歉，该视频已丢失或下载失败
         </video>
 
         {/* 控制器组件 */}
