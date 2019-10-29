@@ -31,12 +31,11 @@ class QierPlayer extends Component {
     }, 3000);
     // 监听是否在缓冲
     videoElem.addEventListener('waiting', (e) => {
-      changeWaitingState(true);
+      this.changeWaitingState(true);
     });
     // 当开始播放时更改waiting状态
-    
     videoElem.addEventListener('playing', () => {
-      changeWaitingState(false);
+      this.changeWaitingState(false);
     })
   }
 

@@ -131,6 +131,9 @@ class Controls extends Component {
       if('play-or-pause-mask' === document.activeElement.id) {
         const keyCode = window.event.keyCode;
         if(!window.event.altKey && !window.event.ctrlKey) {
+          // 去除浏览器默快捷键冲突
+          window.event.preventDefault()
+          window.event.cancelBubble = true//IE
           let currentVolumePercent = videoElem.volume;
           switch (keyCode) {
             case 38:                            // ⬆
