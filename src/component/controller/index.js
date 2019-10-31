@@ -3,6 +3,7 @@ import './style.less';
 
 import Progress from '../progress/index';
 import Controls from '../controls/index';
+import 'hover-seconds-do';
 
 class Controller extends Component {
   constructor(props) {
@@ -16,7 +17,7 @@ class Controller extends Component {
     }
     this.controllerContainerRef = React.createRef();
     this.progressAndControlsWrapRef = React.createRef();
-    this.playOrPauseRef = React.createRef();
+    this.playOrPauseMaskRef = React.createRef();
     this.volumeBoxRef = React.createRef();
 
     this.handleShowController = this.handleShowController.bind(this);
@@ -24,6 +25,8 @@ class Controller extends Component {
     this.handlePlayOrPauseVideo = this.handlePlayOrPauseVideo.bind(this);
     this.setKeycode = this.setKeycode.bind(this);
     this.removeKeycode = this.removeKeycode.bind(this);
+    this.hideControlAndMouse = this.hideControlAndMouse.bind(this);
+    this.showControlAndMouse = this.showControlAndMouse.bind(this);
   }
 
   componentDidMount() {
@@ -55,10 +58,26 @@ class Controller extends Component {
         currentTime: videoElem.currentTime,
       })
     }, 1);
+
+    // 给 playOrPauseMaskRef 添加监听，实现悬停 n 秒控制栏消失
+    this.hoversd = new window.HoverSD(this.playOrPauseMaskRef.current, this.hideControlAndMouse, 1800, this.showControlAndMouse);
+    this.hoversd.secondsHoverEX();
   }
 
   componentWillUnmount() {
     this.interval && clearInterval(this.interval);
+    this.hoversd.removeElemEventListener();
+  }
+
+  // 当悬浮超过一定时间 鼠标消失，控制栏消失
+  hideControlAndMouse() {
+    this.handleHideController();
+    this.playOrPauseMaskRef.current.style.cursor = 'none';
+  }
+  // 正常情况下，鼠标恢复，控制栏恢复
+  showControlAndMouse() {
+    this.handleShowController();
+    this.playOrPauseMaskRef.current.style.cursor = 'pointer';
   }
 
   handleShowController() {
@@ -98,7 +117,7 @@ class Controller extends Component {
           <div 
             id="play-or-pause-mask"
             className="click-to-play-or-pause" 
-            ref={this.playOrPauseRef}
+            ref={this.playOrPauseMaskRef}
             onClick={this.handlePlayOrPauseVideo}
             onFocus={this.setKeycode}
             tabIndex="0"

@@ -1,6 +1,6 @@
 {
   "name": "qier-player",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A multifunctional and beautiful React-based web video player.",
   "main": "dist/index.js",
   "scripts": {
@@ -50,6 +50,7 @@
   },
   "dependencies": {
     "core-js": "^2.6.10",
+    "hover-seconds-do": "^1.0.1",
     "prop-types": "^15.7.2",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
