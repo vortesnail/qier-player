@@ -17,6 +17,7 @@ class Progress extends Component {
       // 视频帧预览，未实现
       imgSrc: ''
     }
+    this.pointerRef = React.createRef();
     this.progressSeekMaskRef = React.createRef();
     this.progressBgRef = React.createRef();
     this.progressScrubberRef = React.createRef();
@@ -38,6 +39,15 @@ class Progress extends Component {
   }
 
   componentDidMount() {
+    // 三角形样式
+    this.topTriangleColor = {
+      borderTop: `4px solid ${this.props.themeColor}`
+    }
+    
+    this.bottomTriangleColor = {
+      borderBottom: `4px solid ${this.props.themeColor}`
+    }
+
     window.addEventListener('mouseup', () => {
       this.whenMouseUpDo();
     })
@@ -89,7 +99,7 @@ class Progress extends Component {
     this.interval && clearInterval(this.interval);
     if (this.props.videoRef.current.currentTime < this.props.videoDuration && this.isDrag) {
       this.props.videoRef.current.play();
-      this.setState({isDrag: false})
+      this.setState({ isDrag: false })
     }
     this.setState({
       isMovingProgress: false,
@@ -128,11 +138,11 @@ class Progress extends Component {
 
   render() {
     return (
-      <div className="progress-container"  style={{opacity: `${this.props.isShowController ? 1 : 0}`}}>
+      <div className="progress-container" style={{ opacity: `${this.props.isShowController ? 1 : 0}` }}>
         <div className="progress-bg" ref={this.progressBgRef}>
           <div className="progress-buffered" style={{ width: `${this.calculateBufferedPercent()}%` }}></div>
-          <div className="progress-played" style={{ width: `${this.calculateProcessPercent()}%` }}>
-            <i className="progress-scrubber" ref={this.progressScrubberRef}></i>
+          <div className="progress-played" style={{ width: `${this.calculateProcessPercent()}%`, background: `${this.props.themeColor}` }}>
+            <i className="progress-scrubber" style={{ background: `${this.props.themeColor}` }} ref={this.progressScrubberRef}></i>
           </div>
           <div
             className="progress-seek-mask"
@@ -148,7 +158,10 @@ class Progress extends Component {
             this.state.isMovingProgress ?
               (
                 <div>
-                  <div className="pointer" style={{ left: `${this.state.positionX}px` }}></div>
+                  <div className="pointer" style={{ left: `${this.state.positionX}px` }} ref={this.pointerRef}>
+                    <div className="top-triangle" style={this.topTriangleColor}></div>
+                    <div className="bottom-triangle" style={this.bottomTriangleColor}></div>
+                  </div>
                   <div className="video-img-box" style={{ left: `${this.state.positionX}px` }}>
                     <img className="video-current-img" src={this.state.imgSrc} alt="" />
                     <span className="current-time">{this.state.currentTime}</span>

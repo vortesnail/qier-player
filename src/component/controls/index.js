@@ -454,9 +454,9 @@ class Controls extends Component {
                       ></div>
                       <div
                         className="volume-slider-op"
-                        style={{ height: `${this.state.volume}%` }}
+                        style={{ height: `${this.state.volume}%`, backgroundColor: `${this.props.themeColor}` }}
                       >
-                        <div className="volume-slider-op-circle"></div>
+                        <div className="volume-slider-op-circle" style={{ backgroundColor: `${this.props.themeColor}` }}></div>
                       </div>
                     </div>
                   </div>

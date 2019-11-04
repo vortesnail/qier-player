@@ -106,6 +106,7 @@ class QierPlayer extends Component {
 
 QierPlayer.propTypes = {
   showVideoQuality: PropTypes.bool,
+  themeColor: PropTypes.string,
   src480p: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   src720p: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   src1080p: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
@@ -116,6 +117,7 @@ QierPlayer.propTypes = {
 
 QierPlayer.defaultProps = {
   showVideoQuality: true,
+  themeColor: '#f23300',
   src480p: false,
   src720p: false,
   src1080p: false,

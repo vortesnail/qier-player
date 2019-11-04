@@ -24,7 +24,7 @@
       width: 0%;
       height: 100%;
       border-radius: 2px;
-      background: #fbc100;
+      // background: #fbc100;
       .progress-scrubber {
         position: absolute;
         right: -5px;
@@ -33,7 +33,7 @@
         width: 10px;
         height: 10px;
         border-radius: 50%;
-        background-color: #fbc100;
+        // background-color: #fbc100;
       }
     }
     .progress-seek-mask {
@@ -51,29 +51,23 @@
       position: absolute;
       left: 714px;
       top: 0;
-      &::before {
-        content: '';
+      .top-triangle,
+      .bottom-triangle {
         width: 0;
         height: 0;
         position: absolute;
-        left: -4px;
-        top: -5px;
-        border-top: 4px solid #fbc100;
         border-right: 4px solid transparent;
         border-left: 4px solid transparent;
+      }
+      .top-triangle {
+        left: -4px;
+        top: -5px;
         border-bottom: 4px solid transparent;
       }
-      &::after {
-        content: '';
-        width: 0;
-        height: 0;
-        position: absolute;
+      .bottom-triangle {
         left: -4px;
         top: 1px;
         border-top: 4px solid transparent;
-        border-right: 4px solid transparent;
-        border-left: 4px solid transparent;
-        border-bottom: 4px solid #fbc100;
       }
     }
     .video-img-box {
