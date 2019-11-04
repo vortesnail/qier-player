@@ -1,13 +1,13 @@
 <h1 align="center">
   <img src="https://i0.hdslb.com/bfs/album/d72f47cd98c9fb6287d7eaf002695de4f53de6f2.png" height="200" width="200"/>
-  <p align="center" style="font-size: 0.5em">A lightweight and sophisticated React-based H5 video player</p>
+  <p align="center" style="font-size: 0.5em">一款轻量且精致的、基于React的H5视频播放器</p>
 </h1>
 
-[![GitHub](https://img.shields.io/github/license/vortesnail/qier-player)](https://github.com/vortesnail/qier-player/blob/master/LICENSE) [![npm package](https://img.shields.io/npm/v/qier-player)](https://www.npmjs.com/package/qier-player) [![GitHub issues](https://img.shields.io/github/issues/vortesnail/qier-player)](https://github.com/vortesnail/qier-player/issues) [![GitHub stars](https://img.shields.io/github/stars/vortesnail/qier-player)](https://github.com/vortesnail/qier-player/stargazers)
+[![GitHub](https://img.shields.io/github/license/vortesnail/qier-player)](https://github.com/vortesnail/qier-player/blob/master/LICENSE) [![npm package](https://img.shields.io/npm/v/qier-player)](https://www.npmjs.com/package/qier-player) [![npm bundle size](https://img.shields.io/bundlephobia/minzip/qier-player)](https://www.npmjs.com/package/qier-player) [![GitHub stars](https://img.shields.io/github/stars/vortesnail/qier-player)](https://github.com/vortesnail/qier-player/stargazers)
 
 
 ## 介绍
-Qier-player is an online video player component based on React. It has a simple interface and smooth operation, and has the basic functions of most video players. Support video definition switching, providing original video, 4K, 2K, 1080P, 720P, 480P video source interface.
+qier-player 是一个基于 React 编写的在线视频播放器组件，界面简洁，操作流畅，具有大部分视频播放器的基础功能。支持视频清晰度的切换，提供了原画、4K、2K、1080P、720P、480P 的视频源接口。
 
 ## 功能
 在获取播放器焦点时（点击视频界面，不包括控制栏）:
@@ -34,13 +34,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import QierPlayer from 'qier-player';
 
-ReactDOM.render(<QierPlayer srcOrigin="你的视频地址"/>, document.getElementById('root'));
+ReactDOM.render(<QierPlayer srcOrigin="你的视频地址" language="zh"/>, document.getElementById('root'));
 ```
 
 ## 接口
 | 参数  |  说明 | 类型  | 默认值  |
 | ------------ | ------------ | ------------ | ------------ |
+| language  | 语言选择，'en' 为英文或 'zh' 为中文  | string  |  'en' |
 | showVideoQuality  | 用于控制是否显示清晰度选项  | boolean  |  false |
+| themeColor  | 用于改变主题颜色，目前只支持16进制颜色  | string  |  '#f23300' |
 | src480p  |  用于提供清晰度为 480P 的视频源切换 | boolean &#124; string   | false  |
 | src720p  |  用于提供清晰度为 720P 的视频源切换 | boolean &#124; string   | false  |
 | src1080p  |  用于提供清晰度为 1080P 的视频源切换 | boolean &#124; string   | false  |
@@ -49,6 +51,10 @@ ReactDOM.render(<QierPlayer srcOrigin="你的视频地址"/>, document.getElemen
 | srcOrigin  |  用于提供清晰度为 origin(原画) 的视频源切换，如果仅有一个视频播放源，建议配置此选项，其它全设置为 false | boolean &#124; string   | false  |
 
 ## 近期更新记录
+### 1.2.2 (2019-11-04)
+- 增加主题色修改接口
+- 增加语言选项接口，'en'为英文，'zh'为中文
+
 ### 1.1.2 (2019-11-01)
 - 在鼠标悬浮在视频页面上时，隔1.8s后控制栏和鼠标隐藏
 

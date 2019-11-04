@@ -19,7 +19,7 @@ class Controls extends Component {
       isPlay: false,
       volume: 100,
       isSlideVolume: false,
-      currentQuality: '清晰度',
+      currentQuality: this.props.language === 'zh' ? '清晰度' : 'Clarity',
       isScreentFull: false
     }
 
@@ -350,7 +350,7 @@ class Controls extends Component {
     videoEle.src = this.props[`src${e.target.getAttribute("id")}`];
     switch (currentQulityStr) {
       case 'Origin':
-        this.setState({ currentQuality: '原画' });
+        this.setState({ currentQuality: this.props.language === 'zh' ? '原画' : 'Origin' });
         break;
       case '4k':
         this.setState({ currentQuality: '4K' });
@@ -479,7 +479,7 @@ class Controls extends Component {
                       onMouseEnter={this.changeIsHoverToQualityPopboxToTrue}
                       onMouseLeave={this.changeIsHoverToQualityPopboxToFalse}
                     >
-                      {this.props.srcOrigin && <div className="quality-value" id="Origin">原画</div>}
+                      {this.props.srcOrigin && <div className="quality-value" id="Origin">{this.props.language === 'zh' ? '原画' : 'Origin'}</div>}
                       {this.props.src4k && <div className="quality-value" id="4k">4K</div>}
                       {this.props.src2k && <div className="quality-value" id="2k">2K</div>}
                       {this.props.src1080p && <div className="quality-value" id="1080p">1080P</div>}
@@ -505,7 +505,7 @@ class Controls extends Component {
                     className="play-rate"
                     onClick={this.selectPlayRate}
                   >
-                    <p className="setting-title play-rate-title">播放速度:</p>
+                    <p className="setting-title play-rate-title">{this.props.language === 'zh' ? '播放速度:' : 'Play rate'}</p>
                     <li className="play-rate-value" id="0.5">0.5</li>
                     <li className="play-rate-value" id="0.75">0.75</li>
                     <li className="play-rate-value" id="1">1</li>
@@ -514,11 +514,11 @@ class Controls extends Component {
                     <li className="play-rate-value" id="2">2</li>
                   </div>
                   <div className="light-off-mode">
-                    <p className="setting-title light-off-mode-title">其他设置:</p>
+                    <p className="setting-title light-off-mode-title">{this.props.language === 'zh' ? '其他设置:' : 'Settings'}</p>
                     <p
                       className="light-off-mode-switch"
                       onClick={this.lightOffModeSwitch}
-                    >关灯模式&nbsp;{this.state.isLightOff ? <span className="iconfont">&#xe666;</span> : ''}</p>
+                    >{this.props.language === 'zh' ? '关灯模式:' : 'light off'}&nbsp;{this.state.isLightOff ? <span className="iconfont">&#xe666;</span> : ''}</p>
                   </div>
                 </div> : ''
             }

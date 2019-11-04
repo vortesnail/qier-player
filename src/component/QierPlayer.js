@@ -73,10 +73,10 @@ class QierPlayer extends Component {
       >
         <div className="light-off-mask" ref={this.lightOffMaskRef}></div>
         {
-          this.state.isVideoUseful ? '' : <p className="video-no-useful-tip">抱歉！视频找不到了  (｡ ́︿ ̀｡)</p>
+          this.state.isVideoUseful ? '' : <p className="video-no-useful-tip">{this.props.language === 'zh' ? '抱歉！视频找不到了 (｡ ́︿ ̀｡)' : 'Sorry! can not find video (｡ ́︿ ̀｡)'}</p>
         }
         {
-          this.state.isBufferring ? <p className="buffering-animation">正在缓冲<span className="bufferring-dot">...</span></p> : ''
+          this.state.isBufferring ? <p className="buffering-animation">{this.props.language === 'zh' ? '正在缓冲' : 'Buffering'}<span className="bufferring-dot">...</span></p> : ''
         }
         
         <video
@@ -89,7 +89,7 @@ class QierPlayer extends Component {
           {this.props.src2k && this.returnVideoSource(this.props.src2k)}
           {this.props.src4k && this.returnVideoSource(this.props.src4k)}
           {this.props.srcOrigin && this.returnVideoSource(this.props.srcOrigin)}
-          抱歉，该视频已丢失或下载失败
+          {this.props.language === 'zh' ? '抱歉，该视频已丢失或下载失败' : 'sorry, video lost or download failed.'}
         </video>
 
         {/* 控制器组件 */}
@@ -105,6 +105,7 @@ class QierPlayer extends Component {
 }
 
 QierPlayer.propTypes = {
+  language: PropTypes.string,
   showVideoQuality: PropTypes.bool,
   themeColor: PropTypes.string,
   src480p: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
@@ -116,6 +117,7 @@ QierPlayer.propTypes = {
 }
 
 QierPlayer.defaultProps = {
+  language: 'en',
   showVideoQuality: true,
   themeColor: '#f23300',
   src480p: false,
