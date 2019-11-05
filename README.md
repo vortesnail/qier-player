@@ -41,7 +41,7 @@ import QierPlayer from 'qier-player';
 ReactDOM.render(<QierPlayer srcOrigin="Your video addedress"/>, document.getElementById('root'));
 ```
 
-## 接口
+## API
 | Parameter  |  Description | Types  | Defaults  |
 | ------------ | ------------ | ------------ | ------------ |
 | language  | language option:'en' is English and  'zh' is Chinese  | string  |  'en' |
