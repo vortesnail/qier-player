@@ -18,6 +18,11 @@ class QierPlayer extends Component {
   }
 
   componentDidMount() {
+    // 设置用户给的视频播放器长宽
+    const videoContainerElem = this.videoContainerRef.current;
+    videoContainerElem.style.width = `${this.props.width}px`;
+    videoContainerElem.style.height = `${this.props.height}px`;
+
     const videoElem = this.videoRef.current;
     // 设置定时器检测 3 秒后视频是否可用
     this.timerToCheckVideoUseful = setTimeout(() => {
@@ -105,6 +110,8 @@ class QierPlayer extends Component {
 }
 
 QierPlayer.propTypes = {
+  width: PropTypes.number,
+  height: PropTypes.number,
   language: PropTypes.string,
   showVideoQuality: PropTypes.bool,
   themeColor: PropTypes.string,
@@ -117,6 +124,8 @@ QierPlayer.propTypes = {
 }
 
 QierPlayer.defaultProps = {
+  width: 740,
+  height: 420,
   language: 'en',
   showVideoQuality: true,
   themeColor: '#f23300',

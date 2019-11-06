@@ -24,8 +24,11 @@ class Controls extends Component {
     }
 
     this.tempVolume = 100;
-    this.controlContainerWidth = 740;
-    this.controlContainerHeight = 420;
+    this.controlContainerWidth = this.props.width;
+    this.controlContainerHeight = this.props.height;
+    console.log(this.props.width);
+    // this.controlContainerWidth = 740;
+    // this.controlContainerHeight = 420;
 
     this.changeIsVolumeHoverToTrue = this.changeIsVolumeHoverToTrue.bind(this);
     this.changeIsVolumeHoverToFalse = this.changeIsVolumeHoverToFalse.bind(this);

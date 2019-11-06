@@ -55,6 +55,9 @@ ReactDOM.render(<QierPlayer srcOrigin="Your video addedress"/>, document.getElem
 | srcOrigin  |  origin source option(If no other option, it is recommended to configure this option, all other settings are false) | boolean &#124; string   | false  |
 
 ## Recent update history
+### 1.2.3 (2019-11-06)
+- Added `width` and `height` api to setting your own video width and height
+
 ### 1.2.2 (2019-11-04)
 - Added theme colour modification interface
 - Added language change API, 'en' is English, 'zh' is Chinese
