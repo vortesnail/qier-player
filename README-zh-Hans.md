@@ -34,12 +34,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import QierPlayer from 'qier-player';
 
-ReactDOM.render(<QierPlayer srcOrigin="你的视频地址" language="zh"/>, document.getElementById('root'));
+ReactDOM.render(<QierPlayer srcOrigin="你的视频地址" language="zh" />, document.getElementById('root'));
 ```
 
 ## 接口
 | 参数  |  说明 | 类型  | 默认值  |
 | ------------ | ------------ | ------------ | ------------ |
+| width  | 设置视频宽度 `width`  | number  |  740 |
+| height  | 设置视频高度 `height`  | number  |  420 |
 | language  | 语言选择，'en' 为英文或 'zh' 为中文  | string  |  'en' |
 | showVideoQuality  | 用于控制是否显示清晰度选项  | boolean  |  false |
 | themeColor  | 用于改变主题颜色，目前只支持16进制颜色  | string  |  '#f23300' |
