@@ -8,31 +8,38 @@
 [简体中文](https://github.com/vortesnail/qier-player/blob/master/README-zh-Hans.md) &#124; English
 
 ## Introduction
-Qier-player is a web video player component based on the React with a simple interface and smooth operation which supports the most functions of other player. Note that, Qier-player can switch the video clarity and provide the video source interface of original video, 4K, 2K, 1080P, 720P and 480P.
+
+Qier-player is a web video player component for React, It has a simple interface and smooth operation which supports the most functions of other video players. In addition, Qier-player can switch between video resolutions (4K, 2K, 1080P, 720P and 480P) if desired.
 
 
-## Feature
-Video should be on focused, then:
+## Keyboard Shortcuts
 
-- `Top` arrow keys: volume increase
--	`Bottom` arrow keys: volume reduction
--	`Left` arrow keys: Rewind 3 seconds
--	`Right` arrow keys: fast forward 3 seconds
--	`Space` keys: pause/play
+For these to work, the player must be in focus.
+
+- `Up` arrow key: Volume up
+-	`Down` arrow key: Volume down
+-	`Left` arrow key: Rewind 3 seconds
+-	`Right` arrow key: Skip forward 3 seconds
+-	`Space` key: Toggle play/pause
 
 
-Here is [Demo official website](https://vortesnail.github.io/qier-player-demo/), click me to check
+Here is an [official demo site](https://vortesnail.github.io/qier-player-demo/) showing the player in use.
 
-## example
-![example](https://i0.hdslb.com/bfs/album/dc46482ec425ebf78f8501fb44f05f8b01cbda4b.png)
+## Screenshot
+
+![Screenshot of Qier Player](https://i0.hdslb.com/bfs/album/dc46482ec425ebf78f8501fb44f05f8b01cbda4b.png)
 
 
 ## Quick Start
-#### Install
+
+### Install
+
 ```bash
 npm install --save qier-player
 ```
-#### Use
+
+### Use
+
 ```js
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -44,21 +51,22 @@ ReactDOM.render(<QierPlayer srcOrigin="Your video addedress" />, document.getEle
 ## API
 | Parameter  |  Description | Types  | Defaults  |
 | ------------ | ------------ | ------------ | ------------ |
-| width  | setting the video `width`  | number  |  740 |
-| height  | setting the video `height`  | number  |  420 |
-| language  | language option:'en' is English and  'zh' is Chinese  | string  |  'en' |
-| showVideoQuality  | Control the display and hide of the sharpness options  | boolean  |  false |
-| themeColor  | Change the theme color (currently only supports hexadecimal color)  | string  |  '#f23300' |
-| src480p  | 480P source option | boolean &#124; string   | false  |
-| src720p  | 720P source option | boolean &#124; string   | false  |
-| src1080p  |  1080P source option | boolean &#124; string   | false  |
-| src2k  |  2K source option | boolean &#124; string   | false  |
-| src4k  |  4K source option | boolean &#124; string   | false  |
-| srcOrigin  |  origin source option(If no other option, it is recommended to configure this option, all other settings are false) | boolean &#124; string   | false  |
+| `width`  | player width  | number  |  740 |
+| `height`  | player height  | number  |  420 |
+| `language`  | language: 'en' is English and  'zh' is Chinese  | "en" &#124; "zh"  |  'en' |
+| `showVideoQuality`  | whether the player should show the resolution changer  | boolean  |  false |
+| `themeColor`  | theme color (only supports hexadecimal color)  | string  |  '#f23300' |
+| `src480p`  | 480p source URL | boolean &#124; string   | false  |
+| `src720p`  | 720p source URL | boolean &#124; string   | false  |
+| `src1080p`  |  1080p source URL | boolean &#124; string   | false  |
+| `src2k`  |  2K source URL | boolean &#124; string   | false  |
+| `src4k`  |  4K source URL | boolean &#124; string   | false  |
+| `srcOrigin`  |  origin source URL (set this if not using specific resolution sources) | boolean &#124; string   | false  |
 
 ## Recent update history
+
 ### 1.2.3 (2019-11-06)
-- Added `width` and `height` api to setting your own video width and height
+- Added `width` and `height` api for setting your own video width and height
 
 ### 1.2.2 (2019-11-04)
 - Added theme colour modification interface
@@ -68,7 +76,7 @@ ReactDOM.render(<QierPlayer srcOrigin="Your video addedress" />, document.getEle
 -	Added auto hide function：When the mouse is hovering over the video page, the controller and mouse are hidden after 1.8s.
 
 ### 1.1.1 (2019-10-29)
-- Added the prompt "Sorry! The video could not be found (. ́< ̀.)" When the video addedress is not found,
+- Added the prompt "Sorry! The video could not be found (. ́< ̀.)" when the video source URL is not found
 - Added a hint animation "Buffering..." while the video is loading
 - Fixed a bug where custom shortcuts conflicted with browser shortcuts
 
