@@ -44,8 +44,8 @@ ReactDOM.render(<QierPlayer srcOrigin="Your video addedress" />, document.getEle
 ## API
 | Parameter  |  Description | Types  | Defaults  |
 | ------------ | ------------ | ------------ | ------------ |
-| width  | setting the video `width`  | number  |  740 |
-| height  | setting the video `height`  | number  |  420 |
+| width  | setting the video width (e.g. `740` or `"100%"`) | number &#124; string  |  740 |
+| height  | setting the video height (e.g. `420` or `"100%"`)  | number &#124; string  |  420 |
 | language  | language option:'en' is English and  'zh' is Chinese  | string  |  'en' |
 | showVideoQuality  | Control the display and hide of the sharpness options  | boolean  |  false |
 | themeColor  | Change the theme color (currently only supports hexadecimal color)  | string  |  '#f23300' |
