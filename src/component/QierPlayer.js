@@ -20,8 +20,8 @@ class QierPlayer extends Component {
   componentDidMount() {
     // 设置用户给的视频播放器长宽
     const videoContainerElem = this.videoContainerRef.current;
-    videoContainerElem.style.width = `${this.props.width}px`;
-    videoContainerElem.style.height = `${this.props.height}px`;
+    videoContainerElem.style.width = typeof this.props.width === "string" ? this.props.width : `${this.props.width}px`;
+    videoContainerElem.style.height = typeof this.props.height === "string" ? this.props.height : `${this.props.height}px`;
 
     const videoElem = this.videoRef.current;
     // 设置定时器检测 3 秒后视频是否可用
