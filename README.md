@@ -51,14 +51,13 @@ ReactDOM.render(<QierPlayer srcOrigin="Your video addedress" />, document.getEle
 ## API
 | Parameter  |  Description | Types  | Defaults  |
 | ------------ | ------------ | ------------ | ------------ |
-| `width`  | player width  | number  |  740 |
-| `height`  | player height  | number  |  420 |
+| width  | setting the video width (e.g. `740` or `"100%"`) | number &#124; string  |  740 |
+| height  | setting the video height (e.g. `420` or `"100%"`)  | number &#124; string  |  420 |
 | `language`  | language: 'en' is English and  'zh' is Chinese  | "en" &#124; "zh"  |  'en' |
-| `showVideoQuality`  | whether the player should show the resolution changer  | boolean  |  false |
 | `themeColor`  | theme color (only supports hexadecimal color)  | string  |  '#f23300' |
 | `src480p`  | 480p source URL | boolean &#124; string   | false  |
-| `src720p`  | 720p source URL | boolean &#124; string   | false  |
 | `src1080p`  |  1080p source URL | boolean &#124; string   | false  |
+| `src720p`  | 720p source URL | boolean &#124; string   | false  |
 | `src2k`  |  2K source URL | boolean &#124; string   | false  |
 | `src4k`  |  4K source URL | boolean &#124; string   | false  |
 | `srcOrigin`  |  origin source URL (set this if not using specific resolution sources) | boolean &#124; string   | false  |
