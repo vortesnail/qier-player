@@ -9,7 +9,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = merge(common, {
   mode: 'production',
-    entry: {
+  entry: {
     index: './src/index.js',
   },
   output: {
