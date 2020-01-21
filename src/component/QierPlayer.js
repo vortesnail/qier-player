@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import CircleLoading from 'react-loadingg/lib/CircleLoading';
 import './style.less';
 
 import Controller from './controller/index';
@@ -81,9 +82,13 @@ class QierPlayer extends Component {
           this.state.isVideoUseful ? '' : <p className="video-no-useful-tip">{this.props.language === 'zh' ? '抱歉！视频找不到了 (｡ ́︿ ̀｡)' : 'Sorry! can not find video (｡ ́︿ ̀｡)'}</p>
         }
         {
-          this.state.isBufferring ? <p className="buffering-animation">{this.props.language === 'zh' ? '正在缓冲' : 'Buffering'}<span className="bufferring-dot">...</span></p> : ''
+          this.state.isBufferring ? (
+            <div className='buffering-animation'>
+              <CircleLoading size='small' color={this.props.themeColor} />
+            </div>
+          ) : ''
         }
-        
+        {/* this.state.isBufferring ? <p className="buffering-animation">{this.props.language === 'zh' ? '正在缓冲' : 'Buffering'}<span className="bufferring-dot">...</span></p> : '' */}
         <video
           className="qier-player"
           ref={this.videoRef}
