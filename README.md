@@ -51,8 +51,8 @@ ReactDOM.render(<QierPlayer srcOrigin="Your video addedress" />, document.getEle
 ## API
 | Parameter  |  Description | Types  | Defaults  |
 | ------------ | ------------ | ------------ | ------------ |
-| width  | setting the video width (e.g. `740` or `"100%"`) | number &#124; string  |  740 |
-| height  | setting the video height (e.g. `420` or `"100%"`)  | number &#124; string  |  420 |
+| `width`  | setting the video width (e.g. `740` or `"100%"`) | number &#124; string  |  740 |
+| `height`  | setting the video height (e.g. `420` or `"100%"`)  | number &#124; string  |  420 |
 | `language`  | language: 'en' is English and  'zh' is Chinese  | "en" &#124; "zh"  |  'en' |
 | `themeColor`  | theme color (only supports hexadecimal color)  | string  |  '#f23300' |
 | `src480p`  | 480p source URL | boolean &#124; string   | false  |

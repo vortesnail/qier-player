@@ -40,17 +40,17 @@ ReactDOM.render(<QierPlayer srcOrigin="你的视频地址" language="zh" />, doc
 ## 接口
 | 参数  |  说明 | 类型  | 默认值  |
 | ------------ | ------------ | ------------ | ------------ |
-| width  | 设置视频宽度 `width`  | number  |  740 |
-| height  | 设置视频高度 `height`  | number  |  420 |
-| language  | 语言选择，'en' 为英文或 'zh' 为中文  | string  |  'en' |
-| showVideoQuality  | 用于控制是否显示清晰度选项  | boolean  |  false |
-| themeColor  | 用于改变主题颜色，目前只支持16进制颜色  | string  |  '#f23300' |
-| src480p  |  用于提供清晰度为 480P 的视频源切换 | boolean &#124; string   | false  |
-| src720p  |  用于提供清晰度为 720P 的视频源切换 | boolean &#124; string   | false  |
-| src1080p  |  用于提供清晰度为 1080P 的视频源切换 | boolean &#124; string   | false  |
-| src2k  |  用于提供清晰度为 2K 的视频源切换 | boolean &#124; string   | false  |
-| src4k  |  用于提供清晰度为 4K 的视频源切换 | boolean &#124; string   | false  |
-| srcOrigin  |  用于提供清晰度为 origin(原画) 的视频源切换，如果仅有一个视频播放源，建议配置此选项，其它全设置为 false | boolean &#124; string   | false  |
+| `width`  | 设置视频宽度 `width`  | number  |  740 |
+| `height`  | 设置视频高度 `height`  | number  |  420 |
+| `language`  | 语言选择，'en' 为英文或 'zh' 为中文  | string  |  'en' |
+| `showVideoQuality`  | 用于控制是否显示清晰度选项  | boolean  |  false |
+| `themeColor`  | 用于改变主题颜色，目前只支持16进制颜色  | string  |  '#f23300' |
+| `src480p`  |  用于提供清晰度为 480P 的视频源切换 | boolean &#124; string   | false  |
+| `src720p`  |  用于提供清晰度为 720P 的视频源切换 | boolean &#124; string   | false  |
+| `src1080p`  |  用于提供清晰度为 1080P 的视频源切换 | boolean &#124; string   | false  |
+| `src2k`  |  用于提供清晰度为 2K 的视频源切换 | boolean &#124; string   | false  |
+| `src4k`  |  用于提供清晰度为 4K 的视频源切换 | boolean &#124; string   | false  |
+| `srcOrigin`  |  用于提供清晰度为 origin(原画) 的视频源切换，如果仅有一个视频播放源，建议配置此选项，其它全设置为 false | boolean &#124; string   | false  |
 
 ## 近期更新记录
 ### 1.2.3 (2019-11-06)
