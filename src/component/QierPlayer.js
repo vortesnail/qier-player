@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import CircleLoading from 'react-loadingg/lib/CircleLoading';
+import CircleLoading from './CircleLoading';
 import './style.less';
 
 import Controller from './controller/index';
