@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import CircleLoading from './CircleLoading';
+import MeteorRainLoading from 'react-loadingg/lib/MeteorRainLoading'
 import './style.less';
 
 import Controller from './controller/index';
@@ -84,7 +84,7 @@ class QierPlayer extends Component {
         {
           this.state.isBufferring ? (
             <div className='buffering-animation'>
-              <CircleLoading size='small' color={this.props.themeColor} />
+              <MeteorRainLoading size='small' color={this.props.themeColor} />
             </div>
           ) : ''
         }
