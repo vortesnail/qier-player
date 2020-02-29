@@ -3,10 +3,11 @@ const common = require('./webpack.common.config.js');
 const path = require('path');
 
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = merge(common, {
   mode: 'production',
+  devtool: '',
   entry: {
     index: './src/index.js',
   },
@@ -16,7 +17,8 @@ module.exports = merge(common, {
     libraryTarget: 'commonjs2'
   },
   optimization: {
-    minimizer: [new UglifyJsPlugin()],
+    minimize: true,
+    minimizer: [new TerserPlugin()],
   },
   module: {
     rules: [
@@ -39,5 +41,19 @@ module.exports = merge(common, {
   },
   plugins: [
     new CleanWebpackPlugin(),
-  ]
+  ],
+  externals: {
+    react: {
+      root: "React",
+      commonjs2: "react",
+      commonjs: "react",
+      amd: "react"
+    },
+    "react-dom": {
+      root: "ReactDOM",
+      commonjs2: "react-dom",
+      commonjs: "react-dom",
+      amd: "react-dom"
+    }
+  },
 });

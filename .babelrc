@@ -10,7 +10,7 @@
           "safari": 11
         },
         "useBuiltIns": "usage",
-        "corejs": "2.6.10",
+        "corejs": "2.6.10"
       }
     ],
     "@babel/preset-react"
