@@ -3,7 +3,7 @@
   <p align="center" style="font-size: 0.5em">A lightweight and sophisticated React-based H5 video player</p>
 </h1>
 
-[![GitHub](https://img.shields.io/github/license/vortesnail/qier-player)](https://github.com/vortesnail/qier-player/blob/master/LICENSE) [![Travis (.org)](https://img.shields.io/travis/vortesnail/qier-player)]() [![npm package](https://img.shields.io/npm/v/qier-player)](https://www.npmjs.com/package/qier-player) [![npm bundle size](https://img.shields.io/bundlephobia/minzip/qier-player)](https://www.npmjs.com/package/qier-player) [![GitHub stars](https://img.shields.io/github/stars/vortesnail/qier-player)](https://github.com/vortesnail/qier-player/stargazers)
+[![GitHub](https://img.shields.io/github/license/vortesnail/qier-player)](https://github.com/vortesnail/qier-player/blob/master/LICENSE) [![Travis (.org)](https://img.shields.io/travis/vortesnail/qier-player)]() [![npm package](https://img.shields.io/npm/v/qier-player)](https://www.npmjs.com/package/qier-player) [![npm bundle size (version)](https://img.shields.io/bundlephobia/minzip/qier-player/1.2.8)](https://www.npmjs.com/package/qier-player) [![GitHub stars](https://img.shields.io/github/stars/vortesnail/qier-player)](https://github.com/vortesnail/qier-player/stargazers)
 
 [简体中文](https://github.com/vortesnail/qier-player/blob/master/README-zh-Hans.md) &#124; English
 

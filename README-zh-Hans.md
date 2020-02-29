@@ -3,8 +3,7 @@
   <p align="center" style="font-size: 0.5em">一款轻量且精致的、基于React的H5视频播放器</p>
 </h1>
 
-[![GitHub](https://img.shields.io/github/license/vortesnail/qier-player)](https://github.com/vortesnail/qier-player/blob/master/LICENSE) [![Travis (.org)](https://img.shields.io/travis/vortesnail/qier-player)]() [![npm package](https://img.shields.io/npm/v/qier-player)](https://www.npmjs.com/package/qier-player) [![npm bundle size](https://img.shields.io/bundlephobia/minzip/qier-player)](https://www.npmjs.com/package/qier-player) [![GitHub stars](https://img.shields.io/github/stars/vortesnail/qier-player)](https://github.com/vortesnail/qier-player/stargazers)
-
+[![GitHub](https://img.shields.io/github/license/vortesnail/qier-player)](https://github.com/vortesnail/qier-player/blob/master/LICENSE) [![Travis (.org)](https://img.shields.io/travis/vortesnail/qier-player)]() [![npm package](https://img.shields.io/npm/v/qier-player)](https://www.npmjs.com/package/qier-player) [![npm bundle size (version)](https://img.shields.io/bundlephobia/minzip/qier-player/1.2.8)](https://www.npmjs.com/package/qier-player) [![GitHub stars](https://img.shields.io/github/stars/vortesnail/qier-player)](https://github.com/vortesnail/qier-player/stargazers)
 
 ## 介绍
 qier-player 是一个基于 React 编写的在线视频播放器组件，界面简洁，操作流畅，具有大部分视频播放器的基础功能。支持视频清晰度的切换，提供了原画、4K、2K、1080P、720P、480P 的视频源接口。
