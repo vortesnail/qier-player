@@ -16,6 +16,15 @@ class QierPlayer extends Component {
     this.lightOffMaskRef = React.createRef();
     this.videoRef = React.createRef();
     this.videoContainerRef = React.createRef();
+    this.waitingListener = this.waitingListener.bind(this)
+    this.playingListener = this.playingListener.bind(this)
+  }
+
+  waitingListener(e){
+    this.changeWaitingState(true);
+  }
+  playingListener(){
+    this.changeWaitingState(false);
   }
 
   componentDidMount() {
@@ -36,19 +45,15 @@ class QierPlayer extends Component {
       }
     }, 3000);
     // 监听是否在缓冲
-    videoElem.addEventListener('waiting', (e) => {
-      this.changeWaitingState(true);
-    });
+    videoElem.addEventListener('waiting', this.waitingListener);
     // 当开始播放时更改waiting状态
-    videoElem.addEventListener('playing', () => {
-      this.changeWaitingState(false);
-    })
+    videoElem.addEventListener('playing', this.playingListener)
   }
 
   componentWillUnmount() {
     this.timerToCheckVideoUseful && clearTimeout(this.timerToCheckVideoUseful);
-    this.videoRef.current.removeEventListener('waiting');
-    this.videoRef.current.removeEventListener('playing');
+    this.videoRef.current.removeEventListener('waiting',this.waitingListener);
+    this.videoRef.current.removeEventListener('playing',this.playingListener);
   }
 
   changeWaitingState(boolTemp) {

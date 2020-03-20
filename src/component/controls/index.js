@@ -29,7 +29,7 @@ class Controls extends Component {
     console.log(this.props.width);
     // this.controlContainerWidth = 740;
     // this.controlContainerHeight = 420;
-
+    this.whenMouseUpDo = this.whenMouseUpDo.bind(this)
     this.changeIsVolumeHoverToTrue = this.changeIsVolumeHoverToTrue.bind(this);
     this.changeIsVolumeHoverToFalse = this.changeIsVolumeHoverToFalse.bind(
       this
@@ -128,9 +128,8 @@ class Controls extends Component {
   }
 
   componentDidMount() {
-    window.addEventListener("mouseup", () => {
-      this.whenMouseUpDo();
-    });
+   
+    window.addEventListener("mouseup", this.whenMouseUpDo);
 
     const videoElem = this.props.videoRef.current;
 
@@ -212,7 +211,7 @@ class Controls extends Component {
     this.timeoutVolume && clearTimeout(this.timeoutVolume);
     this.timeoutQuality && clearTimeout(this.timeoutQuality);
     this.timeoutSetting && clearTimeout(this.timeoutSetting);
-    window.removeEventListener("mouseup");
+    window.removeEventListener("mouseup",this.whenMouseUpDo);
     screenfull.off("change");
   }
 

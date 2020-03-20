@@ -17,6 +17,7 @@ class Progress extends Component {
       // 视频帧预览，未实现
       imgSrc: ''
     }
+    this.whenMouseUpDo= this.whenMouseUpDo.bind(this)
     this.pointerRef = React.createRef();
     this.progressSeekMaskRef = React.createRef();
     this.progressBgRef = React.createRef();
@@ -48,9 +49,7 @@ class Progress extends Component {
       borderBottom: `4px solid ${this.props.themeColor}`
     }
 
-    window.addEventListener('mouseup', () => {
-      this.whenMouseUpDo();
-    })
+    window.addEventListener('mouseup', this.whenMouseUpDo)
 
     this.intervalToJudgeIsMovingProgress = setInterval(() => {
       if (this.state.isMovingProgress) {
@@ -64,7 +63,7 @@ class Progress extends Component {
   }
 
   componentWillUnmount() {
-    window.removeEventListener('mouseup');
+    window.removeEventListener('mouseup',this.whenMouseUpDo);
     this.intervalToJudgeIsMovingProgress && clearInterval(this.intervalToJudgeIsMovingProgress);
   }
 
