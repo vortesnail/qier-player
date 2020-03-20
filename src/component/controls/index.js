@@ -26,7 +26,6 @@ class Controls extends Component {
     this.tempVolume = 100;
     this.controlContainerWidth = this.props.width;
     this.controlContainerHeight = this.props.height;
-    console.log(this.props.width);
     // this.controlContainerWidth = 740;
     // this.controlContainerHeight = 420;
     this.whenMouseUpDo = this.whenMouseUpDo.bind(this)
@@ -220,18 +219,14 @@ class Controls extends Component {
   }
 
   handleChangePlayState() {
-    if (this.state.isPlay) {
-      this.props.videoRef.current.pause();
-      this.setState({ isPlay: false });
-      // 这条 return 语句必须的加，不然下面的代码也会执行。。
-      // 黑科技。。
-      // 不是说 setState 是异步吗？？？
-      return;
-    }
-    if (!this.state.isPlay) {
-      this.props.videoRef.current.play();
-      this.setState({ isPlay: true });
-    }
+    this.setState(preState => {
+      if (preState.isPlay) {
+        this.props.videoRef.current.pause();
+      } else {
+        this.props.videoRef.current.play();
+      }
+      return { isPlay: !preState.isPlay };
+    });
   }
 
   // 改变当前音量
