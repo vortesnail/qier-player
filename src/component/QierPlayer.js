@@ -50,6 +50,22 @@ class QierPlayer extends Component {
     videoElem.addEventListener('playing', this.playingListener)
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.srcOrigin !== this.props.srcOrigin) {
+      this.videoRef.current.src = nextProps.srcOrigin
+    } else if (nextProps.src4k !== this.props.src4k) {
+      this.videoRef.current.src = nextProps.src4k
+    } else if (nextProps.src2k !== this.props.src2k) {
+      this.videoRef.current.src = nextProps.src2k
+    } else if (nextProps.src1080p !== this.props.src1080p) {
+      this.videoRef.current.src = nextProps.src1080p
+    } else if (nextProps.src720p !== this.props.src720p) {
+      this.videoRef.current.src = nextProps.src720p
+    } else if (nextProps.src480p !== this.props.src480p) {
+      this.videoRef.current.src = nextProps.src480p
+    }
+  }
+
   componentWillUnmount() {
     this.timerToCheckVideoUseful && clearTimeout(this.timerToCheckVideoUseful);
     this.videoRef.current.removeEventListener('waiting',this.waitingListener);
