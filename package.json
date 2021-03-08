@@ -1,60 +1,30 @@
 {
   "name": "qier-player",
-  "version": "1.2.9",
+  "version": "2.0.0",
   "description": "A multifunctional and beautiful React-based web video player.",
-  "main": "dist/index.js",
-  "scripts": {
-    "build": "webpack --config ./webpack.prod.config.js",
-    "start": "webpack-dev-server  --inline --config ./webpack.dev.config.js"
-  },
+  "main": "index.js",
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vortesnail/Qier.git"
   },
   "keywords": [
-    "vortesnail",
-    "qier",
+    "h5-player",
     "video-player",
     "video",
     "player",
-    "react",
+    "react-player",
     "react-components",
     "html5-video-player"
   ],
-  "author": "vortesnail",
+  "author": {
+    "name": "vortesnail",
+    "url": "https://github.com/vortesnail",
+    "email": "1091331061@qq.com"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/vortesnail/Qier/issues"
   },
-  "homepage": "https://github.com/vortesnail/Qier#readme",
-  "devDependencies": {
-    "@babel/core": "^7.6.4",
-    "@babel/preset-env": "^7.6.3",
-    "@babel/preset-react": "^7.6.3",
-    "babel-loader": "^8.0.6",
-    "clean-webpack-plugin": "^3.0.0",
-    "css-loader": "^3.2.0",
-    "file-loader": "^4.2.0",
-    "html-webpack-plugin": "^3.2.0",
-    "less": "^3.10.3",
-    "less-loader": "^5.0.0",
-    "mini-css-extract-plugin": "^0.8.0",
-    "style-loader": "^1.0.0",
-    "uglifyjs-webpack-plugin": "^2.2.0",
-    "url-loader": "^2.2.0",
-    "validate-commit-msg": "^2.14.0",
-    "webpack": "^4.41.1",
-    "webpack-cli": "^3.3.9",
-    "webpack-dev-server": "^3.8.2",
-    "webpack-merge": "^4.2.2"
-  },
-  "dependencies": {
-    "core-js": "^2.6.10",
-    "hover-seconds-do": "^1.0.1",
-    "prop-types": "^15.7.2",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2",
-    "react-loadingg": "^1.7.1",
-    "screenfull": "^5.0.0"
-  }
+  "homepage": "https://github.com/vortesnail/Qier#readme"
 }
