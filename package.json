@@ -1,12 +1,12 @@
 {
   "name": "qier-player",
-  "version": "2.0.0",
+  "version": "2.0.0-alpha",
   "description": "A multifunctional and beautiful React-based web video player.",
   "main": "index.js",
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vortesnail/Qier.git"
+    "url": "https://github.com/vortesnail/qier-player.git"
   },
   "keywords": [
     "h5-player",
@@ -24,7 +24,10 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/vortesnail/Qier/issues"
+    "url": "https://github.com/vortesnail/qier-player/issues"
   },
-  "homepage": "https://github.com/vortesnail/Qier#readme"
+  "homepage": "https://github.com/vortesnail/qier-player",
+  "devDependencies": {
+    "prettier": "^2.2.1"
+  }
 }
