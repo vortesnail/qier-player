@@ -15,6 +15,7 @@ module.exports = {
     'plugin:unicorn/recommended',
     'plugin:promise/recommended',
     'plugin:@typescript-eslint/recommended',
+    'plugin:prettier/recommended',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -25,7 +26,7 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: ['react', 'unicorn', 'promise', '@typescript-eslint'],
+  plugins: ['react', 'unicorn', 'promise', '@typescript-eslint', 'prettier'],
   settings: {
     'import/resolver': {
       node: {
