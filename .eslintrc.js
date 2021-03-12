@@ -48,6 +48,7 @@ module.exports = {
     'import/no-extraneous-dependencies': [ERROR, { devDependencies: true }],
     'import/prefer-default-export': OFF,
     'import/no-unresolved': ERROR,
+    'import/no-dynamic-require': OFF,
 
     'unicorn/better-regex': ERROR,
     'unicorn/prevent-abbreviations': OFF,
@@ -67,7 +68,7 @@ module.exports = {
       },
     ],
     'unicorn/no-array-instanceof': WARN,
-    'unicorn/no-for-loop': WARN, // 使用 for of 和 .entries 代替传统的 for 循环
+    'unicorn/no-for-loop': WARN,
     'unicorn/prefer-add-event-listener': [
       ERROR,
       {
@@ -76,6 +77,7 @@ module.exports = {
     ],
     'unicorn/prefer-query-selector': ERROR,
     'unicorn/no-null': OFF,
+    'unicorn/no-array-reduce': OFF,
 
     '@typescript-eslint/no-useless-constructor': ERROR,
     '@typescript-eslint/no-empty-function': WARN,
