@@ -16,4 +16,16 @@ module.exports = merge(common, {
     library: dashToBigCamel(pkg.name, '-'),
     libraryTarget: 'umd',
   },
+  module: {
+    rules: [
+      {
+        test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+        type: 'asset/inline',
+      },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2?)$/,
+        type: 'asset/inline',
+      },
+    ],
+  },
 });

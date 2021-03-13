@@ -20,6 +20,23 @@ module.exports = merge(common, {
     hot: true,
     noInfo: true,
   },
+  module: {
+    rules: [
+      {
+        test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+        type: 'asset',
+        parser: {
+          dataUrlCondition: {
+            maxSize: 4 * 1024,
+          },
+        },
+      },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2?)$/,
+        type: 'asset/resource',
+      },
+    ],
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: paths.appDemoHtml,
