@@ -8,6 +8,7 @@ const pkg = require(paths.appPackageJson);
 module.exports = merge(common, {
   mode: 'production',
   devtool: false,
+  target: 'browserslist',
   entry: paths.appIndex,
   output: {
     filename: `${pkg.name}.min.js`,

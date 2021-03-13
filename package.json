@@ -11,6 +11,12 @@
     "lint-eslint": "eslint -c .eslintrc.js --ext .ts,.tsx,.js src",
     "lint-stylelint": "stylelint --config .stylelintrc.js src/**/*.{less,css,scss}"
   },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "ie >= 9",
+    "not op_mini all"
+  ],
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
@@ -56,9 +62,11 @@
     "@commitlint/config-conventional": "^12.0.1",
     "@typescript-eslint/eslint-plugin": "^4.17.0",
     "@typescript-eslint/parser": "^4.17.0",
+    "autoprefixer": "^10.2.5",
     "chalk": "^4.1.0",
-    "conventional-changelog-cli": "~2.1.1",
+    "conventional-changelog-cli": "^2.1.1",
     "cross-env": "^7.0.3",
+    "css-loader": "^5.1.2",
     "eslint": "^7.21.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.1.0",
@@ -73,7 +81,14 @@
     "husky": "^4.3.8",
     "ip": "^1.1.5",
     "lint-staged": "^10.5.4",
+    "node-sass": "^4.14.1",
+    "postcss": "^8.2.8",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-loader": "^5.2.0",
+    "postcss-preset-env": "^6.7.0",
     "prettier": "^2.2.1",
+    "sass-loader": "^11.0.1",
+    "style-loader": "^2.0.0",
     "stylelint": "^13.12.0",
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-rational-order": "^0.1.2",
@@ -86,6 +101,6 @@
     "webpack-cli": "^4.5.0",
     "webpack-dev-server": "^3.11.2",
     "webpack-merge": "^5.7.3",
-    "webpackbar": "~5.0.0-3"
+    "webpackbar": "^5.0.0-3"
   }
 }
