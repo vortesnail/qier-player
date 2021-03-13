@@ -1,4 +1,5 @@
 const WebpackBar = require('webpackbar');
+const paths = require('../paths');
 const { isDevelopment, isProduction } = require('../env');
 
 const getCssLoaders = (importLoaders) => [
@@ -36,9 +37,24 @@ const getCssLoaders = (importLoaders) => [
 module.exports = {
   cache: {
     type: 'filesystem',
+    buildDependencies: {
+      config: [__filename],
+    },
+  },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js', '.json'],
+    alias: {
+      '@Src': paths.appSrc,
+    },
   },
   module: {
     rules: [
+      {
+        test: /\.(tsx?|js)$/,
+        loader: 'babel-loader',
+        options: { cacheDirectory: true },
+        exclude: /node_modules/,
+      },
       {
         test: /\.css$/,
         use: getCssLoaders(1),
