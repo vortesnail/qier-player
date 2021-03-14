@@ -1,20 +1,11 @@
 import React from 'react';
-import Header from '@Src/Header';
-import cat from './cat.jpg';
+import QierPlayer from '@Src/index';
+import './App.scss';
 
-interface IProps {
-  name: string;
-  age: number;
-}
-
-function App(props: IProps) {
-  const { name, age } = props;
-
+function App() {
   return (
     <div className='app'>
-      <Header />
-      <img src={cat} alt='' style={{ width: 100 }} />
-      <span>{`Hello! I'm ${name}, ${age} years old.`}</span>
+      <QierPlayer />
     </div>
   );
 }

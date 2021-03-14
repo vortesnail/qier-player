@@ -111,5 +111,7 @@ module.exports = {
     'jsx-quotes': [ERROR, 'prefer-single'],
     'global-require': OFF,
     'no-use-before-define': OFF,
+    'no-restricted-syntax': OFF,
+    'no-continue': OFF,
   },
 };

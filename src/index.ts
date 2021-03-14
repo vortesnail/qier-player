@@ -1,1 +1,3 @@
-export { default as Header } from './Header';
+import QierPlayer from './QierPlayer';
+
+export default QierPlayer;

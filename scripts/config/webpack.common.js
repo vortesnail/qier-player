@@ -1,4 +1,5 @@
 const WebpackBar = require('webpackbar');
+const path = require('path');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const paths = require('../paths');
 const { isDevelopment, isProduction } = require('../env');
@@ -46,6 +47,8 @@ module.exports = {
     extensions: ['.tsx', '.ts', '.js', '.json'],
     alias: {
       '@Src': paths.appSrc,
+      '@Utils': path.resolve(paths.appSrc, 'utils'),
+      '@Assets': path.resolve(paths.appSrc, 'assets'),
     },
   },
   module: {
