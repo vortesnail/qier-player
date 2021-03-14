@@ -1,4 +1,5 @@
 import React from 'react';
+import './index.scss';
 
 function parse(object: { [propName: string]: any }) {
   return {
