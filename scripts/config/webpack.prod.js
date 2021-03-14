@@ -16,6 +16,10 @@ module.exports = merge(common, {
     library: dashToBigCamel(pkg.name, '-'),
     libraryTarget: 'umd',
   },
+  externals: {
+    react: 'React',
+    'react-dom': 'ReactDOM',
+  },
   module: {
     rules: [
       {
