@@ -40,5 +40,6 @@ module.exports = {
   appDemoIndex: resolveModule(resolveApp, 'demo/index'),
   appDemoHtml: resolveApp('demo/index.html'),
   appPackageJson: resolveApp('package.json'),
+  appTsConfig: resolveApp('tsconfig.json'),
   moduleFileExtensions,
 };

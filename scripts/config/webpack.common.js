@@ -1,4 +1,5 @@
 const WebpackBar = require('webpackbar');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const paths = require('../paths');
 const { isDevelopment, isProduction } = require('../env');
 
@@ -76,6 +77,11 @@ module.exports = {
   plugins: [
     new WebpackBar({
       name: isDevelopment ? 'RUNNING' : 'BUNDLING',
+    }),
+    new ForkTsCheckerWebpackPlugin({
+      typescript: {
+        configFile: paths.appTsConfig,
+      },
     }),
   ],
 };
