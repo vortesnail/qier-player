@@ -20,10 +20,6 @@ module.exports = merge(common, {
     clientLogLevel: 'silent',
     open: true,
     hot: true,
-    overlay: {
-      warnings: true,
-      errors: true,
-    },
     noInfo: true,
   },
   module: {
