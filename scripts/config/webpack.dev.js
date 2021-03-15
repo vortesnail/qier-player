@@ -1,12 +1,13 @@
 const Webpack = require('webpack');
 const { merge } = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
 const paths = require('../paths');
 const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
   mode: 'development',
-  devtool: 'eval-source-map',
+  devtool: 'cheap-module-source-map',
   target: 'web',
   entry: paths.appDemoIndex,
   output: {
@@ -19,6 +20,10 @@ module.exports = merge(common, {
     clientLogLevel: 'silent',
     open: true,
     hot: true,
+    overlay: {
+      warnings: true,
+      errors: true,
+    },
     noInfo: true,
   },
   module: {
@@ -45,6 +50,7 @@ module.exports = merge(common, {
       minify: false,
     }),
     new Webpack.HotModuleReplacementPlugin(),
+    new ErrorOverlayPlugin(),
   ],
   optimization: {
     minimize: false,
