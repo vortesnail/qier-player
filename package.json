@@ -6,7 +6,7 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development node scripts/server",
     "clean": "rimraf ./dist",
-    "build-ts": "tsc -p tsconfig.build.json && tscpaths -p tsconfig.build.json -s ./src -o ./dist/es && tsccss -o ./dist/es &&copyfiles -f ./src/assets/* ./dist/es/assets",
+    "build-ts": "tsc -p tsconfig.build.json && tscpaths -p tsconfig.build.json -s ./src -o ./dist/es && tsccss -o ./dist/es && copyfiles -f ./src/assets/* ./dist/es/assets",
     "build-css": "node-sass -r ./src -o ./dist/es",
     "es-build": "npm run build-ts && npm run build-css",
     "umd-build": "cross-env NODE_ENV=production webpack --config ./scripts/config/webpack.prod.js",
