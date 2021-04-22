@@ -44,6 +44,7 @@ ReactDOM.render(<QierPlayer srcOrigin="你的视频地址" language="zh" />, doc
 | `language`  | 语言选择，'en' 为英文或 'zh' 为中文  | string  |  'en' |
 | `showVideoQuality`  | 用于控制是否显示清晰度选项  | boolean  |  false |
 | `themeColor`  | 用于改变主题颜色，目前只支持16进制颜色  | string  |  '#f23300' |
+| `isShowCurImg`  | 是否显示当前帧  | boolean  |  false |
 | `src480p`  |  用于提供清晰度为 480P 的视频源切换 | boolean &#124; string   | false  |
 | `src720p`  |  用于提供清晰度为 720P 的视频源切换 | boolean &#124; string   | false  |
 | `src1080p`  |  用于提供清晰度为 1080P 的视频源切换 | boolean &#124; string   | false  |

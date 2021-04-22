@@ -136,6 +136,7 @@ class Progress extends Component {
   }
 
   render() {
+    const { isShowCurImg } = this.props
     return (
       <div className="progress-container" style={{ opacity: `${this.props.isShowController ? 1 : 0}` }}>
         <div className="progress-bg" ref={this.progressBgRef}>
@@ -162,7 +163,7 @@ class Progress extends Component {
                     <div className="bottom-triangle" style={this.bottomTriangleColor}></div>
                   </div>
                   <div className="video-img-box" style={{ left: `${this.state.positionX}px` }}>
-                    <img className="video-current-img" src={this.state.imgSrc} alt="" />
+                    {isShowCurImg && <img className="video-current-img" src={this.state.imgSrc} alt="" />}
                     <span className="current-time">{this.state.currentTime}</span>
                   </div>
                 </div>

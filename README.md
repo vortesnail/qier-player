@@ -55,6 +55,7 @@ ReactDOM.render(<QierPlayer srcOrigin="Your video addedress" />, document.getEle
 | `height`  | setting the video height (e.g. `420` or `"100%"`)  | number &#124; string  |  420 |
 | `language`  | language: 'en' is English and  'zh' is Chinese  | "en" &#124; "zh"  |  'en' |
 | `themeColor`  | theme color (only supports hexadecimal color)  | string  |  '#f23300' |
+| `isShowCurImg`  | Whether to display the current frame  | boolean  |  false |
 | `src480p`  | 480p source URL | boolean &#124; string   | false  |
 | `src1080p`  |  1080p source URL | boolean &#124; string   | false  |
 | `src720p`  | 720p source URL | boolean &#124; string   | false  |
