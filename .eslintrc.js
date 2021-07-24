@@ -33,6 +33,7 @@ module.exports = {
         js: 'never',
       },
     ],
+    'import/no-dynamic-require': OFF,
     'import/prefer-default-export': OFF,
     'import/no-extraneous-dependencies': [ERROR, { devDependencies: true }],
 
