@@ -20,7 +20,6 @@ module.exports = {
       node: {
         extensions: ['.tsx', '.ts', '.js', '.json'],
       },
-      typescript: {},
     },
   },
   rules: {
@@ -35,8 +34,11 @@ module.exports = {
       },
     ],
     'import/prefer-default-export': OFF,
+    'import/no-extraneous-dependencies': [ERROR, { devDependencies: true }],
 
     '@typescript-eslint/no-unused-vars': WARN,
+    '@typescript-eslint/no-var-requires': OFF,
+    '@typescript-eslint/explicit-module-boundary-types': OFF,
     'no-unused-vars': OFF,
     'lines-between-class-members': [ERROR, 'always'],
     // indent: [ERROR, 2, { SwitchCase: 1 }],
@@ -51,5 +53,7 @@ module.exports = {
     'no-use-before-define': OFF,
     'no-restricted-syntax': OFF,
     'no-continue': OFF,
+    'class-methods-use-this': OFF,
+    'func-names': OFF,
   },
 };
