@@ -1,6 +1,7 @@
 import { PlayerOptions } from './types';
 import { processOptions } from './options';
-import { getEle } from './utils/dom';
+import { createEle, getEle } from './utils/dom';
+import { setVideoAttrs } from './helper';
 
 export class Player {
   container: HTMLElement | null;
@@ -14,17 +15,25 @@ export class Player {
   constructor(opts?: PlayerOptions) {
     this.options = processOptions(opts);
     this.container = getEle(this.options.container);
-    // 创建 qier-player div 元素
-    this.el = document.createElement('div');
-    this.el.className = 'qier-player';
-    // 创建 video 元素
-    this.video = document.createElement('video');
-    this.video.src = 'https://v-cdn.zjol.com.cn/280443.mp4';
-    this.video.autoplay = true;
-    this.video.muted = true;
-    // 添加
+    this.el = createEle('div', { tabindex: 0 });
+    this.video = createEle('video');
+
+    if (this.options.src) this.options.videoProps.src = this.options.src;
+    setVideoAttrs(this.video, this.options.videoProps);
     this.el.appendChild(this.video);
-    // 挂载至 container
-    this.container?.appendChild(this.el);
+  }
+
+  mount(container?: PlayerOptions['container']): void {
+    if (container) this.container = getEle(container) || this.container;
+    if (!this.container) return;
+    this.container.appendChild(this.el);
+  }
+
+  play(): Promise<void> | void {
+    return this.video.play();
+  }
+
+  pause(): void {
+    this.video.pause();
   }
 }

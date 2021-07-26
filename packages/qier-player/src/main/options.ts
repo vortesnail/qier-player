@@ -1,11 +1,16 @@
 import { PlayerOptions } from './types';
 
-const defaultOptions: Partial<PlayerOptions> = {};
+const defaultOptions: Partial<PlayerOptions> = {
+  videoProps: {
+    crossorigin: 'anonymous',
+    preload: 'auto',
+    playsinline: 'true',
+  },
+};
 
 export function processOptions(opts?: PlayerOptions): Required<PlayerOptions> {
-  const dOpts = defaultOptions;
   const res = {
-    ...dOpts,
+    ...defaultOptions,
     ...opts,
   } as Required<PlayerOptions>;
 
