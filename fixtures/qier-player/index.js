@@ -1,6 +1,8 @@
 window.onload = function () {
   console.log(QierPlayer);
-  const player = new QierPlayer.Player();
-  player.print();
-  player.create();
+  const rootEle = document.querySelector('#root');
+
+  const player = new QierPlayer.Player({
+    container: rootEle,
+  });
 };

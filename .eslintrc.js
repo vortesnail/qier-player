@@ -39,6 +39,7 @@ module.exports = {
 
     '@typescript-eslint/no-unused-vars': WARN,
     '@typescript-eslint/no-var-requires': OFF,
+    '@typescript-eslint/ban-types': OFF,
     '@typescript-eslint/explicit-module-boundary-types': OFF,
     'no-unused-vars': OFF,
     'lines-between-class-members': [ERROR, 'always'],
