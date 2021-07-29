@@ -1,6 +1,6 @@
-import { PlayerOptions } from './types';
+import { IPlayerOptions } from './types';
 
-const defaultOptions: Partial<PlayerOptions> = {
+const defaultOptions: Partial<IPlayerOptions> = {
   videoProps: {
     crossorigin: 'anonymous',
     preload: 'auto',
@@ -8,11 +8,20 @@ const defaultOptions: Partial<PlayerOptions> = {
   },
 };
 
-export function processOptions(opts?: PlayerOptions): Required<PlayerOptions> {
+export function processOptions(opts?: IPlayerOptions): Required<IPlayerOptions> {
   const res = {
     ...defaultOptions,
     ...opts,
-  } as Required<PlayerOptions>;
+    videoProps: {
+      ...defaultOptions.videoProps,
+      ...opts?.videoProps,
+    },
+  } as Required<IPlayerOptions>;
+
+  res.controller = res.controller || {
+    progress: ['progress'],
+    items: ['play', 'time'],
+  };
 
   return res;
 }

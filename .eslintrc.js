@@ -20,6 +20,9 @@ module.exports = {
       node: {
         extensions: ['.tsx', '.ts', '.js', '.json'],
       },
+      typescript: {
+        project: 'packages/*/tsconfig.json',
+      },
     },
   },
   rules: {
@@ -57,5 +60,7 @@ module.exports = {
     'no-continue': OFF,
     'class-methods-use-this': OFF,
     'func-names': OFF,
+    'prefer-destructuring': OFF,
+    'no-param-reassign': OFF,
   },
 };

@@ -1,32 +1,48 @@
-import { PlayerOptions } from './types';
+import { IPlayerOptions } from './types';
 import { processOptions } from './options';
 import { createEle, getEle } from './utils/dom';
-import { setVideoAttrs } from './helper';
+import { setVideoAttrs, registerNamedMap } from './helper';
+import { Controller, IControllerEle } from './modules/controller';
+import { CLASS_PREFIX } from './constants';
 
 export class Player {
   container: HTMLElement | null;
 
   el: HTMLDivElement;
 
-  options: Required<PlayerOptions>;
+  options: Required<IPlayerOptions>;
 
   readonly video: HTMLVideoElement;
 
-  constructor(opts?: PlayerOptions) {
+  readonly controller: Controller;
+
+  private readonly controllerNameMap: Record<string, IControllerEle> = Object.create(null);
+
+  constructor(opts?: IPlayerOptions) {
     this.options = processOptions(opts);
     this.container = getEle(this.options.container);
-    this.el = createEle('div', { tabindex: 0 });
-    this.video = createEle('video');
+    this.el = createEle(`div.${CLASS_PREFIX}`, { tabindex: 0 }, '');
+    this.video = createEle('video.video');
 
     if (this.options.src) this.options.videoProps.src = this.options.src;
     setVideoAttrs(this.video, this.options.videoProps);
     this.el.appendChild(this.video);
+
+    registerNamedMap(this);
+
+    this.controller = new Controller(this, this.el);
+
+    this.videoClickToggle();
   }
 
-  mount(container?: PlayerOptions['container']): void {
+  mount(container?: IPlayerOptions['container']): void {
     if (container) this.container = getEle(container) || this.container;
     if (!this.container) return;
     this.container.appendChild(this.el);
+  }
+
+  get paused(): boolean {
+    return this.video.paused;
   }
 
   play(): Promise<void> | void {
@@ -35,5 +51,29 @@ export class Player {
 
   pause(): void {
     this.video.pause();
+  }
+
+  toggle = () => {
+    if (this.paused) {
+      this.play();
+    } else {
+      this.pause();
+    }
+  };
+
+  videoClickToggle() {
+    this.video.addEventListener('click', this.toggle);
+  }
+
+  cancellVideoClickToggle() {
+    this.video.removeEventListener('click', this.toggle);
+  }
+
+  registerControllerEle(ele: IControllerEle, id?: string): void {
+    this.controllerNameMap[id || ele.id] = ele;
+  }
+
+  getControllerEle(id: string): IControllerEle | undefined {
+    return this.controllerNameMap[id] as IControllerEle;
   }
 }

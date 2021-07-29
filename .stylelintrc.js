@@ -12,6 +12,7 @@ module.exports = {
     'value-keyword-case': null,
     'rule-empty-line-before': ['always', { except: ['after-single-line-comment', 'first-nested'] }],
     'at-rule-no-unknown': null,
+    'no-duplicate-selectors': null,
   },
   ignoreFiles: ['node_modules/**/*', 'build/**/*', 'dist/**/*'],
 };
