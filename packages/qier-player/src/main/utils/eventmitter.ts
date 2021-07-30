@@ -32,10 +32,10 @@ export class EventEmitter {
     return { dispose: this.off.bind(this, evt, fn) };
   }
 
-  once(evt: string, fn?: Function) {
+  once(evt: string, fn?: Function): Dispose {
     const execFn = () => {
       fn?.apply(this);
-      this.removeListener(evt, execFn);
+      this.off(evt, execFn);
     };
 
     return this.on(evt, execFn);
@@ -61,9 +61,13 @@ export class EventEmitter {
     return this;
   }
 
-  removeListener(evt: string, fn?: Function) {
-    if (this._events[evt]) {
-      this._events[evt] = this._events[evt].filter((cb) => cb !== fn);
+  removeAllListeners(evt: string): this {
+    if (evt) {
+      this._events[evt] && (this._events[evt].length = 0);
+    } else {
+      this._events = Object.create(null);
     }
+
+    return this;
   }
 }
