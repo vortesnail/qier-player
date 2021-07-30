@@ -41,6 +41,7 @@ module.exports = {
     'import/no-extraneous-dependencies': [ERROR, { devDependencies: true }],
 
     '@typescript-eslint/no-unused-vars': WARN,
+    '@typescript-eslint/no-explicit-any': OFF,
     '@typescript-eslint/no-var-requires': OFF,
     '@typescript-eslint/ban-types': OFF,
     '@typescript-eslint/explicit-module-boundary-types': OFF,
@@ -50,7 +51,7 @@ module.exports = {
     'linebreak-style': [ERROR, 'unix'],
     quotes: [ERROR, 'single'],
     semi: [ERROR, 'always'],
-    'no-unused-expressions': WARN,
+    'no-unused-expressions': OFF,
     'no-plusplus': OFF,
     'no-console': WARN,
     'jsx-quotes': [ERROR, 'prefer-single'],
@@ -62,5 +63,6 @@ module.exports = {
     'func-names': OFF,
     'prefer-destructuring': OFF,
     'no-param-reassign': OFF,
+    'no-underscore-dangle': [ERROR, { allowAfterThis: true }],
   },
 };

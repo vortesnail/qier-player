@@ -1,5 +1,6 @@
-import { isString, isHTMLElement } from './is';
+import { isString, isBool, isHTMLElement } from './is';
 import { CLASS_PREFIX } from '../constants';
+import { Dispose } from './dispose';
 
 // e.g. 'div#id.className' to get 'div', 'id', '.className'
 const SELECTOR_REGEX = /([\w-]+)?(?:#([\w-]+))?((?:\.(?:[\w-]+))*)/;
@@ -81,4 +82,24 @@ export function createSvg(cls?: string, d?: string, viewBox = '0 0 24 24'): SVGS
     svg.appendChild(path);
   }
   return svg;
+}
+
+export class DomListener implements Dispose {
+  constructor(
+    private node: EventTarget,
+    private type: string,
+    private handler: (e: any) => void,
+    private options?: boolean | AddEventListenerOptions,
+  ) {
+    // 对于 options 的支持暂未判断
+    node.addEventListener(type, handler, this.options);
+  }
+
+  dispose(): void {
+    if (!this.handler) return;
+    this.node.removeEventListener(this.type, this.handler, this.options);
+    this.node = null!;
+    this.handler = null!;
+    this.options = null!;
+  }
 }

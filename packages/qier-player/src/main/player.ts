@@ -1,11 +1,12 @@
+import { EventEmitter } from './utils/eventmitter';
 import { IPlayerOptions } from './types';
 import { processOptions } from './options';
 import { createEle, getEle } from './utils/dom';
-import { setVideoAttrs, registerNamedMap } from './helper';
+import { setVideoAttrs, registerNamedMap, markingEvent } from './helper';
 import { Controller, IControllerEle } from './modules/controller';
 import { CLASS_PREFIX } from './constants';
 
-export class Player {
+export class Player extends EventEmitter {
   container: HTMLElement | null;
 
   el: HTMLDivElement;
@@ -19,6 +20,7 @@ export class Player {
   private readonly controllerNameMap: Record<string, IControllerEle> = Object.create(null);
 
   constructor(opts?: IPlayerOptions) {
+    super();
     this.options = processOptions(opts);
     this.container = getEle(this.options.container);
     this.el = createEle(`div.${CLASS_PREFIX}`, { tabindex: 0 }, '');
@@ -26,6 +28,7 @@ export class Player {
 
     if (this.options.src) this.options.videoProps.src = this.options.src;
     setVideoAttrs(this.video, this.options.videoProps);
+    markingEvent(this);
     this.el.appendChild(this.video);
 
     registerNamedMap(this);
@@ -54,6 +57,7 @@ export class Player {
   }
 
   toggle = () => {
+    console.log(123123);
     if (this.paused) {
       this.play();
     } else {

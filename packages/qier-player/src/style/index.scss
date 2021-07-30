@@ -38,6 +38,13 @@
     padding: 0 5px 8px;
     transition: opacity 0.2s ease;
 
+    &_ele {
+      display: flex;
+      align-items: center;
+      // solving the gap problem
+      font-size: 0;
+    }
+
     &_gradient_bottom {
       position: absolute;
       right: 0;
