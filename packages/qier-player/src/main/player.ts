@@ -57,7 +57,6 @@ export class Player extends EventEmitter {
   }
 
   toggle = () => {
-    console.log(123123);
     if (this.paused) {
       this.play();
     } else {

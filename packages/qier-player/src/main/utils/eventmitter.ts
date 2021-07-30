@@ -32,24 +32,38 @@ export class EventEmitter {
     return { dispose: this.off.bind(this, evt, fn) };
   }
 
+  once(evt: string, fn?: Function) {
+    const execFn = () => {
+      fn?.apply(this);
+      this.removeListener(evt, execFn);
+    };
+
+    return this.on(evt, execFn);
+  }
+
   off(evt: string, fn?: Function): this {
-    const fns = this._events[evt];
-    if (!fns) return this;
+    if (!this._events[evt]) return this;
     if (!fn) {
-      fns && (fns.length = 0);
+      this._events[evt] && (this._events[evt].length = 0);
       return this;
     }
 
     let cb;
-    const cbLen = fns.length;
+    const cbLen = this._events[evt].length;
     for (let i = 0; i < cbLen; i++) {
-      cb = fns[i];
+      cb = this._events[evt][i];
       if (cb === fn) {
-        fns.splice(i, 1);
+        this._events[evt].splice(i, 1);
         break;
       }
     }
 
     return this;
+  }
+
+  removeListener(evt: string, fn?: Function) {
+    if (this._events[evt]) {
+      this._events[evt] = this._events[evt].filter((cb) => cb !== fn);
+    }
   }
 }
