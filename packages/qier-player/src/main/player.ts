@@ -5,6 +5,7 @@ import { createEle, getEle } from './utils/dom';
 import { setVideoAttrs, registerNamedMap, markingEvent } from './helper';
 import { Controller, IControllerEle } from './modules/controller';
 import { CLASS_PREFIX } from './constants';
+import { adsorb } from './utils/freUse';
 
 export class Player extends EventEmitter {
   container: HTMLElement | null;
@@ -42,6 +43,21 @@ export class Player extends EventEmitter {
     if (container) this.container = getEle(container) || this.container;
     if (!this.container) return;
     this.container.appendChild(this.el);
+  }
+
+  get currentTime(): number {
+    return this.video.currentTime;
+  }
+
+  set currentTime(n: number) {
+    if (!this.duration) return;
+    const diff = n - this.video.currentTime;
+    if (!diff) return;
+    this.video.currentTime = adsorb(n, 0, this.duration);
+  }
+
+  get duration(): number {
+    return this.video.duration || 0;
   }
 
   get paused(): boolean {

@@ -124,6 +124,12 @@
       font-size: 0;
     }
 
+    &_time {
+      padding: 0 6px;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
     &_gradient_bottom {
       position: absolute;
       right: 0;

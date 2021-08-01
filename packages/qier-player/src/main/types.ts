@@ -2,7 +2,7 @@ import { IControllerEle } from './modules/controller';
 
 export interface IController {
   progress: (IControllerEle | string)[];
-  items: (IControllerEle | string)[];
+  eles: (IControllerEle | string)[];
 }
 
 export interface IPlayerOptions {

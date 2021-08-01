@@ -20,7 +20,7 @@ export function processOptions(opts?: IPlayerOptions): Required<IPlayerOptions> 
 
   res.controller = res.controller || {
     progress: ['progress'],
-    items: ['play', 'time'],
+    eles: ['play', 'time'],
   };
 
   return res;

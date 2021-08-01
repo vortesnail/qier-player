@@ -22,6 +22,6 @@ export class Controller extends DomNode {
     super(container, 'div.controller');
     this.gradientBottom = container.appendChild(createEle('div.controller_gradient_bottom'));
 
-    this.controllerEles[0] = new ControllerEle(player, this.el, player.options.controller.items);
+    this.controllerEles[0] = new ControllerEle(player, this.el, player.options.controller.eles);
   }
 }

@@ -43,8 +43,9 @@ export class ControllerEle extends DomNode {
       let tooltip: Tooltip | undefined;
       if (ele.tip) tooltip = new Tooltip(ele.el, ele.tip);
       if (ele.init) {
-        if (!tooltip) tooltip = new Tooltip(ele.el);
-        ele.init(this.player, tooltip);
+        if (ele.init.length >= 2 && !tooltip) tooltip = new Tooltip(ele.el);
+        // Do not use Tooltip when there is no tooltip parameter
+        ele.init(this.player, tooltip as Tooltip);
       }
 
       ele.mounted = true;
@@ -54,13 +55,13 @@ export class ControllerEle extends DomNode {
 
   updateTooltipPos() {
     const last = this.controllerEles.length - 1;
-    this.controllerEles.forEach((item, i) => {
-      if (item.tooltip) {
-        item.tooltip.resetPos();
+    this.controllerEles.forEach((ele, i) => {
+      if (ele.tooltip) {
+        ele.tooltip.resetPos();
         if (i === 0) {
-          item.tooltip.setLeft();
+          ele.tooltip.setLeft();
         } else if (i === last) {
-          item.tooltip.setRight();
+          ele.tooltip.setRight();
         }
       }
     });
