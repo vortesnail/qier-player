@@ -1,3 +1,5 @@
+@import './mixins';
+
 .qier-player {
   position: relative;
   z-index: 0;
@@ -17,7 +19,7 @@
   &_icon {
     width: 28px;
     height: 28px;
-    fill: #fff;
+    color: inherit;
   }
 
   &_controller {
@@ -30,17 +32,94 @@
     touch-action: none;
   }
 
+  &_tooltip {
+    position: relative;
+    width: 40px;
+    height: 100%;
+    padding: 6px;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    fill: rgba(255, 255, 255, 0.9);
+
+    @include hover {
+      &:hover {
+        fill: rgba(255, 255, 255, 1);
+      }
+
+      &:hover &_content {
+        transform: translateX(-50%);
+        opacity: 1;
+      }
+
+      &:hover &-left {
+        transform: translate(0, 0);
+      }
+
+      &:hover &-right {
+        transform: translate(0, 0);
+      }
+    }
+
+    &_content {
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      margin-bottom: 10px;
+      padding: 5px 10px;
+      font-size: 12px;
+      white-space: nowrap;
+      background: rgba(0, 0, 0, 0.6);
+      transform: translate(-50%, 10px) scale(0.8);
+      transform-origin: 50% 100%;
+      opacity: 0;
+      transition: transform 0.2s 0.1s ease, opacity 0.2s 0.1s ease;
+      pointer-events: none;
+    }
+
+    &-left {
+      left: 0;
+      transform: translate(0, 10px) scale(0.8);
+      transform-origin: 0 100%;
+    }
+
+    &-right {
+      right: 0;
+      left: auto;
+      transform: translate(0, 10px) scale(0.8);
+      transform-origin: 100% 100%;
+    }
+
+    &-bottom {
+      top: 100%;
+      bottom: auto;
+      margin-top: 10px;
+      margin-bottom: 0;
+      transform: translate(-50%, -10px) scale(0.8);
+    }
+
+    $p: &;
+
+    &-bottom {
+      &#{$p}-left,
+      &#{$p}-right {
+        transform: translate(0, -10px) scale(0.8);
+      }
+    }
+  }
+
   &_controller {
     position: absolute;
     right: 0;
     bottom: 0;
     left: 0;
-    padding: 0 5px 8px;
+    height: 40px;
+    padding: 0 5px;
     transition: opacity 0.2s ease;
 
     &_ele {
       display: flex;
       align-items: center;
+      height: 100%;
       // solving the gap problem
       font-size: 0;
     }

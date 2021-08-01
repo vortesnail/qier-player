@@ -4,6 +4,7 @@ import { show, hide } from '@Src/main/utils/dom';
 import { Icon } from '@Src/main/features/icons';
 import { addDispose, addDisposeListener } from '@Src/main/utils/dispose';
 import { EVENT } from '@Src/main/constants';
+import { Tooltip } from '@Src/main/components/tooltip';
 import { IControllerEle } from '..';
 
 class Play extends DomNode implements IControllerEle {
@@ -13,14 +14,19 @@ class Play extends DomNode implements IControllerEle {
 
   private pauseIcon!: HTMLElement;
 
-  init(player: Player) {
+  tooltip!: Tooltip;
+
+  init(player: Player, tooltip: Tooltip) {
+    this.tooltip = tooltip;
     this.playIcon = this.el.appendChild(Icon.play());
     this.pauseIcon = this.el.appendChild(Icon.pause());
+
     if (player.paused) {
       this.onPause();
     } else {
       this.onPlay();
     }
+
     addDispose(this, player.on(EVENT.PLAY, this.onPlay));
     addDispose(this, player.on(EVENT.PAUSE, this.onPause));
     addDisposeListener(this, this.el, 'click', player.toggle);
@@ -29,11 +35,13 @@ class Play extends DomNode implements IControllerEle {
   private onPlay = () => {
     show(this.pauseIcon);
     hide(this.playIcon);
+    this.tooltip.html = '暂停'; // TODO 国际化
   };
 
   private onPause = () => {
     show(this.playIcon);
     hide(this.pauseIcon);
+    this.tooltip.html = '播放'; // TODO 国际化
   };
 }
 

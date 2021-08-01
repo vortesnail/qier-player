@@ -1,12 +1,15 @@
 import { Player } from '@Src/main/player';
 import { DomNode } from '@Src/main/utils/domNode';
 import { createEle } from '@Src/main/utils/dom';
+import { Tooltip } from '@Src/main/components/tooltip';
 import { ControllerEle } from './eles';
 
 export interface IControllerEle {
   el: HTMLElement;
   id?: any;
-  init?: (player: Player) => void;
+  tip?: string;
+  mounted?: boolean;
+  init?: (player: Player, tooltip: Tooltip) => void;
   [key: string]: any;
 }
 

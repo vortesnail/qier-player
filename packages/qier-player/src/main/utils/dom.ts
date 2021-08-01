@@ -70,6 +70,11 @@ export function addClass<T extends Element>(dom: T, cls = '', prefix = CLASS_PRE
   return dom;
 }
 
+export function removeClass<T extends Element>(dom: T, cls: string, prefix = CLASS_PREFIX): T {
+  dom.classList.remove(`${prefix}_${cls}`);
+  return dom;
+}
+
 const svgNS = 'http://www.w3.org/2000/svg';
 
 export function createSvg(cls?: string, d?: string, viewBox = '0 0 24 24'): SVGSVGElement {

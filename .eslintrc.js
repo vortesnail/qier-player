@@ -63,6 +63,7 @@ module.exports = {
     'func-names': OFF,
     'prefer-destructuring': OFF,
     'no-param-reassign': OFF,
+    'consistent-return': OFF,
     'no-underscore-dangle': [ERROR, { allowAfterThis: true }],
   },
 };
