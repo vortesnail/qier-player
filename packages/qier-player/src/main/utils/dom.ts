@@ -43,6 +43,15 @@ export function getEle(el: HTMLElement | string | undefined | null): HTMLElement
   throw new Error('The container element you are currently passing in is not an HTML element');
 }
 
+export function removeEle(el: Element): void {
+  if (!el) return;
+  if (el.remove) {
+    el.remove();
+  } else if (el.parentNode) {
+    el.parentNode.removeChild(el);
+  }
+}
+
 export function show(node: HTMLElement | SVGElement): void {
   node.style.display = '';
 }

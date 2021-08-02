@@ -5,4 +5,7 @@ export const EVENT = {
   PAUSE: 'Pause',
   TIME_UPDATE: 'TimeUpdate',
   DURATION_CHANGE: 'DurationChange',
+
+  CONTROLLER_SHOW: 'ControlShow',
+  CONTROLLER_HIDE: 'ControlHide',
 } as const;

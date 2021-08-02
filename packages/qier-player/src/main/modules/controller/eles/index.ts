@@ -43,8 +43,8 @@ export class ControllerEle extends DomNode {
       let tooltip: Tooltip | undefined;
       if (ele.tip) tooltip = new Tooltip(ele.el, ele.tip);
       if (ele.init) {
-        if (ele.init.length >= 2 && !tooltip) tooltip = new Tooltip(ele.el);
         // Do not use Tooltip when there is no tooltip parameter
+        if (ele.init.length >= 2 && !tooltip) tooltip = new Tooltip(ele.el);
         ele.init(this.player, tooltip as Tooltip);
       }
 

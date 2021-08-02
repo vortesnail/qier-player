@@ -10,10 +10,17 @@ export function getDisposeMap(): Map<any, Array<Dispose>> {
   return disposeMap;
 }
 
-export function addDispose<T extends Dispose>(key: any, dispose: T): T {
+export function addDispose<T extends Dispose>(key: any, d: T): T {
   if (!disposeMap.has(key)) disposeMap.set(key, []);
-  disposeMap.get(key)?.push(dispose);
-  return dispose;
+  disposeMap.get(key)?.push(d);
+  return d;
+}
+
+export function dispose(key: any): void {
+  if (disposeMap.has(key)) {
+    disposeMap.get(key)?.forEach((item) => item.dispose());
+    disposeMap.delete(key);
+  }
 }
 
 export function addDisposeListener<K extends keyof GlobalEventHandlersEventMap>(

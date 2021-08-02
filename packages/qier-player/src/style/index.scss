@@ -29,6 +29,7 @@
   &_video {
     width: 100%;
     max-height: 100%;
+    outline: none;
     touch-action: none;
   }
 
@@ -65,7 +66,7 @@
       bottom: 100%;
       left: 50%;
       margin-bottom: 10px;
-      padding: 5px 10px;
+      padding: 2px 10px;
       font-size: 12px;
       white-space: nowrap;
       background: rgba(0, 0, 0, 0.6);
@@ -116,6 +117,21 @@
     padding: 0 5px;
     transition: opacity 0.2s ease;
 
+    &_hide {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    &:hover {
+      cursor: default !important;
+      opacity: 1 !important;
+      pointer-events: initial !important;
+    }
+
+    &:hover ~ &_gradient_bottom {
+      opacity: 1 !important;
+    }
+
     &_ele {
       display: flex;
       align-items: center;
@@ -140,6 +156,10 @@
         repeat-x bottom;
       transition: opacity 0.2s ease;
       pointer-events: none;
+
+      &_hide {
+        opacity: 0;
+      }
     }
   }
 }
