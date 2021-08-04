@@ -60,6 +60,10 @@ export class Player extends EventEmitter {
     return this.video.duration || 0;
   }
 
+  get buffered(): TimeRanges {
+    return this.video.buffered;
+  }
+
   get paused(): boolean {
     return this.video.paused;
   }
@@ -70,6 +74,10 @@ export class Player extends EventEmitter {
 
   pause(): void {
     this.video.pause();
+  }
+
+  seek(seconds: number): void {
+    this.video.currentTime = adsorb(seconds, 0, this.duration);
   }
 
   toggle = () => {
@@ -86,6 +94,14 @@ export class Player extends EventEmitter {
 
   cancellVideoClickToggle() {
     this.video.removeEventListener('click', this.toggle);
+  }
+
+  eachBuffer(fn: (start: number, end: number) => boolean | void): void {
+    for (let l = this.buffered.length, i = l - 1; i >= 0; i--) {
+      if (fn(this.buffered.start(i), this.buffered.end(i))) {
+        break;
+      }
+    }
   }
 
   registerControllerEle(ele: IControllerEle, id?: string): void {

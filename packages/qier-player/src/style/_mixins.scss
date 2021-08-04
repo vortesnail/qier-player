@@ -3,3 +3,13 @@
     @content;
   }
 }
+
+@mixin progress-buff-played {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: 0 0;
+}

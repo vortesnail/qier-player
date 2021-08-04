@@ -17,7 +17,6 @@ export interface IControllerEle {
 
 const classHide = 'controller_hide';
 const classGradientBottomHide = 'controller_gradient_bottom_hide';
-const classControllEleHide = 'controller_ele_hide';
 
 export class Controller extends DomNode {
   private readonly gradientBottom: HTMLElement;
@@ -32,6 +31,7 @@ export class Controller extends DomNode {
     super(container, 'div.controller');
     this.gradientBottom = container.appendChild(createEle('div.controller_gradient_bottom'));
 
+    this.controllerEles[1] = addDispose(this, new ControllerEle(player, this.el, player.options.controller.progress));
     this.controllerEles[0] = addDispose(this, new ControllerEle(player, this.el, player.options.controller.eles));
 
     addDispose(
@@ -57,7 +57,6 @@ export class Controller extends DomNode {
   show = (): void => {
     removeClass(this.el, classHide);
     removeClass(this.gradientBottom, classGradientBottomHide);
-    // removeClass(this.controllerEles[0].el, classControllEleHide);
     this.player.el.style.cursor = '';
     this.player.emit(EVENT.CONTROLLER_SHOW);
   };
@@ -65,7 +64,6 @@ export class Controller extends DomNode {
   hide = (): void => {
     addClass(this.el, classHide);
     addClass(this.gradientBottom, classGradientBottomHide);
-    // addClass(this.controllerEles[0].el, classControllEleHide);
     this.player.el.style.cursor = 'none';
     this.player.emit(EVENT.CONTROLLER_HIDE);
   };
