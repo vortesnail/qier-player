@@ -181,7 +181,11 @@
       }
 
       &:hover &_thumb {
-        display: block;
+        opacity: 1;
+      }
+
+      &:hover &_indicator {
+        opacity: 1;
       }
     }
 
@@ -225,11 +229,51 @@
       }
     }
 
+    &_indicator {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 0.1s ease;
+      pointer-events: none;
+
+      &_inner {
+        position: absolute;
+        left: -5px;
+        width: 6px;
+        height: 13px;
+
+        &::before,
+        &::after {
+          position: absolute;
+          width: 0;
+          height: 0;
+          border-color: transparent;
+          border-style: solid;
+          border-width: 5px;
+          content: '';
+        }
+
+        &::before {
+          top: -2px;
+          left: 0;
+          border-top-color: var(--theme-color);
+        }
+
+        &::after {
+          bottom: 0;
+          left: 0;
+          border-bottom-color: var(--theme-color);
+        }
+      }
+    }
+
     &_thumb {
       position: absolute;
       bottom: 22px;
       left: 0;
-      display: none;
+      opacity: 0;
+      transition: opacity 0.1s ease;
       pointer-events: none;
 
       &_img {

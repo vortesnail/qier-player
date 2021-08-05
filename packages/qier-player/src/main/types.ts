@@ -9,6 +9,7 @@ export interface IProgressOptions {
   dot?: HTMLElement;
   playedBg?: string;
   buffBg?: string;
+  indicator?: boolean;
 }
 
 export interface IThumbnail {

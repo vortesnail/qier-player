@@ -6,6 +6,9 @@ const defaultOptions: Partial<IPlayerOptions> = {
     preload: 'auto',
     playsinline: 'true',
   },
+  progressOptions: {
+    indicator: true,
+  },
 };
 
 export function processOptions(opts?: IPlayerOptions): Required<IPlayerOptions> {
@@ -15,6 +18,10 @@ export function processOptions(opts?: IPlayerOptions): Required<IPlayerOptions> 
     videoProps: {
       ...defaultOptions.videoProps,
       ...opts?.videoProps,
+    },
+    progressOptions: {
+      ...defaultOptions.progressOptions,
+      ...opts?.progressOptions,
     },
   } as Required<IPlayerOptions>;
 

@@ -22,6 +22,8 @@ class Progress extends DomNode implements IControllerEle {
 
   private dot!: HTMLElement;
 
+  private indicator!: HTMLElement;
+
   private rect!: Rect;
 
   private thumbnail!: Thumbnail;
@@ -37,6 +39,10 @@ class Progress extends DomNode implements IControllerEle {
     this.playedBar = this.bars.appendChild(createEle('div.progress_played'));
     this.dot = this.el.appendChild(createEle('div.progress_dot'));
     this.dot.appendChild(player.options.progressOptions?.dot || createEle('div.progress_dot_inner'));
+    this.indicator = this.el.appendChild(createEle('div.progress_indicator'));
+    if (player.options.progressOptions?.indicator) {
+      this.indicator.appendChild(createEle('div.progress_indicator_inner'));
+    }
 
     this.rect = addDispose(this, new Rect(this.bars, player));
     this.thumbnail = addDispose(this, new Thumbnail(this.el, player.options.thumbnail));
@@ -49,7 +55,7 @@ class Progress extends DomNode implements IControllerEle {
       this,
       this.el,
       'mousemove',
-      throttle((ev: MouseEvent) => this.updateThumbnail(ev.pageX)),
+      throttle((ev: MouseEvent) => this.updateHoverElement(ev.pageX)),
     );
   }
 
@@ -71,7 +77,7 @@ class Progress extends DomNode implements IControllerEle {
   private onDragging = (ev: PointerEvent) => {
     const x = ev.pageX - this.rect.x;
     this.setPlayedBarLength(x / this.rect.width);
-    this.updateThumbnail(ev.pageX);
+    this.updateHoverElement(ev.pageX);
   };
 
   private onDragEnd = (ev: PointerEvent) => {
@@ -79,8 +85,11 @@ class Progress extends DomNode implements IControllerEle {
     this.player.seek(this.getCurrentTime(ev.pageX));
   };
 
-  private updateThumbnail(x: number): void {
+  private updateHoverElement(x: number): void {
     this.thumbnail.updatePos(this.getCurrentTime(x), x - this.rect.x, this.rect.width);
+    if (this.indicator) {
+      this.indicator.style.left = `${adsorb(x - this.rect.x, 0, this.rect.width || 0)}px`;
+    }
   }
 
   private updatePlayedBar = (): void => {
