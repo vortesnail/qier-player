@@ -14,6 +14,13 @@ export function setVideoAttrs(video: HTMLVideoElement, opts: IPlayerOptions['vid
   });
 }
 
+export function setCssVariables(el: HTMLElement, opts: IPlayerOptions): void {
+  const style = el.style;
+  if (opts.themeColor) style.setProperty('--theme-color', opts.themeColor);
+  if (opts.progressOptions?.playedBg) style.setProperty('--progress-played-bg', opts.progressOptions.playedBg);
+  if (opts.progressOptions?.buffBg) style.setProperty('--progress-buff-bg', opts.progressOptions.buffBg);
+}
+
 export function registerNamedMap(player: Player) {
   player.registerControllerEle(playControllerEle());
   player.registerControllerEle(timeControllerEle());

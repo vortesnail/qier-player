@@ -1,8 +1,9 @@
 @import './mixins';
 
 .qier-player {
-  --theme-color: #1890ff;
-  --progress-bg: #1890ff;
+  --theme-color: #ff6f00;
+  --progress-played-bg: #ff6f00;
+  --progress-buff-bg: rgba(255, 255, 255, 0.5);
 
   position: relative;
   z-index: 0;
@@ -199,13 +200,13 @@
 
     &_played {
       @include progress-buff-played;
-      background: var(--progress-bg);
+      background: var(--progress-played-bg);
       will-change: transform;
     }
 
     &_buff {
       @include progress-buff-played;
-      background: rgba(255, 255, 255, 0.5);
+      background: var(--progress-buff-bg);
     }
 
     &_dot {

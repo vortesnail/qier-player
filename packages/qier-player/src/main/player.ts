@@ -2,7 +2,7 @@ import { EventEmitter } from './utils/eventmitter';
 import { IPlayerOptions } from './types';
 import { processOptions } from './options';
 import { createEle, getEle } from './utils/dom';
-import { setVideoAttrs, registerNamedMap, markingEvent } from './helper';
+import { setVideoAttrs, setCssVariables, registerNamedMap, markingEvent } from './helper';
 import { Controller, IControllerEle } from './modules/controller';
 import { CLASS_PREFIX } from './constants';
 import { adsorb } from './utils/freUse';
@@ -29,6 +29,7 @@ export class Player extends EventEmitter {
 
     if (this.options.src) this.options.videoProps.src = this.options.src;
     setVideoAttrs(this.video, this.options.videoProps);
+    setCssVariables(this.el, this.options);
     markingEvent(this);
     this.el.appendChild(this.video);
 

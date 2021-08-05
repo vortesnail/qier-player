@@ -26,6 +26,7 @@ export interface IPlayerOptions {
   container?: HTMLElement | string;
   video?: HTMLVideoElement;
   src?: string;
+  themeColor?: string;
   videoProps?: Record<string, any>;
   controller?: IController;
   progressOptions?: IProgressOptions;

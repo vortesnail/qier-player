@@ -8,6 +8,12 @@ window.onload = function () {
     // src: 'https://vortesnail.github.io/qier-player-demo/static/media/video480p.d116ba09.mp4',
     // src: 'http://upload.wikimedia.org/wikipedia/commons/transcoded/c/c0/Big_Buck_Bunny_4K.webm/Big_Buck_Bunny_4K.webm.480p.vp9.webm',
     videoProps: {},
+    // themeColor: '#abc123',
+    // progressOptions: {
+    //   playedBg: '#abc123',
+    //   buffBg: '#000',
+    //   indicator: false,
+    // },
     thumbnail: {
       col: 2,
       row: 2,
