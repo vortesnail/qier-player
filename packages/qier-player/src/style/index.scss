@@ -179,6 +179,10 @@
       &:hover &_bars {
         transform: scaleY(1.67);
       }
+
+      &:hover &_thumb {
+        display: block;
+      }
     }
 
     &_bars {
@@ -218,6 +222,33 @@
         height: 12px;
         background: var(--theme-color);
         border-radius: 50%;
+      }
+    }
+
+    &_thumb {
+      position: absolute;
+      bottom: 22px;
+      left: 0;
+      display: none;
+      pointer-events: none;
+
+      &_img {
+        background-color: rgba(255, 255, 255, 0.5);
+        background-repeat: no-repeat;
+        border-radius: 1px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      &_time {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        padding: 3px 5px;
+        font-size: 12px;
+        line-height: 1;
+        text-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+        background: rgba(0, 0, 0, 0.7);
+        transform: translateX(-50%);
       }
     }
   }

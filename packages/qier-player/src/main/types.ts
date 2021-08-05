@@ -11,6 +11,16 @@ export interface IProgressOptions {
   buffBg?: string;
 }
 
+export interface IThumbnail {
+  startSecond?: number;
+  gapSecond?: number;
+  row?: number;
+  col?: number;
+  width?: number;
+  height?: number;
+  images?: string[];
+}
+
 export interface IPlayerOptions {
   container?: HTMLElement | string;
   video?: HTMLVideoElement;
@@ -18,4 +28,5 @@ export interface IPlayerOptions {
   videoProps?: Record<string, any>;
   controller?: IController;
   progressOptions?: IProgressOptions;
+  thumbnail?: IThumbnail;
 }

@@ -1,12 +1,13 @@
 import { EVENT } from '@Src/main/constants';
 import { Player } from '@Src/main/player';
-import { addDispose } from '@Src/main/utils/dispose';
+import { addDispose, addDisposeListener } from '@Src/main/utils/dispose';
 import { addClass, createEle } from '@Src/main/utils/dom';
 import { DomNode } from '@Src/main/utils/domNode';
 import { Drag } from '@Src/main/utils/drag';
-import { adsorb } from '@Src/main/utils/freUse';
+import { adsorb, throttle } from '@Src/main/utils/freUse';
 import { Rect } from '@Src/main/utils/rect';
 import { IControllerEle } from '..';
+import { Thumbnail } from './thumbnail';
 
 class Progress extends DomNode implements IControllerEle {
   readonly id = 'progress';
@@ -23,6 +24,8 @@ class Progress extends DomNode implements IControllerEle {
 
   private rect!: Rect;
 
+  private thumbnail!: Thumbnail;
+
   private dragging = false;
 
   init(player: Player) {
@@ -36,10 +39,18 @@ class Progress extends DomNode implements IControllerEle {
     this.dot.appendChild(player.options.progressOptions?.dot || createEle('div.progress_dot_inner'));
 
     this.rect = addDispose(this, new Rect(this.bars, player));
+    this.thumbnail = addDispose(this, new Thumbnail(this.el, player.options.thumbnail));
 
     addDispose(this, new Drag(this.el, this.onDragStart, this.onDragging, this.onDragEnd));
     addDispose(this, player.on(EVENT.TIME_UPDATE, this.updatePlayedBar));
-    addDispose(this, player.on(EVENT.PROGRESS, this.updateBufBar));
+    addDispose(this, player.on(EVENT.PROGRESS, this.updateBuffBar));
+
+    addDisposeListener(
+      this,
+      this.el,
+      'mousemove',
+      throttle((ev: MouseEvent) => this.updateThumbnail(ev.pageX)),
+    );
   }
 
   private setPlayedBarLength(percentage: number): void {
@@ -60,7 +71,7 @@ class Progress extends DomNode implements IControllerEle {
   private onDragging = (ev: PointerEvent) => {
     const x = ev.pageX - this.rect.x;
     this.setPlayedBarLength(x / this.rect.width);
-    // this.updateThumbnail(ev.pageX);
+    this.updateThumbnail(ev.pageX);
   };
 
   private onDragEnd = (ev: PointerEvent) => {
@@ -68,12 +79,16 @@ class Progress extends DomNode implements IControllerEle {
     this.player.seek(this.getCurrentTime(ev.pageX));
   };
 
+  private updateThumbnail(x: number): void {
+    this.thumbnail.updatePos(this.getCurrentTime(x), x - this.rect.x, this.rect.width);
+  }
+
   private updatePlayedBar = (): void => {
     if (this.dragging) return;
     this.setPlayedBarLength(this.player.currentTime / this.player.duration);
   };
 
-  private updateBufBar = (): void => {
+  private updateBuffBar = (): void => {
     const buffLen = this.player.buffered.length;
 
     if (!buffLen) return this.setBuffBarLength(0);

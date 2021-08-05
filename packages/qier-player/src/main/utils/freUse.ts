@@ -2,12 +2,12 @@ export function adsorb(n: number, lower = 0, upper = 1): number {
   return Math.max(Math.min(n, upper), lower);
 }
 
-export function throttle(fn: Function, ctx?: any, ...rest: any[]): any {
+export function throttle(fn: Function, ctx?: any, ...argument: any[]): any {
   let pending = false;
   let first = true;
-  let args: typeof rest | null = null;
+  let args: typeof argument | null = null;
 
-  return function () {
+  return function (...rest: any[]) {
     args = rest;
     if (first) {
       first = false;
