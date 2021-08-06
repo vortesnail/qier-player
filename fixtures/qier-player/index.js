@@ -1,7 +1,8 @@
 window.onload = function () {
-  // console.log(QierPlayer);
+  console.log(QierPlayer);
   const rootEle = document.querySelector('#root');
 
+  // QierPlayer.I18n.setCurrentLang('en-US');
   const player = new QierPlayer.Player({
     // container: rootEle,
     src: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',

@@ -6,6 +6,7 @@ import { setVideoAttrs, setCssVariables, registerNamedMap, markingEvent } from '
 import { Controller, IControllerEle } from './modules/controller';
 import { CLASS_PREFIX } from './constants';
 import { adsorb } from './utils/freUse';
+import { I18n } from './features/i18n';
 
 export class Player extends EventEmitter {
   container: HTMLElement | null;
@@ -112,4 +113,6 @@ export class Player extends EventEmitter {
   getControllerEle(id: string): IControllerEle | undefined {
     return this.controllerNameMap[id] as IControllerEle;
   }
+
+  static I18n = I18n;
 }

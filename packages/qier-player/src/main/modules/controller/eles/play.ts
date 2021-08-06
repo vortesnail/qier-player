@@ -5,6 +5,7 @@ import { Icon } from '@Src/main/features/icons';
 import { addDispose, addDisposeListener } from '@Src/main/utils/dispose';
 import { EVENT } from '@Src/main/constants';
 import { Tooltip } from '@Src/main/components/tooltip';
+import { I18n, PLAY, PAUSE } from '@Src/main/features/i18n';
 import { IControllerEle } from '..';
 
 class Play extends DomNode implements IControllerEle {
@@ -35,13 +36,13 @@ class Play extends DomNode implements IControllerEle {
   private onPlay = () => {
     show(this.pauseIcon);
     hide(this.playIcon);
-    this.tooltip.html = '暂停'; // TODO 国际化
+    this.tooltip.html = I18n.trans(PAUSE);
   };
 
   private onPause = () => {
     show(this.playIcon);
     hide(this.pauseIcon);
-    this.tooltip.html = '播放'; // TODO 国际化
+    this.tooltip.html = I18n.trans(PLAY);
   };
 }
 
