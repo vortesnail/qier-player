@@ -36,14 +36,12 @@
     outline: none;
   }
 
+  &_spacer {
+    flex: 1;
+  }
+
   &_tooltip {
-    position: relative;
-    width: 40px;
-    height: 100%;
-    padding: 6px;
-    color: rgba(255, 255, 255, 0.8);
-    cursor: pointer;
-    fill: rgba(255, 255, 255, 0.9);
+    @include bottom-click-area;
 
     @include hover {
       &:hover {
@@ -161,6 +159,103 @@
 
       &_hide {
         opacity: 0;
+      }
+    }
+
+    &_volume {
+      @include bottom-click-area;
+
+      @include hover {
+        &:hover {
+          fill: rgba(255, 255, 255, 1);
+        }
+      }
+
+      &_stuffing {
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        left: 50%;
+        display: none;
+        width: 32px;
+        padding: 20px 0;
+        transform: translateX(-50%);
+      }
+
+      &_bars {
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        display: none;
+        width: 32px;
+        height: 100px;
+        margin-bottom: 20px;
+        background: rgba(21, 21, 21, 0.8);
+        border-radius: 1px;
+        transform: translateX(-50%);
+        cursor: default;
+      }
+
+      &_percent {
+        display: inline-block;
+        width: 100%;
+        height: 28px;
+        margin-bottom: 2px;
+        color: #fff;
+        font-size: 12px;
+        line-height: 28px;
+        text-align: center;
+      }
+
+      &_bar_wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 60px;
+        margin: 0 auto;
+        cursor: pointer;
+      }
+
+      &_bar {
+        position: relative;
+        width: 2px;
+        height: 100%;
+
+        &_bg {
+          width: 100%;
+          height: 100%;
+          background: #fff;
+        }
+
+        &_percentage {
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background: var(--theme-color);
+          transform: scaleY(0);
+          transform-origin: 50% 100%;
+        }
+
+        &_dot {
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+
+          > :first-child {
+            transform: translate(-50%, 50%);
+            cursor: pointer;
+          }
+
+          &_inner {
+            width: 10px;
+            height: 10px;
+            background: var(--theme-color);
+            border-radius: 50%;
+          }
+        }
       }
     }
   }

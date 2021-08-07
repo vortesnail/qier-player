@@ -3,7 +3,7 @@ import { DomNode } from '@Src/main/utils/domNode';
 import { createEle, removeClass, addClass } from '@Src/main/utils/dom';
 import { Tooltip } from '@Src/main/components/tooltip';
 import { addDispose, addDisposeListener } from '@Src/main/utils/dispose';
-import { EVENT } from '@Src/main/constants';
+import { EVENT, TIME } from '@Src/main/constants';
 import { ControllerEle } from './eles';
 
 export interface IControllerEle {
@@ -22,8 +22,6 @@ export class Controller extends DomNode {
   private readonly gradientBottom: HTMLElement;
 
   private showTimer!: NodeJS.Timeout;
-
-  private delayHideTime = 3000;
 
   private controllerEles: ControllerEle[] = [];
 
@@ -71,7 +69,7 @@ export class Controller extends DomNode {
   showThenFade = (): void => {
     this.show();
     clearTimeout(this.showTimer);
-    this.showTimer = setTimeout(this.tryHide, this.delayHideTime);
+    this.showTimer = setTimeout(this.tryHide, TIME.CONTROLLER_BAR_HIDE);
   };
 
   tryHide = (): void => {

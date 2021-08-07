@@ -6,6 +6,7 @@ import { progressControllerEle } from './modules/controller/progress';
 import { Dispose, addDispose } from './utils/dispose';
 import { EVENT } from './constants';
 import { throttle } from './utils/freUse';
+import { volumeControllerEle } from './modules/controller/eles/volume';
 
 export function setVideoAttrs(video: HTMLVideoElement, opts: IPlayerOptions['videoProps']): void {
   if (!opts) return;
@@ -24,6 +25,7 @@ export function setCssVariables(el: HTMLElement, opts: IPlayerOptions): void {
 export function registerNamedMap(player: Player) {
   player.registerControllerEle(playControllerEle());
   player.registerControllerEle(timeControllerEle());
+  player.registerControllerEle(volumeControllerEle());
 
   player.registerControllerEle(progressControllerEle());
 }
@@ -49,4 +51,5 @@ export function markingEvent(player: Player): void {
 
   dis(markThrottle(player, 'timeupdate', EVENT.TIME_UPDATE));
   dis(markThrottle(player, 'progress', EVENT.PROGRESS));
+  dis(markThrottle(player, 'volumechange', EVENT.VOLUME_CHANGE));
 }

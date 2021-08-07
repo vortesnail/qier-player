@@ -98,6 +98,10 @@ export function createSvg(cls?: string, d?: string, viewBox = '0 0 24 24'): SVGS
   return svg;
 }
 
+export function getEventPath(ev: Event): EventTarget[] {
+  return (ev as any).path || ev.composedPath();
+}
+
 export class DomListener implements Dispose {
   constructor(
     private node: EventTarget,

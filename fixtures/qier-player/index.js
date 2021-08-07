@@ -34,5 +34,6 @@ window.onload = function () {
   });
 
   player.mount(rootEle);
+  // player.volume = 0.5;
   // player.play();
 };

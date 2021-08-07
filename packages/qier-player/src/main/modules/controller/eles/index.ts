@@ -38,7 +38,7 @@ export class ControllerEle extends DomNode {
     ele = this.getControllerEle(ele) as IControllerEle;
 
     if (ele) {
-      if (!ele.el) ele.el = createEle();
+      if (!ele.el) ele.el = createEle('div');
 
       let tooltip: Tooltip | undefined;
       if (ele.tip) tooltip = new Tooltip(ele.el, ele.tip);
