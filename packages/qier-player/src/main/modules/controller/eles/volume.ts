@@ -62,10 +62,10 @@ class Volume extends DomNode implements IControllerEle {
       if (evPaths.includes(this.bars) || evPaths.includes(this.stuffing)) return;
       player.toggleVolume();
     });
-    addDisposeListener(this, this.el, 'mouseenter', (ev: MouseEvent) => {
+    addDisposeListener(this, this.el, 'mouseenter', () => {
       this.showBars();
     });
-    addDisposeListener(this, this.el, 'mouseleave', (ev: MouseEvent) => {
+    addDisposeListener(this, this.el, 'mouseleave', () => {
       this.tryHideBars();
     });
 
@@ -112,7 +112,7 @@ class Volume extends DomNode implements IControllerEle {
   }
 
   tryHideBars(): void {
-    clearTimeout(this.barsTimer);
+    this.barsTimer && clearTimeout(this.barsTimer);
     this.barsTimer = setTimeout(() => {
       this.hideBars();
     }, TIME.POPOVER_HIDE);

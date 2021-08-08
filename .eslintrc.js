@@ -40,6 +40,7 @@ module.exports = {
     'import/prefer-default-export': OFF,
     'import/no-extraneous-dependencies': [ERROR, { devDependencies: true }],
 
+    '@typescript-eslint/no-non-null-assertion': OFF,
     '@typescript-eslint/no-unused-vars': WARN,
     '@typescript-eslint/no-explicit-any': OFF,
     '@typescript-eslint/no-var-requires': OFF,
@@ -64,6 +65,6 @@ module.exports = {
     'prefer-destructuring': OFF,
     'no-param-reassign': OFF,
     'consistent-return': OFF,
-    'no-underscore-dangle': [ERROR, { allowAfterThis: true }],
+    'no-underscore-dangle': OFF,
   },
 };

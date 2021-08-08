@@ -1,14 +1,17 @@
 import { EventEmitter } from './utils/eventmitter';
 import { IPlayerOptions } from './types';
 import { defaultSetting, processOptions } from './options';
-import { createEle, getEle } from './utils/dom';
+import { createEle, getEle, removeEle } from './utils/dom';
 import { setVideoAttrs, setCssVariables, registerNamedMap, markingEvent } from './helper';
 import { Controller, IControllerEle } from './modules/controller';
-import { CLASS_PREFIX } from './constants';
+import { CLASS_PREFIX, EVENT } from './constants';
 import { adsorb } from './utils/freUse';
 import { I18n } from './features/i18n';
+import { dispose, Dispose } from './utils/dispose';
+import { ISettingItem } from './modules/controller/eles/settings';
+import { isString } from './utils/is';
 
-export class Player extends EventEmitter {
+export class Player extends EventEmitter implements Dispose {
   container: HTMLElement | null;
 
   el: HTMLDivElement;
@@ -23,11 +26,15 @@ export class Player extends EventEmitter {
 
   private readonly controllerNameMap: Record<string, IControllerEle> = Object.create(null);
 
+  private readonly settingNamedMap: Record<string, ISettingItem> = Object.create(null);
+
+  readonly settingItems: ISettingItem[];
+
   constructor(opts?: IPlayerOptions) {
     super();
     this.options = processOptions(opts);
     this.container = getEle(this.options.container);
-    this.el = createEle(`div.${CLASS_PREFIX}`, { tabindex: 0 }, '');
+    this.el = createEle(`div.${CLASS_PREFIX}`, { tabindex: 0 }, undefined, '');
     this.video = createEle('video.video');
 
     if (this.options.src) this.options.videoProps.src = this.options.src;
@@ -38,6 +45,13 @@ export class Player extends EventEmitter {
 
     registerNamedMap(this);
 
+    this.settingItems = this.options.settings
+      .map((item) => {
+        if (isString(item)) return this.settingNamedMap[item];
+        return item;
+      })
+      .filter(Boolean);
+
     this.controller = new Controller(this, this.el);
 
     this.videoClickToggle();
@@ -47,6 +61,7 @@ export class Player extends EventEmitter {
     if (container) this.container = getEle(container) || this.container;
     if (!this.container) return;
     this.container.appendChild(this.el);
+    this.emit(EVENT.MOUNTED);
 
     defaultSetting(this);
   }
@@ -90,6 +105,14 @@ export class Player extends EventEmitter {
   set muted(v: boolean) {
     this.video.muted = v;
     if (v) this.volume = 0;
+  }
+
+  get playbackRate(): number {
+    return this.video.playbackRate;
+  }
+
+  set playbackRate(n: number) {
+    this.video.playbackRate = n;
   }
 
   play(): Promise<void> | void {
@@ -142,7 +165,24 @@ export class Player extends EventEmitter {
   }
 
   getControllerEle(id: string): IControllerEle | undefined {
-    return this.controllerNameMap[id] as IControllerEle;
+    return this.controllerNameMap[id];
+  }
+
+  registerSettingItem(item: ISettingItem, id?: string): void {
+    this.settingNamedMap[id || item.id] = item;
+  }
+
+  getSettingItem(id: string): ISettingItem | undefined {
+    return this.settingNamedMap[id];
+  }
+
+  dispose(): void {
+    if (!this.el) return;
+    dispose(this);
+    this.removeAllListeners();
+    removeEle(this.el);
+    this.el = null!;
+    this.container = null;
   }
 
   static I18n = I18n;

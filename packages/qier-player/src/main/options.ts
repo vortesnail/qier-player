@@ -2,6 +2,7 @@ import { Player } from './player';
 import { IPlayerOptions } from './types';
 
 const defaultOptions: Partial<IPlayerOptions> = {
+  settings: ['mirroring', 'speed'],
   videoProps: {
     crossorigin: 'anonymous',
     preload: 'auto',
@@ -28,7 +29,7 @@ export function processOptions(opts?: IPlayerOptions): Required<IPlayerOptions> 
 
   res.controller = res.controller || {
     progress: ['progress'],
-    eles: ['play', 'time', 'spacer', 'volume'],
+    eles: ['play', 'time', 'spacer', 'volume', 'settings'],
   };
 
   return res;

@@ -23,9 +23,15 @@ export const I18n = {
 
 export const PLAY = 'Play';
 export const PAUSE = 'Pause';
+export const MIRRORING = 'Mirroring';
+export const SPEED = 'Speed';
+export const NORMAL = 'Normal';
 
 I18n.add('zh-cn', {
   [PLAY]: '播放',
   [PAUSE]: '暂停',
+  [MIRRORING]: '镜像',
+  [SPEED]: '播放速度',
+  [NORMAL]: '正常',
 });
 if (isBrowser) I18n.setCurrentLang();

@@ -11,9 +11,11 @@ export const EVENT = {
   CONTROLLER_SHOW: 'ControlShow',
   CONTROLLER_HIDE: 'ControlHide',
   UPDATE_SIZE: 'UpdateSize',
+
+  MOUNTED: 'Mounted',
 } as const;
 
 export const TIME = {
   CONTROLLER_BAR_HIDE: 3000,
-  POPOVER_HIDE: 500,
+  POPOVER_HIDE: 300,
 };

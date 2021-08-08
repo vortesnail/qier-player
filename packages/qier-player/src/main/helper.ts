@@ -7,6 +7,9 @@ import { Dispose, addDispose } from './utils/dispose';
 import { EVENT } from './constants';
 import { throttle } from './utils/freUse';
 import { volumeControllerEle } from './modules/controller/eles/volume';
+import { settingControllerEle } from './modules/controller/eles/settings';
+import { MirroringSettingItem } from './setting-items/mirroring';
+import { speedSettingItem } from './setting-items/speed';
 
 export function setVideoAttrs(video: HTMLVideoElement, opts: IPlayerOptions['videoProps']): void {
   if (!opts) return;
@@ -26,6 +29,9 @@ export function registerNamedMap(player: Player) {
   player.registerControllerEle(playControllerEle());
   player.registerControllerEle(timeControllerEle());
   player.registerControllerEle(volumeControllerEle());
+  player.registerControllerEle(settingControllerEle());
+  player.registerSettingItem(MirroringSettingItem());
+  player.registerSettingItem(speedSettingItem());
 
   player.registerControllerEle(progressControllerEle());
 }

@@ -1,4 +1,5 @@
 import { IControllerEle } from './modules/controller';
+import { ISettingItem } from './modules/controller/eles/settings';
 
 export interface IController {
   progress: (IControllerEle | string)[];
@@ -31,4 +32,5 @@ export interface IPlayerOptions {
   controller?: IController;
   progressOptions?: IProgressOptions;
   thumbnail?: IThumbnail;
+  settings?: (ISettingItem | string)[];
 }

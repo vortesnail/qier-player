@@ -1,3 +1,5 @@
+$class-prefix: 'qier-player' !default;
+
 @mixin hover {
   @media not all and (hover: none) {
     @content;
@@ -22,4 +24,13 @@
   color: rgba(255, 255, 255, 0.8);
   cursor: pointer;
   fill: rgba(255, 255, 255, 0.9);
+}
+
+@mixin check-icon($w: 5px, $h: 12px, $borderWidth: 1px, $color: #fff) {
+  display: inline-block;
+  width: $w;
+  height: $h;
+  border-right: $borderWidth solid $color;
+  border-bottom: $borderWidth solid $color;
+  transform: rotate(45deg);
 }
