@@ -12,6 +12,9 @@ export const EVENT = {
   CONTROLLER_HIDE: 'ControlHide',
   UPDATE_SIZE: 'UpdateSize',
 
+  WEB_ENTER_FULLSCREEN: 'WebEnterFullscreen',
+  WEB_EXIT_FULLSCREEN: 'WebExitFullscreen',
+
   MOUNTED: 'Mounted',
 } as const;
 

@@ -7,9 +7,11 @@ import { Controller, IControllerEle } from './modules/controller';
 import { CLASS_PREFIX, EVENT } from './constants';
 import { adsorb } from './utils/freUse';
 import { I18n } from './features/i18n';
-import { dispose, Dispose } from './utils/dispose';
+import { addDispose, dispose, Dispose } from './utils/dispose';
 import { ISettingItem } from './modules/controller/eles/settings';
 import { isString } from './utils/is';
+import { Rect } from './utils/rect';
+import { WebFullscreen } from './features/web-fullscreen';
 
 export class Player extends EventEmitter implements Dispose {
   container: HTMLElement | null;
@@ -19,6 +21,10 @@ export class Player extends EventEmitter implements Dispose {
   options: Required<IPlayerOptions>;
 
   readonly video: HTMLVideoElement;
+
+  readonly rect: Rect;
+
+  readonly webFullscreen: WebFullscreen;
 
   readonly controller: Controller;
 
@@ -44,6 +50,9 @@ export class Player extends EventEmitter implements Dispose {
     this.el.appendChild(this.video);
 
     registerNamedMap(this);
+
+    this.rect = addDispose(this, new Rect(this.el, this));
+    this.webFullscreen = addDispose(this, new WebFullscreen(this));
 
     this.settingItems = this.options.settings
       .map((item) => {
@@ -87,6 +96,14 @@ export class Player extends EventEmitter implements Dispose {
 
   get paused(): boolean {
     return this.video.paused;
+  }
+
+  get ended(): boolean {
+    return this.video.ended;
+  }
+
+  get playing(): boolean {
+    return !this.paused && !this.ended;
   }
 
   get volume(): number {

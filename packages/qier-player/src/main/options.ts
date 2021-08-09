@@ -2,6 +2,10 @@ import { Player } from './player';
 import { IPlayerOptions } from './types';
 
 const defaultOptions: Partial<IPlayerOptions> = {
+  controller: {
+    progress: ['progress'],
+    eles: ['play', 'time', 'spacer', 'volume', 'settings', 'web-fullscreen'],
+  },
   settings: ['mirroring', 'speed'],
   videoProps: {
     crossorigin: 'anonymous',
@@ -26,11 +30,6 @@ export function processOptions(opts?: IPlayerOptions): Required<IPlayerOptions> 
       ...opts?.progressOptions,
     },
   } as Required<IPlayerOptions>;
-
-  res.controller = res.controller || {
-    progress: ['progress'],
-    eles: ['play', 'time', 'spacer', 'volume', 'settings'],
-  };
 
   return res;
 }

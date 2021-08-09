@@ -38,7 +38,7 @@ class Settings extends DomNode implements IControllerEle {
 
   private player!: Player;
 
-  private popoverTimer!: NodeJS.Timeout;
+  private popoverTimer!: NodeJS.Timeout | null;
 
   private items!: ISettingItem[];
 
@@ -201,22 +201,25 @@ class Settings extends DomNode implements IControllerEle {
   }
 
   show = () => {
+    if (this.popoverTimer) {
+      this.cleatTimeout();
+      return;
+    }
     this.renderHome();
     this.stuffing.style.display = 'block';
     this.popover.show();
     this.homeEl.style.display = 'block';
     addClass(this.el, classActive);
-    this.popoverTimer && clearTimeout(this.popoverTimer);
   };
 
   tryHide(): void {
-    this.popoverTimer && clearTimeout(this.popoverTimer);
     this.popoverTimer = setTimeout(() => {
       this.hide();
     }, TIME.POPOVER_HIDE);
   }
 
   hide = () => {
+    this.cleatTimeout();
     this.stuffing.style.display = 'none';
     this.popover.hide();
     this.homeEl.style.display = 'none';
@@ -225,6 +228,11 @@ class Settings extends DomNode implements IControllerEle {
     if (this.currentOptionEl) {
       setTimeout(() => this.showHomePage(this.currentOptionEl), 200);
     }
+  };
+
+  cleatTimeout = () => {
+    this.popoverTimer && clearTimeout(this.popoverTimer);
+    this.popoverTimer = null;
   };
 }
 

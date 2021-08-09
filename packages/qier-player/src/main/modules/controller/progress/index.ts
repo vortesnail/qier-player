@@ -50,6 +50,12 @@ class Progress extends DomNode implements IControllerEle {
     addDispose(this, new Drag(this.el, this.onDragStart, this.onDragging, this.onDragEnd));
     addDispose(this, player.on(EVENT.TIME_UPDATE, this.updatePlayedBar));
     addDispose(this, player.on(EVENT.PROGRESS, this.updateBuffBar));
+    addDispose(
+      this,
+      player.on(EVENT.UPDATE_SIZE, () => {
+        if (!player.playing) this.resetPlayedBar();
+      }),
+    );
 
     addDisposeListener(
       this,
@@ -57,6 +63,10 @@ class Progress extends DomNode implements IControllerEle {
       'mousemove',
       throttle((ev: MouseEvent) => this.updateHoverElement(ev.pageX)),
     );
+  }
+
+  private resetPlayedBar() {
+    this.setPlayedBarLength(this.player.currentTime / this.player.duration);
   }
 
   private setPlayedBarLength(percentage: number): void {

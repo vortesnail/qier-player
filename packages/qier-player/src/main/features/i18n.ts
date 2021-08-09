@@ -26,6 +26,8 @@ export const PAUSE = 'Pause';
 export const MIRRORING = 'Mirroring';
 export const SPEED = 'Speed';
 export const NORMAL = 'Normal';
+export const WEB_FULL_SCREEN = 'Web fullscreen';
+export const WEB_EXIT_FULL_SCREEN = 'Exit web fullscreen';
 
 I18n.add('zh-cn', {
   [PLAY]: '播放',
@@ -33,5 +35,7 @@ I18n.add('zh-cn', {
   [MIRRORING]: '镜像',
   [SPEED]: '播放速度',
   [NORMAL]: '正常',
+  [WEB_FULL_SCREEN]: '网页全屏',
+  [WEB_EXIT_FULL_SCREEN]: '退出网页全屏',
 });
 if (isBrowser) I18n.setCurrentLang();

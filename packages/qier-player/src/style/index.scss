@@ -20,14 +20,23 @@
     box-sizing: border-box;
   }
 
+  &_controller {
+    z-index: 10;
+  }
+
+  &_web_fullscreen {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100000;
+  }
+
   &_icon {
     width: 28px;
     height: 28px;
     color: inherit;
-  }
-
-  &_controller {
-    z-index: 10;
   }
 
   &_video {
@@ -181,7 +190,7 @@
     bottom: 0;
     left: 0;
     // height: 40px;
-    padding: 0 5px;
+    padding: 0 5px 4px;
     transition: opacity 0.2s ease;
 
     &_hide {
@@ -415,9 +424,12 @@
       }
 
       &_option {
+        padding-right: 26px;
+
         &::before {
-          margin-right: 17px;
-          margin-left: 6px;
+          margin-right: 16px;
+          margin-bottom: 4px;
+          margin-left: 10px;
           opacity: 0;
           content: '';
           @include check-icon;
