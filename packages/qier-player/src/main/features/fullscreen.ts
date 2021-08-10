@@ -37,6 +37,7 @@ export class Fullscreen implements Dispose {
     this.setTarget();
     if (this.isActive) this.addClass();
 
+    // TODO 移动端适配
     this.enableDblclick();
   }
 
@@ -130,6 +131,10 @@ export class Fullscreen implements Dispose {
   }
 
   toggle = (): void => {
+    this.player.toggleDelayTimer && clearTimeout(this.player.toggleDelayTimer);
+    this.player.toggleDelayTimer = null;
+    this.player.toggleDelayFlag = true;
+
     if (this.isActive) {
       this.exit();
     } else {

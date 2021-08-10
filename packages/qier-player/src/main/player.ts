@@ -4,7 +4,7 @@ import { defaultSetting, processOptions } from './options';
 import { createEle, getEle, removeEle } from './utils/dom';
 import { setVideoAttrs, setCssVariables, registerNamedMap, markingEvent } from './helper';
 import { Controller, IControllerEle } from './modules/controller';
-import { CLASS_PREFIX, EVENT } from './constants';
+import { CLASS_PREFIX, EVENT, TIME } from './constants';
 import { adsorb } from './utils/freUse';
 import { I18n } from './features/i18n';
 import { addDispose, dispose, Dispose } from './utils/dispose';
@@ -22,6 +22,10 @@ export class Player extends EventEmitter implements Dispose {
   options: Required<IPlayerOptions>;
 
   readonly video: HTMLVideoElement;
+
+  toggleDelayTimer: NodeJS.Timeout | null;
+
+  toggleDelayFlag: boolean;
 
   readonly rect: Rect;
 
@@ -67,6 +71,9 @@ export class Player extends EventEmitter implements Dispose {
 
     this.controller = new Controller(this, this.el);
 
+    // To prevent click and double-click events of video elements from conflicting.
+    this.toggleDelayFlag = false;
+    this.toggleDelayTimer = null;
     this.videoClickToggle();
   }
 
@@ -166,12 +173,21 @@ export class Player extends EventEmitter implements Dispose {
   }
 
   videoClickToggle() {
-    this.video.addEventListener('click', this.toggle);
+    this.video.addEventListener('click', this.delayToggle);
   }
 
   cancellVideoClickToggle() {
-    this.video.removeEventListener('click', this.toggle);
+    this.video.removeEventListener('click', this.delayToggle);
   }
+
+  delayToggle = () => {
+    this.toggleDelayTimer = setTimeout(() => {
+      if (!this.toggleDelayFlag) {
+        this.toggle();
+      }
+      this.toggleDelayFlag = false;
+    }, TIME.CLICK_TOGGLE_DELAY);
+  };
 
   eachBuffer(fn: (start: number, end: number) => boolean | void): void {
     for (let l = this.buffered.length, i = l - 1; i >= 0; i--) {

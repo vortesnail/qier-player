@@ -23,4 +23,5 @@ export const EVENT = {
 export const TIME = {
   CONTROLLER_BAR_HIDE: 3000,
   POPOVER_HIDE: 300,
+  CLICK_TOGGLE_DELAY: 220,
 };
