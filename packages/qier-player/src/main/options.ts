@@ -4,7 +4,7 @@ import { IPlayerOptions } from './types';
 const defaultOptions: Partial<IPlayerOptions> = {
   controller: {
     progress: ['progress'],
-    eles: ['play', 'time', 'spacer', 'volume', 'settings', 'web-fullscreen'],
+    eles: ['play', 'time', 'spacer', 'volume', 'settings', 'web-fullscreen', 'fullscreen'],
   },
   settings: ['mirroring', 'speed'],
   videoProps: {

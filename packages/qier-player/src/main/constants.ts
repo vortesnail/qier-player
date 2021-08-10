@@ -14,6 +14,8 @@ export const EVENT = {
 
   WEB_ENTER_FULLSCREEN: 'WebEnterFullscreen',
   WEB_EXIT_FULLSCREEN: 'WebExitFullscreen',
+  ENTER_FULLSCREEN: 'EnterFullscreen',
+  EXIT_FULLSCREEN: 'ExitFullscreen',
 
   MOUNTED: 'Mounted',
 } as const;

@@ -11,6 +11,7 @@ import { settingControllerEle } from './modules/controller/eles/settings';
 import { MirroringSettingItem } from './setting-items/mirroring';
 import { speedSettingItem } from './setting-items/speed';
 import { webFullscreenControllerEle } from './modules/controller/eles/web-fullscreen';
+import { fullscreenControllerEle } from './modules/controller/eles/fullscreen';
 
 export function setVideoAttrs(video: HTMLVideoElement, opts: IPlayerOptions['videoProps']): void {
   if (!opts) return;
@@ -34,6 +35,7 @@ export function registerNamedMap(player: Player) {
   player.registerSettingItem(MirroringSettingItem());
   player.registerSettingItem(speedSettingItem());
   player.registerControllerEle(webFullscreenControllerEle());
+  player.registerControllerEle(fullscreenControllerEle());
 
   player.registerControllerEle(progressControllerEle());
 }

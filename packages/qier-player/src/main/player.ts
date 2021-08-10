@@ -12,6 +12,7 @@ import { ISettingItem } from './modules/controller/eles/settings';
 import { isString } from './utils/is';
 import { Rect } from './utils/rect';
 import { WebFullscreen } from './features/web-fullscreen';
+import { Fullscreen } from './features/fullscreen';
 
 export class Player extends EventEmitter implements Dispose {
   container: HTMLElement | null;
@@ -25,6 +26,8 @@ export class Player extends EventEmitter implements Dispose {
   readonly rect: Rect;
 
   readonly webFullscreen: WebFullscreen;
+
+  readonly fullscreen: Fullscreen;
 
   readonly controller: Controller;
 
@@ -53,6 +56,7 @@ export class Player extends EventEmitter implements Dispose {
 
     this.rect = addDispose(this, new Rect(this.el, this));
     this.webFullscreen = addDispose(this, new WebFullscreen(this));
+    this.fullscreen = addDispose(this, new Fullscreen(this));
 
     this.settingItems = this.options.settings
       .map((item) => {
