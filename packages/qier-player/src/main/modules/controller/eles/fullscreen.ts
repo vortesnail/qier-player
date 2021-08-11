@@ -33,7 +33,7 @@ class Fullscreen extends DomNode implements IControllerEle {
     }
     addDispose(this, player.on(EVENT.ENTER_FULLSCREEN, this.enter));
     addDispose(this, player.on(EVENT.EXIT_FULLSCREEN, this.exit));
-    addDisposeListener(this, this.el, 'click', player.fullscreen.toggle);
+    addDisposeListener(this, this.el, 'click', () => player.fullscreen.toggle(true));
   }
 
   private enter = (): void => {

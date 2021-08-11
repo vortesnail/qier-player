@@ -189,6 +189,16 @@ export class Player extends EventEmitter implements Dispose {
     }, TIME.CLICK_TOGGLE_DELAY);
   };
 
+  clearToggleDelay = (isClick?: boolean) => {
+    this.toggleDelayTimer && clearTimeout(this.toggleDelayTimer);
+    this.toggleDelayTimer = null;
+    if (isClick) {
+      this.toggleDelayFlag = false;
+    } else {
+      this.toggleDelayFlag = true;
+    }
+  };
+
   eachBuffer(fn: (start: number, end: number) => boolean | void): void {
     for (let l = this.buffered.length, i = l - 1; i >= 0; i--) {
       if (fn(this.buffered.start(i), this.buffered.end(i))) {
