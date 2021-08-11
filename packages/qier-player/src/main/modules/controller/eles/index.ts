@@ -3,6 +3,9 @@ import { isString } from '@Src/main/utils/is';
 import { Player } from '@Src/main/player';
 import { createEle } from '@Src/main/utils/dom';
 import { Tooltip } from '@Src/main/components/tooltip';
+import { patch } from '@Src/main/utils/patch';
+import { EVENT } from '@Src/main/constants';
+import { addDispose, Dispose } from '@Src/main/utils/dispose';
 import { IControllerEle } from '..';
 import { spacerControllerEle } from './spacer';
 
@@ -40,6 +43,13 @@ export class ControllerEle extends DomNode {
     if (ele) {
       if (!ele.el) ele.el = createEle('div');
 
+      if (ele.mounted) {
+        if (ele.tooltip) {
+          ele.tooltip.resetPos();
+        }
+        return;
+      }
+
       let tooltip: Tooltip | undefined;
       if (ele.tip) tooltip = new Tooltip(ele.el, ele.tip);
       if (ele.init) {
@@ -47,10 +57,15 @@ export class ControllerEle extends DomNode {
         if (ele.init.length >= 2 && !tooltip) tooltip = new Tooltip(ele.el);
         ele.init(this.player, tooltip as Tooltip);
       }
+      if (ele.dispose) addDispose(this, ele as Dispose);
 
       ele.mounted = true;
       return ele;
     }
+  };
+
+  private onHideControllerEle = (ele: IControllerEle) => {
+    if (ele.hide) ele.hide();
   };
 
   updateTooltipPos() {
@@ -65,5 +80,30 @@ export class ControllerEle extends DomNode {
         }
       }
     });
+  }
+
+  update(nextEles: (string | IControllerEle)[]) {
+    if (!nextEles) return;
+
+    const eles: IControllerEle[] = [];
+    let shuldUpdate = false;
+    nextEles.forEach((ele, i) => {
+      ele = this.getControllerEle(ele) as IControllerEle;
+      if (!this.controllerEles[i] || this.controllerEles[i].id !== ele.id) {
+        shuldUpdate = true;
+      }
+      if (ele) eles.push(ele);
+    });
+
+    if (shuldUpdate) {
+      // Dom diff
+      patch(this.controllerEles, eles, this.el, {
+        mount: this.initControllerEle,
+        unmount: this.onHideControllerEle,
+      });
+      this.controllerEles = eles;
+      this.updateTooltipPos();
+      this.player.emit(EVENT.CONTROLLER_ELES_UPDATE);
+    }
   }
 }

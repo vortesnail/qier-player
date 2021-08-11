@@ -1,5 +1,5 @@
 import { EventEmitter } from './utils/eventmitter';
-import { IPlayerOptions } from './types';
+import { IController, IPlayerOptions } from './types';
 import { defaultSetting, processOptions } from './options';
 import { createEle, getEle, removeEle } from './utils/dom';
 import { setVideoAttrs, setCssVariables, registerNamedMap, markingEvent } from './helper';
@@ -211,6 +211,10 @@ export class Player extends EventEmitter implements Dispose {
 
   getSettingItem(id: string): ISettingItem | undefined {
     return this.settingNamedMap[id];
+  }
+
+  updateControllerEles(eles: Parameters<Controller['updateEles']>[0], key: keyof IController): void {
+    this.controller.updateEles(eles, key);
   }
 
   dispose(): void {

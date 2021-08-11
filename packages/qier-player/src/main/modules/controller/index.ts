@@ -2,11 +2,12 @@ import { Player } from '@Src/main/player';
 import { DomNode } from '@Src/main/utils/domNode';
 import { createEle, removeClass, addClass } from '@Src/main/utils/dom';
 import { Tooltip } from '@Src/main/components/tooltip';
-import { addDispose, addDisposeListener } from '@Src/main/utils/dispose';
+import { addDispose, addDisposeListener, Dispose } from '@Src/main/utils/dispose';
 import { EVENT, TIME } from '@Src/main/constants';
+import { IController } from '@Src/main/types';
 import { ControllerEle } from './eles';
 
-export interface IControllerEle {
+export interface IControllerEle extends Partial<Dispose> {
   el: HTMLElement;
   id?: any;
   tip?: string;
@@ -23,14 +24,16 @@ export class Controller extends DomNode {
 
   private showTimer!: NodeJS.Timeout;
 
-  private controllerEles: ControllerEle[] = [];
+  private controllerEles: Record<keyof IController, ControllerEle>;
 
   constructor(private player: Player, container: HTMLElement) {
     super(container, 'div.controller');
     this.gradientBottom = container.appendChild(createEle('div.controller_gradient_bottom'));
 
-    this.controllerEles[1] = addDispose(this, new ControllerEle(player, this.el, player.options.controller.progress));
-    this.controllerEles[0] = addDispose(this, new ControllerEle(player, this.el, player.options.controller.eles));
+    this.controllerEles = {
+      progress: addDispose(this, new ControllerEle(player, this.el, player.options.controller.progress)),
+      eles: addDispose(this, new ControllerEle(player, this.el, player.options.controller.eles)),
+    };
 
     addDispose(
       this,
@@ -77,4 +80,10 @@ export class Controller extends DomNode {
       this.hide();
     }
   };
+
+  updateEles(eles: Parameters<ControllerEle['update']>[0], key: keyof IController): void {
+    const curEle = this.controllerEles[key];
+    if (!curEle) return;
+    curEle.update(eles || []);
+  }
 }

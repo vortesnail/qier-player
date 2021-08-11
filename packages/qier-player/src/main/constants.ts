@@ -19,6 +19,7 @@ export const EVENT = {
 
   MOUNTED: 'Mounted',
   POPOVER_SHOW_CHANGE: 'PopoverShowChange',
+  CONTROLLER_ELES_UPDATE: 'ControllerElesUpdate',
 } as const;
 
 export const TIME = {
