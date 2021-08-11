@@ -71,6 +71,7 @@ class Settings extends DomNode implements IControllerEle {
       this,
       player.on(EVENT.MOUNTED, () => this.showHomePage()),
     );
+    addDispose(this, player.on(EVENT.POPOVER_SHOW_CHANGE, this.hideById));
 
     this.items.forEach((item) => item.init && item.init(player, item));
     this.renderHome();
@@ -201,6 +202,7 @@ class Settings extends DomNode implements IControllerEle {
   }
 
   show = () => {
+    this.player.emit(EVENT.POPOVER_SHOW_CHANGE, this.id);
     if (this.popoverTimer) {
       this.cleatTimeout();
       return;
@@ -233,6 +235,11 @@ class Settings extends DomNode implements IControllerEle {
   cleatTimeout = () => {
     this.popoverTimer && clearTimeout(this.popoverTimer);
     this.popoverTimer = null;
+  };
+
+  hideById = (id: string) => {
+    if (id === this.id) return;
+    this.hide();
   };
 }
 

@@ -18,6 +18,7 @@ export const EVENT = {
   EXIT_FULLSCREEN: 'ExitFullscreen',
 
   MOUNTED: 'Mounted',
+  POPOVER_SHOW_CHANGE: 'PopoverShowChange',
 } as const;
 
 export const TIME = {

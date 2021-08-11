@@ -68,6 +68,7 @@ class Volume extends DomNode implements IControllerEle {
     addDisposeListener(this, this.el, 'mouseleave', () => {
       this.tryHideBars();
     });
+    addDispose(this, player.on(EVENT.POPOVER_SHOW_CHANGE, this.hideBarsById));
 
     this.onVolumeChange();
   }
@@ -105,6 +106,7 @@ class Volume extends DomNode implements IControllerEle {
   }
 
   showBars(): void {
+    this.player.emit(EVENT.POPOVER_SHOW_CHANGE, this.id);
     this.stuffing.style.display = 'block';
     this.bars.style.display = 'block';
     this.onVolumeChange();
@@ -122,6 +124,11 @@ class Volume extends DomNode implements IControllerEle {
     this.stuffing.style.display = 'none';
     this.bars.style.display = 'none';
   }
+
+  hideBarsById = (id: string) => {
+    if (id === this.id) return;
+    this.hideBars();
+  };
 }
 
 export const volumeControllerEle = () => new Volume();
