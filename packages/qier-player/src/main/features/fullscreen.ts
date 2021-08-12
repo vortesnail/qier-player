@@ -98,11 +98,11 @@ export class Fullscreen implements Dispose {
   }
 
   enableDblclick(): void {
-    this.player.video.addEventListener('dblclick', () => this.toggle());
+    this.player.video.addEventListener('dblclick', this.tryToggle);
   }
 
   disableDblclick(): void {
-    this.player.video.removeEventListener('dblclick', () => this.toggle());
+    this.player.video.removeEventListener('dblclick', this.tryToggle);
   }
 
   setTarget(dom?: HTMLElement, video?: HTMLVideoElement): void {
@@ -129,6 +129,10 @@ export class Fullscreen implements Dispose {
     }
     return true;
   }
+
+  tryToggle = (): void => {
+    this.toggle();
+  };
 
   toggle = (isClick?: boolean): void => {
     this.player.clearToggleDelay(isClick);

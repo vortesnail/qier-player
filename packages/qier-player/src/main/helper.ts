@@ -62,4 +62,11 @@ export function markingEvent(player: Player): void {
   dis(markThrottle(player, 'timeupdate', EVENT.TIME_UPDATE));
   dis(markThrottle(player, 'progress', EVENT.PROGRESS));
   dis(markThrottle(player, 'volumechange', EVENT.VOLUME_CHANGE));
+
+  dis(markThrottle(player, 'resize', EVENT.UPDATE_SIZE, window));
+  if (window.ResizeObserver) {
+    const ro = new ResizeObserver(throttle(() => player.emit(EVENT.UPDATE_SIZE)));
+    ro.observe(player.el);
+    dis({ dispose: () => ro.disconnect() });
+  }
 }

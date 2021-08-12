@@ -234,6 +234,7 @@ export class Player extends EventEmitter implements Dispose {
     removeEle(this.el);
     this.el = null!;
     this.container = null;
+    this.clearToggleDelay();
   }
 
   static I18n = I18n;
