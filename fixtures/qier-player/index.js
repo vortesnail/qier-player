@@ -28,7 +28,7 @@ window.onload = function () {
     progressOptions: {
       playedBg: '#1890ff',
       // buffBg: '#000',
-      indicator: false,
+      indicator: true,
     },
     // settings: [{ html: '切换', type: 'switch' }, 'mirroring', 'speed'],
     thumbnail: {

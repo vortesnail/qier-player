@@ -44,8 +44,8 @@
   }
 
   &_icon {
-    width: 28px;
-    height: 28px;
+    width: 24px;
+    height: 24px;
     color: inherit;
   }
 
@@ -322,7 +322,6 @@
     right: 0;
     bottom: 0;
     left: 0;
-    // height: 40px;
     padding: 0 5px 4px;
     transition: opacity 0.2s ease;
 
@@ -386,7 +385,7 @@
         left: 0;
         left: 50%;
         display: none;
-        width: 40px;
+        width: 36px;
         padding: 20px 0;
         transform: translateX(-50%);
       }
@@ -482,7 +481,7 @@
         bottom: 100%;
         left: 0;
         display: none;
-        width: 40px;
+        width: 36px;
         padding: 20px 0;
       }
 

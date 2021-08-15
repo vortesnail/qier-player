@@ -121,7 +121,7 @@ export function toggleClass(dom: Element, cls: string, force?: boolean, prefix =
 
 const svgNS = 'http://www.w3.org/2000/svg';
 
-export function createSvg(cls?: string, d?: string, viewBox = '0 0 24 24'): SVGSVGElement {
+export function createSvg(cls?: string, d?: string, viewBox = '0 0 1024 1024'): SVGSVGElement {
   const svg = document.createElementNS(svgNS, 'svg');
   svg.setAttribute('viewBox', viewBox);
   if (cls) addClass(svg, cls);
