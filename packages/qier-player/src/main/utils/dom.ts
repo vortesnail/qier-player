@@ -44,6 +44,15 @@ export function createEle<T extends HTMLElement>(
   return ele as T;
 }
 
+export function addChildren(container: HTMLElement, child?: string | Array<Node>): void {
+  if (!child) return;
+  if (isString(child)) {
+    container.innerHTML = child;
+  } else {
+    child.forEach((c) => container.appendChild(c));
+  }
+}
+
 export function getEle(el: HTMLElement | string | undefined | null): HTMLElement | null {
   if (!el) return null;
   if (isString(el)) return document.querySelector(el);

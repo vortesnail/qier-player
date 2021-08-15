@@ -1,6 +1,19 @@
 import { IControllerEle } from './modules/controller';
 import { ISettingItem } from './modules/controller/eles/settings';
 
+export interface IPosterOptions {
+  disabled?: boolean;
+  url?: string;
+  autoFill?: boolean;
+  bgColor?: string;
+}
+
+export interface ILoadingOptions {
+  disabled?: boolean;
+  spinner?: HTMLElement;
+  type?: 'wave' | 'circle';
+}
+
 export interface IController {
   progress: (IControllerEle | string)[];
   eles: (IControllerEle | string)[];
@@ -29,6 +42,8 @@ export interface IPlayerOptions {
   src?: string;
   themeColor?: string;
   videoProps?: Record<string, any>;
+  posterOptions?: IPosterOptions;
+  loadingOptions?: ILoadingOptions;
   controller?: IController;
   progressOptions?: IProgressOptions;
   thumbnail?: IThumbnail;

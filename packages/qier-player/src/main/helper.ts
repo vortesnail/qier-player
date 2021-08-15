@@ -23,6 +23,7 @@ export function setVideoAttrs(video: HTMLVideoElement, opts: IPlayerOptions['vid
 export function setCssVariables(el: HTMLElement, opts: IPlayerOptions): void {
   const style = el.style;
   if (opts.themeColor) style.setProperty('--theme-color', opts.themeColor);
+  if (opts.posterOptions?.bgColor) style.setProperty('--poster-bg', opts.posterOptions.bgColor);
   if (opts.progressOptions?.playedBg) style.setProperty('--progress-played-bg', opts.progressOptions.playedBg);
   if (opts.progressOptions?.buffBg) style.setProperty('--progress-buff-bg', opts.progressOptions.buffBg);
 }
@@ -58,6 +59,10 @@ export function markingEvent(player: Player): void {
   dis(mark(player, 'play', EVENT.PLAY));
   dis(mark(player, 'pause', EVENT.PAUSE));
   dis(mark(player, 'durationchange', EVENT.DURATION_CHANGE));
+  dis(mark(player, 'waiting', EVENT.WAITING));
+  dis(mark(player, 'stalled', EVENT.STALLED));
+  dis(mark(player, 'canplay', EVENT.CANPLAY));
+  dis(mark(player, 'loadedmetadata', EVENT.LOADED_METADATA));
 
   dis(markThrottle(player, 'timeupdate', EVENT.TIME_UPDATE));
   dis(markThrottle(player, 'progress', EVENT.PROGRESS));

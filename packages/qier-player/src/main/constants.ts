@@ -7,6 +7,10 @@ export const EVENT = {
   PROGRESS: 'Progress',
   DURATION_CHANGE: 'DurationChange',
   VOLUME_CHANGE: 'VolumeChange',
+  WAITING: 'Waiting',
+  STALLED: 'Stalled',
+  CANPLAY: 'Canplay',
+  LOADED_METADATA: 'LoadedMetadata',
 
   CONTROLLER_SHOW: 'ControlShow',
   CONTROLLER_HIDE: 'ControlHide',

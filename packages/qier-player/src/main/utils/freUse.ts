@@ -51,3 +51,11 @@ export function formatTime(s: number): string {
   const seconds = Math.floor((s / 3600) % 60);
   return `${padStart(hour)}:${padStart(minute)}:${padStart(seconds)}`;
 }
+
+export function repeatStr(str: string, t: number): string {
+  const ret = [];
+  for (let i = 0; i < t; ++i) {
+    ret.push(str);
+  }
+  return ret.join('');
+}

@@ -2,6 +2,14 @@ import { Player } from './player';
 import { IPlayerOptions } from './types';
 
 const defaultOptions: Partial<IPlayerOptions> = {
+  posterOptions: {
+    disabled: true,
+    autoFill: true,
+  },
+  loadingOptions: {
+    disabled: false,
+    type: 'circle',
+  },
   controller: {
     progress: ['progress'],
     eles: ['play', 'time', 'spacer', 'volume', 'settings', 'web-fullscreen', 'fullscreen'],
@@ -21,6 +29,14 @@ export function processOptions(opts?: IPlayerOptions): Required<IPlayerOptions> 
   const res = {
     ...defaultOptions,
     ...opts,
+    posterOptions: {
+      ...defaultOptions.posterOptions,
+      ...opts?.posterOptions,
+    },
+    loadingOptions: {
+      ...defaultOptions.loadingOptions,
+      ...opts?.loadingOptions,
+    },
     videoProps: {
       ...defaultOptions.videoProps,
       ...opts?.videoProps,

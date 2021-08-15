@@ -13,6 +13,8 @@ import { isString } from './utils/is';
 import { Rect } from './utils/rect';
 import { WebFullscreen } from './features/web-fullscreen';
 import { Fullscreen } from './features/fullscreen';
+import { Poster } from './modules/poster';
+import { Loading } from './modules/loading';
 
 export class Player extends EventEmitter implements Dispose {
   container: HTMLElement | null;
@@ -28,6 +30,10 @@ export class Player extends EventEmitter implements Dispose {
   toggleDelayFlag: boolean;
 
   readonly rect: Rect;
+
+  readonly poster: Poster;
+
+  readonly loading: Loading;
 
   readonly webFullscreen: WebFullscreen;
 
@@ -61,6 +67,8 @@ export class Player extends EventEmitter implements Dispose {
     this.rect = addDispose(this, new Rect(this.el, this));
     this.webFullscreen = addDispose(this, new WebFullscreen(this));
     this.fullscreen = addDispose(this, new Fullscreen(this));
+    this.poster = addDispose(this, new Poster(this.el, this));
+    this.loading = addDispose(this, new Loading(this.el, this));
 
     this.settingItems = this.options.settings
       .map((item) => {
@@ -95,6 +103,10 @@ export class Player extends EventEmitter implements Dispose {
     const diff = n - this.video.currentTime;
     if (!diff) return;
     this.video.currentTime = adsorb(n, 0, this.duration);
+  }
+
+  get loaded(): boolean {
+    return this.video.readyState >= 3;
   }
 
   get duration(): number {
