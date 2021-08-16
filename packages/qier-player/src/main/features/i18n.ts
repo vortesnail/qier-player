@@ -30,6 +30,7 @@ export const WEB_FULL_SCREEN = 'Web fullscreen';
 export const WEB_EXIT_FULL_SCREEN = 'Exit web fullscreen';
 export const FULL_SCREEN = 'Fullscreen';
 export const EXIT_FULL_SCREEN = 'Exit fullscreen';
+export const LOOP = 'Loop';
 
 I18n.add('zh-cn', {
   [PLAY]: '播放',
@@ -41,5 +42,6 @@ I18n.add('zh-cn', {
   [WEB_EXIT_FULL_SCREEN]: '退出网页全屏',
   [FULL_SCREEN]: '全屏',
   [EXIT_FULL_SCREEN]: '退出全屏',
+  [LOOP]: '循环播放',
 });
 if (isBrowser) I18n.setCurrentLang();

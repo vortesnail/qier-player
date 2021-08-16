@@ -16,6 +16,7 @@ import { WebFullscreen } from './features/web-fullscreen';
 import { Fullscreen } from './features/fullscreen';
 import { Poster } from './modules/poster';
 import { Loading } from './modules/loading';
+import { IMenuItem, Menu } from './modules/menu';
 
 export class Player extends EventEmitter implements Dispose {
   container: HTMLElement | null;
@@ -40,6 +41,8 @@ export class Player extends EventEmitter implements Dispose {
 
   readonly fullscreen: Fullscreen;
 
+  readonly menu: Menu;
+
   readonly controller: Controller;
 
   private prevVolume = 0.5;
@@ -47,6 +50,8 @@ export class Player extends EventEmitter implements Dispose {
   private readonly controllerNameMap: Record<string, IControllerEle> = Object.create(null);
 
   private readonly settingNamedMap: Record<string, ISettingItem> = Object.create(null);
+
+  private readonly menuNamedMap: Record<string, IMenuItem> = Object.create(null);
 
   readonly settingItems: ISettingItem[];
 
@@ -79,6 +84,20 @@ export class Player extends EventEmitter implements Dispose {
       .filter(Boolean);
 
     this.controller = new Controller(this, this.el);
+
+    this.menu = addDispose(
+      this,
+      new Menu(
+        this.el,
+        this,
+        this.options.menus
+          ?.map((item) => {
+            if (isString(item)) return this.menuNamedMap[item];
+            return item;
+          })
+          ?.filter(Boolean) || [],
+      ),
+    );
 
     // To prevent click and double-click events of video elements from conflicting.
     this.toggleDelayFlag = false;
@@ -146,6 +165,14 @@ export class Player extends EventEmitter implements Dispose {
   set muted(v: boolean) {
     this.video.muted = v;
     if (v) this.volume = 0;
+  }
+
+  get loop(): boolean {
+    return this.video.loop;
+  }
+
+  set loop(v: boolean) {
+    this.video.loop = v;
   }
 
   get playbackRate(): number {
@@ -234,6 +261,14 @@ export class Player extends EventEmitter implements Dispose {
 
   getSettingItem(id: string): ISettingItem | undefined {
     return this.settingNamedMap[id];
+  }
+
+  registerMenuItem(item: IMenuItem, id?: string): void {
+    this.menuNamedMap[id || item.id!] = item;
+  }
+
+  getMenuItem(id: string): IMenuItem | undefined {
+    return this.menuNamedMap[id];
   }
 
   updateControllerEles(eles: Parameters<Controller['updateEles']>[0], key: keyof IController): void {

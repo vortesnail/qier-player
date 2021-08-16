@@ -70,6 +70,14 @@ export function removeEle(el: Element): void {
   }
 }
 
+export function removeAllChildNode(el: Element): void {
+  if (!el) return;
+  const childs = el.childNodes;
+  for (let i = childs.length - 1; i >= 0; i--) {
+    el.removeChild(childs[i]);
+  }
+}
+
 export function show(node: HTMLElement | SVGElement): void {
   node.style.display = '';
 }

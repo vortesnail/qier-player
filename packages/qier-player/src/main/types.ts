@@ -1,5 +1,6 @@
 import { IControllerEle } from './modules/controller';
 import { ISettingItem } from './modules/controller/eles/settings';
+import { IMenuItem } from './modules/menu';
 
 export interface IPosterOptions {
   disabled?: boolean;
@@ -48,4 +49,6 @@ export interface IPlayerOptions {
   progressOptions?: IProgressOptions;
   thumbnail?: IThumbnail;
   settings?: (ISettingItem | string)[];
+  menus?: (IMenuItem | string)[];
+  showDefaultMenu?: boolean;
 }

@@ -48,6 +48,8 @@ window.onload = function () {
       indicator: true,
     },
     // settings: [{ html: '切换', type: 'switch' }, 'mirroring', 'speed'],
+    // menus: ['loop'],
+    // showDefaultMenu: false,
     thumbnail: {
       col: 2,
       row: 2,

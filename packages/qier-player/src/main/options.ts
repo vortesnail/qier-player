@@ -15,6 +15,8 @@ const defaultOptions: Partial<IPlayerOptions> = {
     eles: ['play', 'time', 'spacer', 'volume', 'settings', 'web-fullscreen', 'fullscreen'],
   },
   settings: ['mirroring', 'speed'],
+  menus: ['loop'],
+  showDefaultMenu: true,
   videoProps: {
     crossorigin: 'anonymous',
     preload: 'auto',
