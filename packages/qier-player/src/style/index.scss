@@ -61,6 +61,12 @@
     &_mirroring {
       transform: scaleX(-1);
     }
+
+    // only work on Chorme.
+    // firefox safira prefix not working.
+    &::-webkit-media-controls {
+      display: none;
+    }
   }
 
   &_spacer {
