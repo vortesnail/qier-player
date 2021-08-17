@@ -81,10 +81,6 @@ module.exports = (argv) => {
                 cacheDirectory: true,
               },
             },
-            {
-              loader: 'ts-loader',
-              options: { configFile: path.resolve(curPkgDir, 'tsconfig.json') },
-            },
           ],
         },
         {

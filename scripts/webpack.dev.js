@@ -1,4 +1,5 @@
 const { merge } = require('webpack-merge');
+const chalk = require('chalk');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const argv = require('minimist')(process.argv.slice(2));
@@ -6,6 +7,10 @@ const common = require('./webpack.common');
 const { getPkgDir, getFixturesDir } = require('./paths');
 
 const { target } = argv;
+
+if (!target) {
+  console.error(chalk.red('Error: project not specified'));
+}
 
 module.exports = () => {
   const curPkgDir = getPkgDir(target);

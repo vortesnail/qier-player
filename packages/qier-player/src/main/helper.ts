@@ -71,8 +71,8 @@ export function markingEvent(player: Player): void {
   dis(markThrottle(player, 'volumechange', EVENT.VOLUME_CHANGE));
 
   dis(markThrottle(player, 'resize', EVENT.UPDATE_SIZE, window));
-  if (window.ResizeObserver) {
-    const ro = new ResizeObserver(throttle(() => player.emit(EVENT.UPDATE_SIZE)));
+  if ((window as any).ResizeObserver) {
+    const ro = new (window as any).ResizeObserver(throttle(() => player.emit(EVENT.UPDATE_SIZE)));
     ro.observe(player.el);
     dis({ dispose: () => ro.disconnect() });
   }

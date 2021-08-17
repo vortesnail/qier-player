@@ -1,6 +1,7 @@
 const { merge } = require('webpack-merge');
 const webpack = require('webpack');
 const path = require('path');
+const chalk = require('chalk');
 const argv = require('minimist')(process.argv.slice(2));
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
@@ -12,6 +13,10 @@ const { shouldOpenAnalyzer, ANALYZER_HOST, ANALYZER_PORT } = require('./conf');
 
 const { name } = argv;
 
+if (!name) {
+  console.error(chalk.red('Error: project not specified'));
+}
+
 module.exports = () => {
   const curPkgDir = getPkgDir(name);
 
@@ -21,7 +26,7 @@ module.exports = () => {
     entry: path.resolve(curPkgDir, 'src', 'index.ts'),
     output: {
       filename: 'index.min.js',
-      path: path.resolve(curPkgDir, 'dist'),
+      path: path.resolve(curPkgDir, 'dist', 'umd'),
     },
     plugins: [
       new CleanWebpackPlugin(),

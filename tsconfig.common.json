@@ -2,10 +2,9 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
     "strict": true,
-    "target": "esnext",
-    "module": "esnext",
+    "target": "ES5",
+    "module": "ESNext",
     "declaration": true,
-    "declarationMap": false,
     "noImplicitAny": true,
     "importHelpers": true,
     "moduleResolution": "node",

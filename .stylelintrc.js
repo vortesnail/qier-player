@@ -14,5 +14,5 @@ module.exports = {
     'at-rule-no-unknown': null,
     'no-duplicate-selectors': null,
   },
-  ignoreFiles: ['node_modules/**/*', 'build/**/*', 'dist/**/*'],
+  ignoreFiles: ['/**/node_modules/**/*', '/**/build/**/*', '/**/dist/**/*'],
 };

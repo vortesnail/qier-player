@@ -1,6 +1,33 @@
 {
   "name": "qier-player",
   "version": "2.0.0",
-  "main": "index.js",
+  "description": "Easy to use and powerful html5 player.",
+  "main": "dist/es/index.js",
+  "module": "dist/es/index.js",
+  "types": "dist/es/index.d.ts",
+  "author": "vortesnail <1091331061@qq.com>",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vortesnail/qier-player.git"
+  },
+  "keywords": [
+    "video",
+    "player",
+    "htm5-video",
+    "video-player",
+    "react",
+    "html5-video-player"
+  ],
+  "bugs": {
+    "url": "https://github.com/vortesnail/qier-player/issues"
+  },
+  "homepage": "https://github.com/vortesnail/qier-player",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
   "license": "MIT"
 }
