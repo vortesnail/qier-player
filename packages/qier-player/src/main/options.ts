@@ -25,6 +25,13 @@ const defaultOptions: Partial<IPlayerOptions> = {
   progressOptions: {
     indicator: true,
   },
+  shortcutOptions: {
+    disabled: false,
+    seekStep: 5,
+    volumeStep: 0.1,
+    showToast: true,
+    toastDelay: 500,
+  },
 };
 
 export function processOptions(opts?: IPlayerOptions): Required<IPlayerOptions> {
@@ -46,6 +53,10 @@ export function processOptions(opts?: IPlayerOptions): Required<IPlayerOptions> 
     progressOptions: {
       ...defaultOptions.progressOptions,
       ...opts?.progressOptions,
+    },
+    shortcutOptions: {
+      ...defaultOptions.shortcutOptions,
+      ...opts?.shortcutOptions,
     },
   } as Required<IPlayerOptions>;
 

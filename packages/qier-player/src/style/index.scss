@@ -16,6 +16,7 @@
   height: 100%;
   color: #fff;
   background: #000;
+  outline: none;
   user-select: none;
 
   * {
@@ -36,6 +37,10 @@
 
   &_menu {
     z-index: 40;
+  }
+
+  &_toast {
+    z-index: 50;
   }
 
   &_web_fullscreen {
@@ -776,6 +781,57 @@
             border-bottom-color: var(--theme-color);
           }
         }
+      }
+    }
+  }
+
+  &_toast {
+    position: absolute;
+    padding: 6px 12px;
+    font-size: 16px;
+    white-space: nowrap;
+    background: rgba(21, 21, 21, 0.8);
+    border-radius: 1px;
+
+    $pad-size: 11px;
+
+    &_center {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    &_left_top,
+    &_right_top {
+      top: $pad-size;
+    }
+
+    &_left_top,
+    &_left_bottom {
+      left: $pad-size;
+    }
+
+    &_right_top,
+    &_right_bottom {
+      right: $pad-size;
+    }
+
+    &_left_bottom,
+    &_right_bottom {
+      bottom: 60px;
+    }
+
+    &_icon {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      fill: #fff;
+
+      & > span {
+        display: inline-block;
+        min-width: 46px;
+        padding-left: 4px;
+        text-align: right;
       }
     }
   }

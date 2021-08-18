@@ -37,6 +37,14 @@ export interface IThumbnail {
   images?: string[];
 }
 
+export interface IShortcut {
+  disabled?: boolean;
+  seekStep?: number;
+  volumeStep?: number;
+  showToast?: boolean;
+  toastDelay?: number;
+}
+
 export interface IPlayerOptions {
   container?: HTMLElement | string;
   video?: HTMLVideoElement;
@@ -51,4 +59,5 @@ export interface IPlayerOptions {
   settings?: (ISettingItem | string)[];
   menus?: (IMenuItem | string)[];
   showDefaultMenu?: boolean;
+  shortcutOptions?: IShortcut;
 }

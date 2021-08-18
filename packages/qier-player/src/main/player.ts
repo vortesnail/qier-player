@@ -17,6 +17,8 @@ import { Fullscreen } from './features/fullscreen';
 import { Poster } from './modules/poster';
 import { Loading } from './modules/loading';
 import { IMenuItem, Menu } from './modules/menu';
+import { Toast } from './modules/toast';
+import { Shortcut } from './features/shortcut';
 
 export class Player extends EventEmitter implements Dispose {
   container: HTMLElement | null;
@@ -42,6 +44,10 @@ export class Player extends EventEmitter implements Dispose {
   readonly fullscreen: Fullscreen;
 
   readonly menu: Menu;
+
+  readonly toast: Toast;
+
+  readonly shortcut: Shortcut;
 
   readonly controller: Controller;
 
@@ -75,6 +81,8 @@ export class Player extends EventEmitter implements Dispose {
     this.fullscreen = addDispose(this, new Fullscreen(this));
     this.poster = addDispose(this, new Poster(this.el, this));
     this.loading = addDispose(this, new Loading(this.el, this));
+    this.toast = addDispose(this, new Toast(this.el));
+    this.shortcut = addDispose(this, new Shortcut(this, this.options.shortcutOptions.disabled));
 
     this.settingItems = this.options.settings
       .map((item) => {
@@ -193,6 +201,22 @@ export class Player extends EventEmitter implements Dispose {
 
   seek(seconds: number): void {
     this.video.currentTime = adsorb(seconds, 0, this.duration);
+  }
+
+  incVolume(v = this.options.shortcutOptions.volumeStep): void {
+    this.volume += v!;
+  }
+
+  decVolume(v = this.options.shortcutOptions.volumeStep): void {
+    this.volume -= v!;
+  }
+
+  forward(v = this.options.shortcutOptions.seekStep): void {
+    this.currentTime += v!;
+  }
+
+  rewind(v = this.options.shortcutOptions.seekStep): void {
+    this.currentTime -= v!;
   }
 
   toggle = () => {
