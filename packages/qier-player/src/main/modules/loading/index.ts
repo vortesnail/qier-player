@@ -100,9 +100,11 @@ export class Loading extends DomNode {
 
   show = (): void => {
     show(this.el);
+    this.player.emit(EVENT.LOADING_SHOW);
   };
 
   hide = () => {
     hide(this.el);
+    this.player.emit(EVENT.LOADING_HIDE);
   };
 }

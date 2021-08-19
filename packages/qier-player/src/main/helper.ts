@@ -60,11 +60,17 @@ export function markingEvent(player: Player): void {
 
   dis(mark(player, 'play', EVENT.PLAY));
   dis(mark(player, 'pause', EVENT.PAUSE));
+  dis(mark(player, 'ended', EVENT.ENDED));
   dis(mark(player, 'durationchange', EVENT.DURATION_CHANGE));
   dis(mark(player, 'waiting', EVENT.WAITING));
   dis(mark(player, 'stalled', EVENT.STALLED));
   dis(mark(player, 'canplay', EVENT.CANPLAY));
   dis(mark(player, 'loadedmetadata', EVENT.LOADED_METADATA));
+  dis(mark(player, 'ratechange', EVENT.RATE_CHANGE));
+  dis(mark(player, 'error', EVENT.ERROR));
+  dis(mark(player, 'seeked', EVENT.SEEKED));
+  dis(mark(player, 'enterpictureinpicture', EVENT.ENTER_PIP));
+  dis(mark(player, 'leavepictureinpicture', EVENT.EXIT_PIP));
 
   dis(markThrottle(player, 'timeupdate', EVENT.TIME_UPDATE));
   dis(markThrottle(player, 'progress', EVENT.PROGRESS));
@@ -76,4 +82,12 @@ export function markingEvent(player: Player): void {
     ro.observe(player.el);
     dis({ dispose: () => ro.disconnect() });
   }
+
+  player.on(EVENT.LOADED_METADATA, () => {
+    if (player.video.paused) {
+      player.emit(EVENT.PAUSE);
+    } else {
+      player.emit(EVENT.PLAY);
+    }
+  });
 }

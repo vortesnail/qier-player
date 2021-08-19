@@ -29,8 +29,6 @@ class WebFullscreen extends DomNode implements IControllerEle {
     addDispose(this, player.on(EVENT.WEB_ENTER_FULLSCREEN, this.enter));
     addDispose(this, player.on(EVENT.WEB_EXIT_FULLSCREEN, this.exit));
     addDisposeListener(this, this.el, 'click', player.webFullscreen.toggle);
-    // The full screen button of the web page cannot be displayed when fullscreen is active.
-    // addDispose(this, player.on(EVENT.ENTER_FULLSCREEN, this.hideIcon));
   }
 
   private enter = (): void => {

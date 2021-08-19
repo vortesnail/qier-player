@@ -86,16 +86,16 @@ export class ControllerEle extends DomNode {
     if (!nextEles) return;
 
     const eles: IControllerEle[] = [];
-    let shuldUpdate = false;
+    let shouldUpdate = false;
     nextEles.forEach((ele, i) => {
       ele = this.getControllerEle(ele) as IControllerEle;
       if (!this.controllerEles[i] || this.controllerEles[i].id !== ele.id) {
-        shuldUpdate = true;
+        shouldUpdate = true;
       }
       if (ele) eles.push(ele);
     });
 
-    if (shuldUpdate) {
+    if (shouldUpdate) {
       // Dom diff
       patch(this.controllerEles, eles, this.el, {
         mount: this.initControllerEle,

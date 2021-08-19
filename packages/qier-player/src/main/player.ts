@@ -111,15 +111,16 @@ export class Player extends EventEmitter implements Dispose {
     this.toggleDelayFlag = false;
     this.toggleDelayTimer = null;
     this.videoClickToggle();
+
+    this.emit(EVENT.AFTER_INIT);
   }
 
   mount(container?: IPlayerOptions['container']): void {
     if (container) this.container = getEle(container) || this.container;
     if (!this.container) return;
     this.container.appendChild(this.el);
-    this.emit(EVENT.MOUNTED);
-
     defaultSetting(this);
+    this.emit(EVENT.MOUNTED);
   }
 
   get currentTime(): number {
@@ -301,15 +302,13 @@ export class Player extends EventEmitter implements Dispose {
 
   dispose(): void {
     if (!this.el) return;
+    this.emit(EVENT.BEFORE_DISPOSE);
     dispose(this);
     this.removeAllListeners();
     removeEle(this.el);
     this.el = null!;
     this.container = null;
     this.clearToggleDelay();
+    this.emit(EVENT.AFTER_DISPOSE);
   }
-
-  static I18n = I18n;
-
-  static Icon = Icon;
 }
