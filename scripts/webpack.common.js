@@ -69,6 +69,11 @@ module.exports = (argv) => {
         '@Src': path.resolve(curPkgDir, 'src'),
       },
     },
+    externals: {
+      react: 'React',
+      vue: 'Vue',
+      'qier-player': 'QierPlayer',
+    },
     module: {
       rules: [
         {

@@ -6,7 +6,9 @@
   ],
   "scripts": {
     "dev:qier-player": "cross-env NODE_ENV=development node scripts/server --target=qier-player",
+    "dev:qier-player-for-react": "cross-env NODE_ENV=development node scripts/server --target=qier-player-for-react",
     "build:qier-player": "cross-env NODE_ENV=production node scripts/build.js --name=qier-player",
+    "build:qier-player-for-react": "cross-env NODE_ENV=production node scripts/build.js --name=qier-player-for-react",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "lint": "npm run lint-eslint && npm run lint-stylelint",
     "lint-eslint": "eslint -c .eslintrc.js --ext .ts,.tsx,.js packages",
