@@ -1,8 +1,8 @@
 <div align="center">
   <a href="https://github.com/vortesnail/qier-player">
-    <img src="website/static/img/logo1.svg" height="200" width="200"/>
+    <img src="website/static/img/logo.svg" height="140" width="140"/>
   </a>
-  <h2>qier-player</h2>
+  <h4>qier-player</h4>
   <br>
 	<a href="https://www.npmjs.com/package/qier-player">
 		<img src="https://img.shields.io/npm/v/qier-player?style=flat-square&logo=npm">
@@ -29,7 +29,7 @@
 ## Screenshot
 
 <div align="center">
-  <img src="./website/static/img/screenshot.png" style="width:520px;box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+  <img src="./website/static/img/screenshot.png" width="520">
 </div>
 
 ## Quick Start
