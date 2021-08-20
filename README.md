@@ -9,6 +9,7 @@
   <p align="center" style="font-size: 0.5em">A lightweight and sophisticated React-based H5 video player</p>
 </h1>
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/25b0f4275a5448e68dd4e04efa3cfa92)](https://app.codacy.com/gh/vortesnail/qier-player?utm_source=github.com&utm_medium=referral&utm_content=vortesnail/qier-player&utm_campaign=Badge_Grade_Settings)
 [![GitHub](https://img.shields.io/github/license/vortesnail/qier-player)](https://github.com/vortesnail/qier-player/blob/master/LICENSE) [![Travis (.org)](https://img.shields.io/travis/vortesnail/qier-player)]() [![npm package](https://img.shields.io/npm/v/qier-player)](https://www.npmjs.com/package/qier-player) [![npm bundle size (version)](https://img.shields.io/bundlephobia/minzip/qier-player/1.2.8)](https://www.npmjs.com/package/qier-player) [![GitHub stars](https://img.shields.io/github/stars/vortesnail/qier-player)](https://github.com/vortesnail/qier-player/stargazers)
 
 [简体中文](https://github.com/vortesnail/qier-player/blob/master/README-zh-Hans.md) &#124; English
