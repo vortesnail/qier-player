@@ -16,41 +16,41 @@
 </div>
 
 <div align="center">
-   <a href="https://github.com/vortesnail/qier-player/blob/master/README-zh-Cn.md">
-    简体中文
+   <a href="https://github.com/vortesnail/qier-player/blob/master/README.md">
+    English
   </a>
-  &#124; English
+  &#124; 简体中文
 </div>
 
-## Introduction
+## 介绍
 
-`qier-player` is a simple and easy-to-use h5 video player with highly customizable UI and rich features.
+`qier-player` 简单易用的 h5 视频播放器，UI 高度可定制化且功能丰富。
 
-## Screenshot
+## 截图
 
 <div align="center">
   <img src="./website/static/img/screenshot.png" style="width:520px;box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
 </div>
 
-## Quick Start
+## 快速开始
 
-### Install
+### 安装
 
-npm package install:
+npm 包安装:
 
 ```bash
 npm install --save qier-player
-# or
+# 或
 yarn add qier-player
 ```
 
-Of course you can also use CDN service:
+当然你也可以使用 CDN 服务：
 
 ```html
 <script src="https://unpkg.com/qier-player@latest/dist/umd/index.min.js"></script>
 ```
 
-### Use
+### 使用
 
 ```js
 import Player from 'qier-player';
@@ -61,7 +61,7 @@ const player = new Player({
 player.mount('#app');
 ```
 
-## Ecosystem
+## 生态
 
 | Name | version | gzip size |
 | --- | --- | --- |
