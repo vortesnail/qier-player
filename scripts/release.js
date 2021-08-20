@@ -53,9 +53,10 @@ async function release() {
   info('\nNow you might want to push the code to the github remote repository ^_^');
   run('git add -A');
   run(`git commit -m v${version}`);
-  run(`git tag -a v${version} -m`);
+  run(`git tag v${version}`);
   run(`git push origin refs/tags/v${version}`);
   run('git push');
+  run(`git tag -d v${version}`);
 
   success('\nCongratulation! Release success.\n');
 }
