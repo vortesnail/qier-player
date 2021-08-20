@@ -1,7 +1,6 @@
 const { merge } = require('webpack-merge');
 const webpack = require('webpack');
 const path = require('path');
-const chalk = require('chalk');
 const argv = require('minimist')(process.argv.slice(2));
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
@@ -10,11 +9,12 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const common = require('./webpack.common');
 const { getPkgDir } = require('./paths');
 const { shouldOpenAnalyzer, ANALYZER_HOST, ANALYZER_PORT } = require('./conf');
+const { error } = require('./helper');
 
 const { name } = argv;
 
 if (!name) {
-  console.error(chalk.red('Error: project not specified'));
+  error('Error: project not specified');
 }
 
 module.exports = () => {

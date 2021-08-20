@@ -1,17 +1,12 @@
-const execa = require('execa');
-const chalk = require('chalk');
 const argv = require('minimist')(process.argv.slice(2));
 const { getPkgDir } = require('./paths');
+const { run, error } = require('./helper');
 
 const { name } = argv;
 
-function run(script, opts) {
-  return execa.commandSync(script, { stdio: 'inherit', ...opts }).stdout;
-}
-
 function build(target) {
   if (!target) {
-    console.error(chalk.red('Error: project not specified, maybe you can try like this: --name=qier-player'));
+    error('Error: project not specified, maybe you can try like this: --name=qier-player');
     return;
   }
   const pkgDir = getPkgDir(target);

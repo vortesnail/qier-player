@@ -6,8 +6,6 @@ import { setVideoAttrs, setCssVariables, registerNamedMap, markingEvent } from '
 import { Controller, IControllerEle } from './modules/controller';
 import { CLASS_PREFIX, EVENT, TIME } from './constants';
 import { adsorb } from './utils/freUse';
-import { I18n } from './features/i18n';
-import { Icon } from './features/icons';
 import { addDispose, dispose, Dispose } from './utils/dispose';
 import { ISettingItem } from './modules/controller/eles/settings';
 import { isString } from './utils/is';

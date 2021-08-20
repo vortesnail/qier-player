@@ -1,4 +1,4 @@
-import { isString, isBool, isHTMLElement } from './is';
+import { isString, isHTMLElement } from './is';
 import { CLASS_PREFIX } from '../constants';
 import { Dispose } from './dispose';
 

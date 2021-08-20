@@ -1,8 +1,6 @@
-// eslint-disable-next-line import/no-unresolved
+/* eslint-disable import/no-unresolved */
 import React, { useEffect, useRef, memo } from 'react';
 import { Player as P, IPlayerOptions } from 'qier-player';
-
-console.log(P);
 
 export type PlayerProps = {
   options?: IPlayerOptions;
