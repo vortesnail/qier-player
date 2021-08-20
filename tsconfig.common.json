@@ -6,7 +6,6 @@
     "module": "ESNext",
     "declaration": true,
     "noImplicitAny": true,
-    "importHelpers": true,
     "moduleResolution": "node",
     "sourceMap": true,
     "experimentalDecorators": true,

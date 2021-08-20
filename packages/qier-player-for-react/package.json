@@ -1,6 +1,6 @@
 {
   "name": "@qier-player/react",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Easy to use and powerful html5 player for react.",
   "main": "dist/es/index.js",
   "module": "dist/es/index.js",
@@ -34,7 +34,7 @@
   },
   "umdDefault": true,
   "peerDependencies": {
-    "qier-player": "2.0.0"
+    "qier-player": "2.0.1"
   },
   "devDependencies": {
     "@types/react": "^17.0.19"

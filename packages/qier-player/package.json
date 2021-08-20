@@ -1,6 +1,6 @@
 {
   "name": "qier-player",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Easy to use and powerful html5 player.",
   "main": "dist/es/index.js",
   "module": "dist/es/index.js",
