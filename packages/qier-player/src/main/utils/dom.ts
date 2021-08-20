@@ -167,8 +167,7 @@ export class DomListener implements Dispose {
 
 export function getElementSize(dom: HTMLElement): Pick<DOMRect, 'width' | 'height'> {
   const clone = dom.cloneNode(true) as HTMLElement;
-  clone.style.position = 'absolute';
-  clone.style.opacity = '0';
+  clone.style.cssText += ';position:absolute;opacity:0';
   clone.removeAttribute('hidden');
 
   const parent = dom.parentNode || document.body;

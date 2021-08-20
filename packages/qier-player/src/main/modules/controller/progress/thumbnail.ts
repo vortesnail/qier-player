@@ -68,8 +68,7 @@ export class Thumbnail extends DomNode {
     if (!this.preImgEl) {
       this.preImgEl = this.el.appendChild(createEle('div.progress_thumb_img'));
     }
-    this.preImgEl.style.width = `${this.opts.width}px`;
-    this.preImgEl.style.height = `${this.opts.height}px`;
+    this.preImgEl.style.cssText += `;width:${this.opts.width}px;height:${this.opts.height}px`;
     this.onePreImgNums = this.opts.row * this.opts.col;
   }
 
@@ -79,8 +78,7 @@ export class Thumbnail extends DomNode {
     if (this.preImgEl) {
       const thumb = this.getCurrentThumb(seconds);
       if (thumb) {
-        this.preImgEl.style.backgroundImage = `url(${thumb.url})`;
-        this.preImgEl.style.backgroundPosition = `-${thumb.x}px -${thumb.y}px`;
+        this.preImgEl.style.cssText += `;background-image:url(${thumb.url});background-position:-${thumb.x}px -${thumb.y}px`;
       }
     } else {
       this.rect.update();
