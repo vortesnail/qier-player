@@ -1,10 +1,10 @@
 @import './mixins';
 
 .#{$class-prefix} {
-  --theme-color: #ff6f00;
+  --theme-color: #0abbed;
   --poster-bg: transparent;
   --spinner-bg: #fff;
-  --progress-played-bg: #ff6f00;
+  --progress-played-bg: #0abbed;
   --progress-buff-bg: rgba(255, 255, 255, 0.5);
 
   position: relative;

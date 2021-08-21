@@ -30,7 +30,7 @@ window.onload = function () {
     // src: 'http://upload.wikimedia.org/wikipedia/commons/transcoded/c/c0/Big_Buck_Bunny_4K.webm/Big_Buck_Bunny_4K.webm.480p.vp9.webm',
     // src: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4',
     videoProps: {},
-    themeColor: '#1890ff',
+    // themeColor: '#1890ff',
     posterOptions: {
       disabled: false,
       url: 'https://img1.baidu.com/it/u=202515423,1882536880&fm=26&fmt=auto&gp=0.jpg',
@@ -43,7 +43,7 @@ window.onload = function () {
       // type: 'wave',
     },
     progressOptions: {
-      playedBg: '#1890ff',
+      // playedBg: '#1890ff',
       // buffBg: '#000',
       indicator: true,
     },
