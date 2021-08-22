@@ -6,14 +6,20 @@ module.exports = {
   title: 'Qier Player',
   tagline: 'A simple and easy-to-use h5 video player with highly customizable UI and rich features.',
   url: 'https://vortesnail.github.io',
+  favicon: 'img/favicon.ico',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
   organizationName: 'vortesnail',
   projectName: 'qier-player',
   themeConfig: {
+    hideableSidebar: false,
+    colorMode: {
+      defaultMode: 'light',
+      respectPrefersColorScheme: true,
+    },
     navbar: {
+      hideOnScroll: true,
       title: 'Qier Player',
       logo: {
         alt: 'Qier Player Logo',
@@ -28,13 +34,17 @@ module.exports = {
         },
         { to: '/blog', label: 'Blog', position: 'right' },
         {
-          href: 'https://github.com/facebook/docusaurus',
-          label: 'GitHub',
+          type: 'localeDropdown',
           position: 'right',
         },
         {
-          href: 'https://github.com/vortesnail/qier-player/issues/',
-          label: 'Feedback',
+          href: 'https://github.com/vortesnail/qier-player',
+          position: 'right',
+          className: 'header-github-link',
+          'aria-label': 'GitHub repository',
+        },
+        {
+          type: 'search',
           position: 'right',
         },
       ],

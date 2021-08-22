@@ -33,6 +33,7 @@ module.exports = {
         ts: 'never',
         tsx: 'never',
         js: 'never',
+        jsx: 'never',
       },
     ],
     'import/no-dynamic-require': OFF,

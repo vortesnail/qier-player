@@ -1,3 +1,5 @@
+## [2.0.2](https://github.com/vortesnail/qier-player/compare/v2.0.1...v2.0.2) (2021-08-22)
+
 ## [2.0.1](https://github.com/vortesnail/qier-player/compare/v2.0.0...v2.0.1) (2021-08-20)
 
 # 2.0.0 (2021-08-20)

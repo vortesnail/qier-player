@@ -1,0 +1,18 @@
+.quickStart {
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.tagline {
+  margin: 10px;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 36px;
+}

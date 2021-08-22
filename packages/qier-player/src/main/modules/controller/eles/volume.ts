@@ -79,7 +79,7 @@ class Volume extends DomNode implements IControllerEle {
   };
 
   private onDragging = (ev: PointerEvent) => {
-    const y = this.rect.height - (ev.pageY - this.rect.y);
+    const y = this.rect.height - (ev.y - this.rect.y);
     const v = adsorb(y / this.rect.height);
     this.player.volume = v;
   };

@@ -5,7 +5,8 @@ import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './index.module.css';
-import HomepageFeatures from '../components/HomepageFeatures';
+import PlayerDisplay from './components/PlayerDisplay';
+import QuickStart from './components/QuickStart';
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
@@ -29,7 +30,8 @@ export default function Home() {
     <Layout title={'Features rich h5 player'} description='Description will go into a meta tag in <head />'>
       <HomepageHeader />
       <main>
-        <HomepageFeatures />
+        <PlayerDisplay />
+        <QuickStart />
       </main>
     </Layout>
   );
