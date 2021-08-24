@@ -55,7 +55,7 @@ module.exports = {
     'no-unused-expressions': OFF,
     'no-plusplus': OFF,
     'no-console': WARN,
-    'jsx-quotes': [ERROR, 'prefer-single'],
+    'jsx-quotes': [ERROR, 'prefer-double'],
     'global-require': OFF,
     'no-use-before-define': OFF,
     'no-restricted-syntax': OFF,

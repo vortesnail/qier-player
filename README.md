@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://github.com/vortesnail/qier-player">
-    <img src="website/static/img/logo.svg" height="140" width="140"/>
+    <img src="website/public/img/logo.svg" height="140" width="140"/>
   </a>
   <h4>qier-player</h4>
   <br>
@@ -8,10 +8,15 @@
 		<img src="https://img.shields.io/npm/v/qier-player?style=flat-square&logo=npm">
 	</a>
 	<a href="https://unpkg.com/qier-player@latest/dist/umd/index.min.js">
-		<img src="https://img.shields.io/bundlephobia/minzip/qier-player?label=gzip%20size&style=flat-square">
+    <img
+      src="http://img.badgesize.io/https://unpkg.com/qier-player@latest/dist/umd/index.min.js?compression=gzip&style=flat-square"
+      alt="Gzip Size">
 	</a>
 	<a href="https://app.codacy.com/project/badge/Grade/042def878d8f49039cd4cde757fa1e5c">
 		<img src="https://img.shields.io/codacy/grade/042def878d8f49039cd4cde757fa1e5c?logo=codacy&style=flat-square">
+	</a>
+  	<a href="https://github.com/umijs/dumi">
+		<img src="https://img.shields.io/badge/docs%20by-dumi-blue?logo=dumi&style=flat-square">
 	</a>
 </div>
 
@@ -29,7 +34,7 @@
 ## Screenshot
 
 <div align="center">
-  <img src="./website/static/img/screenshot.png" width="520">
+  <img src="./website/public/img/screenshot.png" width="520">
 </div>
 
 ## Quick Start
