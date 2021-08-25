@@ -10,7 +10,7 @@ nav:
 
 `qier-player` 是一个支持 UI 高度定制化、响应式布局且功能丰富的现代 web 播放器。本项目由 Typescript 编写，具备良好的类型提示；在未来会逐步开发更多特性，比如弹幕作为插件接入，兼容移动端等，如果你对未来的开发计划有兴趣了解，可以点击[未来计划](/zh-CN/doc#未来计划)进行查看。
 
-<img src="/img/screenshot-shadow.png" />
+<img src="/qier-player/img/screenshot-shadow.png" />
 
 <Alert type="info">
   qier-player 的名字由来是一个在这个世界上很美好的女孩的名字中带有“琪”字，亲昵的称呼“琪儿”。

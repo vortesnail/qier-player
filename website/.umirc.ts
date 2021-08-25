@@ -1,13 +1,15 @@
 import { defineConfig } from 'dumi';
 import path from 'path';
 
+const prefix = '/qier-player';
+
 export default defineConfig({
   title: 'Qier Player',
   mode: 'site',
-  logo: '/img/logo.svg',
-  favicon: '/img/favicon.ico',
-  base: '/qier-player/',
-  publicPath: '/qier-player/',
+  logo: prefix + '/img/logo.svg',
+  favicon: prefix + '/img/favicon.ico',
+  base: prefix,
+  publicPath: prefix + '/',
   metas: [
     {
       name: 'keywords',
@@ -30,8 +32,8 @@ export default defineConfig({
       color: #454d64 !important;
       border: 1px solid #d9d9d9;
       border-radius: 4px;
-      padding-top: 0 !important;
-      padding-bottom: 0 !important;
+      padding-top: 1px !important;
+      padding-bottom: 1px !important;
  }`,
     `[data-prefers-color=dark] .markdown *:not(pre) code {
       border-color: #434343;

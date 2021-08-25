@@ -10,7 +10,7 @@ nav:
 
 `qier-player` is a modern web player that supports highly customized UI, responsive layout and rich features. This project is written by Typescript and has good type hints; more features will be gradually developed in the future, such as barrage as a plug-in, compatible with mobile terminals, etc. If you are interested in understanding the future development plan, you can click [Future plan](/doc#future-plan) to view.
 
-<img src="/img/screenshot-shadow.png" />
+<img src="/qier-player/img/screenshot-shadow.png" />
 
 <Alert type="info">
   The origin of the name of qier-player is a very beautiful girl in this world with "qi" in the name, which is called "qier".

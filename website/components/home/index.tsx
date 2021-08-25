@@ -7,6 +7,8 @@ import { Trans } from './trans';
 import { featureItems } from './feature';
 import Code from './Code';
 
+export const prefix = 'qier-player';
+
 const installCode = `npm i qier-player --save
 #or
 yarn add qier-player`;
@@ -90,7 +92,7 @@ const Home: any = () => {
             </div>
           </div>
           <div className="logo-auto">
-            <img src="/img/logo.svg" alt="" />
+            <img src={`/${prefix}/img/logo.svg`} alt="" />
           </div>
         </div>
       </div>
@@ -101,7 +103,7 @@ const Home: any = () => {
           {featureItems(locale as any).map((item) => (
             <div className="item-wrapper" key={item.id}>
               <div className="url">
-                <img src={item.url} alt="" />
+                <img src={`/${prefix}${item.url}`} alt="" />
               </div>
               <p className="title">{item.title}</p>
               <p className="des">{item.des}</p>
