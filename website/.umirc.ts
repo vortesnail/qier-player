@@ -6,6 +6,8 @@ export default defineConfig({
   mode: 'site',
   logo: '/img/logo.svg',
   favicon: '/img/favicon.ico',
+  base: '/qier-player/',
+  publicPath: '/qier-player/',
   metas: [
     {
       name: 'keywords',
