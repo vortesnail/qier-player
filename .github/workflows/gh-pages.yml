@@ -14,10 +14,8 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Enter website dir
-        run: cd website
-
       - name: Build
+        working-directory: ./website
         run: yarn && yarn build
 
       - name: Deploy
