@@ -15,7 +15,7 @@ jobs:
           persist-credentials: false
 
       - name: Enter website dir
-        run: cd website
+        run: ls && cd /website
 
       - name: Build
         run: yarn && yarn build
