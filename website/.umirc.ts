@@ -21,7 +21,21 @@ export default defineConfig({
     '@c-primary': '#0073a1',
     '@c-primary-dark': '#0095c7',
   },
-  styles: [`.__dumi-default-dark-auto { display: none !important }`],
+  styles: [
+    `.__dumi-default-dark-auto { display: none !important }`,
+    `code {
+      background: #f6f7f9;
+      color: #454d64 !important;
+      border: 1px solid #d9d9d9;
+      border-radius: 4px;
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+ }`,
+    `[data-prefers-color=dark] .markdown *:not(pre) code {
+      border-color: #434343;
+      color: #ff7875 !important;
+    }`,
+  ],
   navs: {
     'en-US': [
       null,
@@ -43,11 +57,11 @@ export default defineConfig({
   },
   scripts: [
     {
-      src: 'https://cdn.bootcdn.net/ajax/libs/react/17.0.2/umd/react.production.min.js',
+      src: 'https://unpkg.com/react@17.0.2/umd/react.production.min.js',
       changeOrigin: true,
     },
     {
-      src: 'https://cdn.bootcdn.net/ajax/libs/react-dom/17.0.2/umd/react-dom.production.min.js',
+      src: 'https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js',
       changeOrigin: true,
     },
   ],
