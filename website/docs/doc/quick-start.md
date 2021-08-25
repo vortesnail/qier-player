@@ -21,7 +21,7 @@ npm i qier-player --save
 import Player from 'qier-player';
 
 const player = new Player({
-  src: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
+  src: 'https://vortesnail.github.io/qier-player-demo/static/media/video480p.d116ba09.mp4',
 });
 
 // player.mount('#root');
@@ -44,7 +44,7 @@ After the `mount` method is executed, the internal members can be accessed throu
 import Player from 'qier-player';
 
 const player = new Player({
-  src: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
+  src: 'https://vortesnail.github.io/qier-player-demo/static/media/video480p.d116ba09.mp4',
 });
 
 player.mount(document.body);

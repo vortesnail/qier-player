@@ -29,21 +29,18 @@ const Home: any = () => {
   useEffect(() => {
     if (ref && ref.current) {
       const player = new Player({
-        src: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
+        src: 'https://vortesnail.github.io/qier-player-demo/static/media/video480p.d116ba09.mp4',
         thumbnail: {
           col: 2,
           row: 2,
           startSecond: 0,
-          gapSecond: 2,
+          gapSecond: 1,
           images: [
-            'thumbnails/M1.jpg',
-            'thumbnails/M2.jpg',
-            'thumbnails/M3.jpg',
-            'thumbnails/M4.jpg',
-            'thumbnails/M5.jpg',
-            'thumbnails/M6.jpg',
-            'thumbnails/M7.jpg',
-            'thumbnails/M8.jpg',
+            'thumbnails/T1.jpg',
+            'thumbnails/T2.jpg',
+            'thumbnails/T3.jpg',
+            'thumbnails/T4.jpg',
+            'thumbnails/T5.jpg',
           ],
         },
       });
