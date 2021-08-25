@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
+    />
+    <meta
+      name="keywords"
+      content="qier-player, player, h5 player, react, vue"
+    />
+    <meta
+      name="description"
+      content="A simple and easy-to-use h5 video player with highly customizable UI and rich features."
+    />
+    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
+    <style>
+      .__dumi-default-dark-auto {
+        display: none !important;
+      }
+    </style>
+    <style>
+      code {
+        background: #f6f7f9;
+        color: #454d64 !important;
+        border: 1px solid #d9d9d9;
+        border-radius: 4px;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+      }
+    </style>
+    <style>
+      [data-prefers-color="dark"] .markdown *:not(pre) code {
+        border-color: #434343;
+        color: #ff7875 !important;
+      }
+    </style>
+    <link rel="stylesheet" href="/umi.css" />
+    <script>
+      window.routerBase = "/";
+    </script>
+    <script>
+      //! umi version: 3.5.17
+    </script>
+    <script>
+      !(function () {
+        var e = localStorage.getItem("dumi:prefers-color"),
+          t = window.matchMedia("(prefers-color-scheme: dark)").matches,
+          r = ["light", "dark", "auto"];
+        document.documentElement.setAttribute(
+          "data-prefers-color",
+          e === r[2] ? (t ? r[1] : r[0]) : r.indexOf(e) > -1 ? e : r[0]
+        );
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script
+      src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"
+      changeorigin="true"
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"
+      changeorigin="true"
+    ></script>
+    <script src="/umi.js"></script>
+  </body>
+</html>
