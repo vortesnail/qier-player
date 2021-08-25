@@ -34,7 +34,7 @@
 ## Screenshot
 
 <div align="center">
-  <img src="./website/public/img/screenshot.png" width="520">
+  <img src="./website/public/img/screenshot-shadow.png" style="max-width:620px;">
 </div>
 
 ## Quick Start

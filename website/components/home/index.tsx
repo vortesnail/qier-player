@@ -61,7 +61,7 @@ const Home: any = () => {
             <div className={`btn quick-start ${color}`}>
               <a
                 className={color}
-                href={`${locale === 'en-US' ? '' : '/zh-CN/'}doc`}
+                href={`${locale === 'en-US' ? '' : '/zh-CN/'}doc/quick-start`}
               >
                 <span>{Trans[localStr].start}</span>
               </a>
@@ -70,6 +70,7 @@ const Home: any = () => {
               <a
                 className={color}
                 href="https://github.com/vortesnail/qier-player"
+                target="_blank"
               >
                 <svg
                   className="icon"
@@ -121,7 +122,7 @@ const Home: any = () => {
         <Code code={useCode} />
       </div>
       <footer className="footer">
-        <p className="copy-right">Copyright © 2021 vortesnail</p>
+        <p className="copy-right">Copyright © 2021 vortesnail ❤️</p>
       </footer>
     </section>
   );

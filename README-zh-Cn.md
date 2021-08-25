@@ -34,7 +34,7 @@
 ## 截图
 
 <div align="center">
-  <img src="./website/public/img/screenshot.png" style="width:520px;box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+  <img src="./website/public/img/screenshot-shadow.png" style="max-width:620px;">
 </div>
 
 ## 快速开始

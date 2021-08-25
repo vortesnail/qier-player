@@ -17,6 +17,11 @@ export default defineConfig({
         'A simple and easy-to-use h5 video player with highly customizable UI and rich features.',
     },
   ],
+  theme: {
+    '@c-primary': '#0073a1',
+    '@c-primary-dark': '#0095c7',
+  },
+  styles: [`.__dumi-default-dark-auto { display: none !important }`],
   navs: {
     'en-US': [
       null,
