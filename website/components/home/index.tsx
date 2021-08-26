@@ -22,6 +22,7 @@ const player = new Player({
 player.mount(document.body);`;
 
 const Home: any = () => {
+  document.title = 'Qier Player | A features rich web video player';
   const { locale } = useContext(context);
   const [color] = usePrefersColor();
   // const locale = 'en-US';
