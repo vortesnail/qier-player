@@ -62,7 +62,9 @@ const Home: any = () => {
             <div className={`btn quick-start ${color}`}>
               <a
                 className={color}
-                href={`${locale === 'en-US' ? '' : '/zh-CN/'}doc/quick-start`}
+                href={`/${prefix}${
+                  locale === 'en-US' ? '/' : '/zh-CN/'
+                }doc/quick-start`}
               >
                 <span>{Trans[localStr].start}</span>
               </a>
