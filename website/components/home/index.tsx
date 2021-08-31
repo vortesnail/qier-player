@@ -1,8 +1,7 @@
 import React, { useContext, useRef, useEffect } from 'react';
 import Player from 'qier-player';
 import './style.scss';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { usePrefersColor, context } from '@umijs/preset-dumi/lib/theme';
+import { usePrefersColor, context } from 'dumi/theme';
 import { Trans } from './trans';
 import { featureItems } from './feature';
 import Code from './Code';
