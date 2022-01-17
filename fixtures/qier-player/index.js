@@ -23,6 +23,27 @@ window.onload = function () {
   // const registerIcon = QierPlayer.Player.Icon.register;
   // registerIcon('enterFullscreen', createIcon(full));
 
+  const pip = {
+    html: '画中画',
+    init() {
+      // 初始化是判断浏览器是否不支持画中画，不支持则隐藏该菜单项
+      this.hidden = !document.pictureInPictureEnabled;
+    },
+    show(player, item) {
+      item.checked = document.pictureInPictureElement === player.video;
+    },
+    click(player, menuItem) {
+      if (player.video.readyState < 3) return; // 视频还没加载成功
+      if (document.pictureInPictureElement !== player.video) {
+        player.video.requestPictureInPicture();
+      } else {
+        document.exitPictureInPicture();
+        menuItem.checked = false;
+      }
+      this.show(player, menuItem);
+    },
+  };
+
   const player = new QierPlayer.Player({
     // container: rootEle,
     src: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
@@ -48,8 +69,12 @@ window.onload = function () {
       indicator: true,
     },
     // settings: [{ html: '切换', type: 'switch' }, 'mirroring', 'speed'],
-    // menus: ['loop'],
+    menus: ['loop', pip],
     // showDefaultMenu: false,
+    shortcutOptions: {
+      disabled: false,
+      toastDelay: 500,
+    },
     thumbnail: {
       col: 2,
       row: 2,
@@ -69,6 +94,15 @@ window.onload = function () {
   });
 
   player.mount(rootEle);
+
+  player.registerMenuItem(pip, 'pip');
+  const pipa = player.getMenuItem('pip');
+
+  if (pipa) {
+    pipa.disabled = true;
+    pipa.html = '画中画（已被禁用）';
+  }
+  console.log(player);
   // player.volume = 0.5;
   // player.play();
 };

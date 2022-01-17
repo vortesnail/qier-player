@@ -76,7 +76,7 @@ export class Menu extends DomNode {
         if (item.html) el.innerHTML = item.html;
         if (item.disabled) addClass(el, 'menu_item_disabled');
         if (item.checked) addClass(el, 'menu_item_checked');
-        if (item.click) {
+        if (item.click && !item.disabled) {
           el.addEventListener('click', () => item.click?.(this.player, item));
         }
         return el;

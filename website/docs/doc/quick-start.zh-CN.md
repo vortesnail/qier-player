@@ -79,7 +79,7 @@ setTimeout(() => {
 | --------------------------------- | ---------------------------------- |
 | emit(evt: string, ...args: any[]) | 派发事件                           |
 | on(evt: string, fn?: Function)    | 监听事件                           |
-| once(evt: string, fn?: Function)  | 监听事件，毁掉函数仅调用一次即注销 |
+| once(evt: string, fn?: Function)  | 监听事件，回调函数仅调用一次即注销 |
 | off(evt: string, fn?: Function)   | 注销事件监听                       |
 | removeAllListeners(evt?: string)  | 注销所有事件监听                   |
 

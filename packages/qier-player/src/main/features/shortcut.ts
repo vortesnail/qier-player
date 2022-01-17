@@ -101,7 +101,7 @@ export class Shortcut implements Dispose {
 
     let handled = false;
     const handler = this.map[keyboardMap[code]] || this.map[code as number];
-    if (handler!) {
+    if (handler) {
       handler(this.player);
       handled = true;
       this.player.controller.showThenFade();

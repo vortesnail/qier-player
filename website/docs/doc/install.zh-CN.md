@@ -1,7 +1,6 @@
 ---
 title: 安装
 order: 2
-toc: content
 ---
 
 # 安装

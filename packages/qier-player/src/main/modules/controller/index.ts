@@ -11,6 +11,7 @@ export interface IControllerEle extends Partial<Dispose> {
   el: HTMLElement;
   id?: any;
   tip?: string;
+  tooltip?: Tooltip;
   mounted?: boolean;
   init?: (player: Player, tooltip: Tooltip) => void;
   [key: string]: any;
