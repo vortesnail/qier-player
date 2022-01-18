@@ -1,6 +1,6 @@
 ---
-title: Menu
-order: 5
+title: Controller
+order: 6
 ---
 
-# Menu
+# Controller
