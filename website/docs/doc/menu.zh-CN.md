@@ -26,7 +26,7 @@ new Player({
 右键菜单支持自定义菜单项，每一个菜单项的类型如下：
 
 ```typescript
-export interface IMenuItem {
+interface IMenuItem {
   id?: string; // 菜单项的唯一 id
   html?: string; // 菜单项文字
   hidden?: boolean; // 是否可见
@@ -99,11 +99,11 @@ const player = new Player({ ... });
 // 注册
 player.registerMenuItem(pip, 'pip');
 // 获取
-const pip = player.getMenuItem('pip');
+const pipTmp = player.getMenuItem('pip');
 // 修改
-if (pip) {
-  pip.disabled = true;
-  pip.html = '画中画（已被禁用）';
+if (pipTmp) {
+  pipTmp.disabled = true;
+  pipTmp.html = '画中画（已被禁用）';
 }
 ```
 

@@ -44,6 +44,16 @@ window.onload = function () {
     },
   };
 
+  const control = {
+    id: 'control',
+    tip: '控制项',
+    init(player) {
+      const textDom = document.createElement('span');
+      textDom.innerText = '控';
+      this.el.appendChild(textDom);
+    },
+  };
+
   const player = new QierPlayer.Player({
     // container: rootEle,
     src: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
@@ -62,6 +72,10 @@ window.onload = function () {
       disabled: true,
       // spinner: customSpinner,
       // type: 'wave',
+    },
+    controller: {
+      progress: ['progress'],
+      eles: ['play', 'time', 'spacer', 'volume', 'settings', control, 'web-fullscreen', 'fullscreen'],
     },
     progressOptions: {
       // playedBg: '#1890ff',
@@ -105,4 +119,17 @@ window.onload = function () {
   console.log(player);
   // player.volume = 0.5;
   // player.play();
+
+  // player.updateControllerEles(['play', 'spacer', 'settings'], 'eles');
+
+  // 注册
+  player.registerControllerEle(control, 'control');
+  // 获取
+  const controla = player.getControllerEle('control');
+
+  if (controla) {
+    console.log(controla);
+  }
+
+  console.log(player.getControllerEle('play'));
 };

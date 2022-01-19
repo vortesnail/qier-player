@@ -1,5 +1,6 @@
 ---
 title: 视频截图
+order: 1
 group:
   title: 例子
   order: 100

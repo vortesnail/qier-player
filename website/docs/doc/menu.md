@@ -26,7 +26,7 @@ new Player({
 The right-click menu supports custom menu items. The types of each menu item are as follows:
 
 ```typescript
-export interface IMenuItem {
+interface IMenuItem {
   id?: string; // The unique id of the menu item
   html?: string; // Menu item text
   hidden?: boolean; // Is visible

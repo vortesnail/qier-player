@@ -64,8 +64,8 @@ export class ControllerEle extends DomNode {
     }
   };
 
-  private onHideControllerEle = (ele: IControllerEle) => {
-    if (ele.hide) ele.hide();
+  private onHideControllerEle = (ele?: IControllerEle) => {
+    if (ele && ele.hide) ele.hide();
   };
 
   updateTooltipPos() {

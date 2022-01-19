@@ -17,7 +17,7 @@ export function patch(
   container: HTMLElement,
   op: {
     mount?: (element: TElement) => void;
-    unmount?: (element: TElement) => void;
+    unmount?: (element?: TElement) => void;
   } = {},
 ) {
   let oldStartIdx = 0;
