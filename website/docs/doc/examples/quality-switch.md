@@ -3,7 +3,7 @@ title: Quality Switch
 order: 2
 group:
   title: Examples
-  order: 101
+  order: 100
 ---
 
 # Quality Switch

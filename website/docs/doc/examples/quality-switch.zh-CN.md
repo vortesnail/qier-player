@@ -3,7 +3,7 @@ title: 画质切换
 order: 2
 group:
   title: 例子
-  order: 101
+  order: 100
 ---
 
 # 画质切换
