@@ -1,0 +1,38 @@
+{
+  "name": "@qier-player/danmaku",
+  "version": "2.0.2",
+  "description": "Powerful danmaku for qier-player.",
+  "main": "dist/es/index.js",
+  "module": "dist/es/index.js",
+  "types": "dist/es/index.d.ts",
+  "author": "vortesnail <1091331061@qq.com>",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vortesnail/qier-player.git"
+  },
+  "keywords": [
+    "video",
+    "player",
+    "htm5-video",
+    "video-player",
+    "html5-video-player",
+    "danmaku",
+    "comment"
+  ],
+  "bugs": {
+    "url": "https://github.com/vortesnail/qier-player/issues"
+  },
+  "homepage": "https://github.com/vortesnail/qier-player",
+  "license": "MIT",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "umdDefault": true,
+  "peerDependencies": {
+    "qier-player": "2.0.2"
+  }
+}

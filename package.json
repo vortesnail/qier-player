@@ -7,8 +7,10 @@
   "scripts": {
     "dev:qier-player": "cross-env NODE_ENV=development node scripts/server --target=qier-player",
     "dev:qier-player-for-react": "cross-env NODE_ENV=development node scripts/server --target=qier-player-for-react",
+    "dev:qier-player-danmaku": "cross-env NODE_ENV=development node scripts/server --target=qier-player-danmaku",
     "build:qier-player": "cross-env NODE_ENV=production node scripts/build.js --name=qier-player",
     "build:qier-player-for-react": "cross-env NODE_ENV=production node scripts/build.js --name=qier-player-for-react",
+    "build:qier-player-danmaku": "cross-env NODE_ENV=production node scripts/build.js --name=qier-player-danmaku",
     "release": "node ./scripts/release.js",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "lint": "yarn lint-eslint && yarn lint-stylelint",
