@@ -1,7 +1,3 @@
-import { Player, IPlayerOptions } from 'qier-player';
+import './style/index.scss';
 
-export type PlayerProps = {
-  options?: IPlayerOptions;
-  style?: Partial<CSSStyleDeclaration>;
-  className?: string;
-};
+export { Danmaku as default } from './main/danmaku';
