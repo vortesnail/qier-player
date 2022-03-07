@@ -1,17 +1,37 @@
 import { EventEmitter } from './utils/eventmitter';
 import { addDispose, dispose, Dispose } from './utils/dispose';
+import { getEle } from './utils/dom';
+import { DanmakuOptions } from './types';
 
-export interface DanmakuOptions {
-  maxTrack: 4;
-  fontsize?: number;
-}
+const defaultOpts: DanmakuOptions = {
+  tracks: 4,
+  trackHeight: 20 * 1.5,
+  fontSize: 20,
+};
+
+type DanmakuOptionsInit = Partial<DanmakuOptions>;
 
 export class Danmaku extends EventEmitter implements Dispose {
-  el: HTMLElement;
+  el: HTMLElement | null;
 
-  constructor(container: HTMLDivElement | string, private _opts?: DanmakuOptions) {
+  opts: DanmakuOptions;
+
+  constructor(container: HTMLDivElement | string, opts?: DanmakuOptionsInit) {
     super();
-    this.el = document.createElement('div');
+
+    this.opts = { ...defaultOpts, ...opts };
+
+    this.el = getEle(container);
+
+    if (!this.el) throw new Error('The container element you are currently passing in is not an HTML element');
+
+    // pointer-events 避免容器阻碍下层点击
+    this.el.style.pointerEvents = 'none';
+
+    // TODO test
+    const child = document.createElement('div');
+    child.innerHTML = 'Hello i am danma';
+    this.el.appendChild(child);
   }
 
   dispose(): void {
