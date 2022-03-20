@@ -15,4 +15,16 @@ window.onload = function () {
 
   // 弹幕实例
   const danmaku = new QierPlayerDanmaku(danmuWrapper, {});
+
+  // setInterval(() => {
+  //   danmaku.add({
+  //     text: 'i am vortesnail',
+  //     color: '#1890ff',
+  //   });
+  // }, 3000);
+
+  danmaku.add({
+    text: 'i am vortesnail',
+    color: '#1890ff',
+  });
 };
