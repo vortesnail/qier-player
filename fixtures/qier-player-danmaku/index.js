@@ -1,8 +1,9 @@
 window.onload = function () {
   console.log(QierPlayer);
+  const { Player, EVENT } = QierPlayer;
   const rootEle = document.querySelector('#app');
 
-  const player = new QierPlayer.Player({
+  const player = new Player({
     src: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
   });
 
@@ -22,6 +23,14 @@ window.onload = function () {
   //     color: '#1890ff',
   //   });
   // }, 3000);
+
+  player.on(EVENT.PLAY, () => {
+    danmaku.start();
+  });
+
+  player.on(EVENT.PAUSE, () => {
+    danmaku.stop();
+  });
 
   danmaku.add({
     text: 'i am vortesnail',

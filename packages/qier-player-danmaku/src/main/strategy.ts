@@ -4,7 +4,7 @@ import { RawDanmu, RollingDanmu, FixedDanmu, CommanderMapKey } from './types';
 export interface Strategy {
   clear(danmaku: Danmaku): void;
   add(danmaku: Danmaku, danmu: RawDanmu, type: CommanderMapKey): void;
-  render(danmaku: Danmaku): void;
+  // render(danmaku: Danmaku): void;
 }
 
 const strategy: Strategy = {
@@ -31,9 +31,9 @@ const strategy: Strategy = {
       console.log(1);
     }
   },
-  render(danmaku: Danmaku): void {
-    console.log(222);
-  },
+  // render(danmaku: Danmaku): void {
+  //   console.log(222, danmaku);
+  // },
 };
 
 export default strategy;
