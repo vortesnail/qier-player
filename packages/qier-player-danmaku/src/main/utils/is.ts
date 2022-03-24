@@ -1,3 +1,5 @@
+import { RollingDanmu } from '../types';
+
 const { toString } = Object.prototype;
 
 export function isString(o: any): o is string {
@@ -20,4 +22,8 @@ export function isHTMLElement(o: any): o is HTMLElement {
   return typeof HTMLElement === 'object'
     ? o instanceof HTMLElement
     : o && typeof o === 'object' && o.nodeType === 1 && typeof o.nodeName === 'string';
+}
+
+export function isRollingDanmu(o: any): o is RollingDanmu {
+  return Object.prototype.hasOwnProperty.call(o, 'speed') && Object.prototype.hasOwnProperty.call(o, 'offset');
 }

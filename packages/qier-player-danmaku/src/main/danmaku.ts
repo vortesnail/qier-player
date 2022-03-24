@@ -2,6 +2,7 @@ import { EventEmitter } from './utils/eventmitter';
 import { addDispose, dispose, Dispose } from './utils/dispose';
 import { RollingCommander } from './commander';
 import { getEle } from './utils/dom';
+import { requestAnimationFrame, cancelAnimationFrame } from './utils/common';
 import strategy from './strategy';
 import Base from './commander/base';
 import { Commander, DanmakuOptions, RawDanmu, RollingDanmu, CommanderMap, CommanderMapKey } from './types';
@@ -45,6 +46,7 @@ export class Danmaku extends EventEmitter implements Dispose {
 
     const commanderConfig: Commander = {
       trackCnt: this.opts.tracksCnt,
+      trackWidth: this.el.offsetWidth,
       trackHeight: this.opts.trackHeight,
       duration: this.opts.duration,
     };
@@ -71,19 +73,22 @@ export class Danmaku extends EventEmitter implements Dispose {
     this.rAFId = null;
   }
 
-  private traversalManager(handler: (commander: Base<RollingDanmu>) => any) {
+  private eachManager(handler: (commander: Base<RollingDanmu>) => any) {
     if (!this.commanderMap) return;
     Object.keys(this.commanderMap).forEach((key) => handler.call(this, this.commanderMap![key as CommanderMapKey]));
   }
 
   private render() {
     // 遍历每个 commander 执行它们各自的 render 方法
-    this.traversalManager((manager) => manager.render());
+    this.eachManager((manager) => manager.render());
 
     this.rAFId = requestAnimationFrame(this.render.bind(this));
   }
 
   dispose(): void {
-    this.el = null!;
+    if (!this.el) return;
+    this.el = null;
+    dispose(this);
+    this.removeAllListeners();
   }
 }

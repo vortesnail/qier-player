@@ -21,6 +21,8 @@ export interface Danmu {
   text: string;
   color: string;
   size: number;
+  width: number;
+  offset: number;
 }
 
 export interface RollingDanmu extends Danmu {
@@ -32,6 +34,7 @@ export interface FixedDanmu extends Danmu {
 }
 
 export interface Commander {
+  trackWidth: number;
   trackHeight: number;
   duration: number;
   trackCnt: number;

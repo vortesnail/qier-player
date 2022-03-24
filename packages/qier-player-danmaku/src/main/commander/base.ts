@@ -2,7 +2,13 @@ import { EventEmitter } from '../utils/eventmitter';
 import { Danmu, Commander } from '../types';
 import Track from '../track';
 
+interface EachCommanderHandler<T extends Danmu> {
+  (track: Track<T>, index: number, array: Track<T>[]): void;
+}
+
 export default abstract class Base<T extends Danmu> extends EventEmitter {
+  protected trackWidth: number;
+
   protected trackHeight: number;
 
   protected duration: number;
@@ -16,6 +22,7 @@ export default abstract class Base<T extends Danmu> extends EventEmitter {
   constructor(config: Commander) {
     super();
 
+    this.trackWidth = config.trackWidth;
     this.trackHeight = config.trackHeight;
     this.duration = config.duration;
     this.trackCnt = config.trackCnt;
@@ -26,10 +33,22 @@ export default abstract class Base<T extends Danmu> extends EventEmitter {
   }
 
   /**
+   * 遍历所有轨道并回调
+   */
+  each(handler: EachCommanderHandler<T>) {
+    for (let i = 0; i < this.tracks.length; ++i) {
+      handler(this.tracks[i], i, this.tracks);
+    }
+  }
+
+  /**
    * resize
    * @param {Number} [height] 每个轨道高度
    */
-  resize(height?: number) {
+  resize(width?: number, height?: number) {
+    if (width) {
+      this.trackWidth = width;
+    }
     if (height) {
       this.trackHeight = height;
     }
@@ -46,12 +65,12 @@ export default abstract class Base<T extends Danmu> extends EventEmitter {
    * 寻找合适的轨道
    * @return {Number} 合适轨道的下标
    */
-  abstract _findTrack(): number;
+  abstract findTrack(): number;
 
   /**
    * 从等待队列中抽取弹幕并放入弹幕
    */
-  abstract _extractBarrage(): void;
+  abstract extractBarrage(): void;
 
   /**
    * 渲染函数
@@ -59,7 +78,7 @@ export default abstract class Base<T extends Danmu> extends EventEmitter {
   abstract render(): void;
 
   /**
-   * 重置
+   * 重置清空
    */
   abstract reset(): void;
 }

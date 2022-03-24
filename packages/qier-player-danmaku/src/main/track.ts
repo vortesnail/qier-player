@@ -1,4 +1,5 @@
 import { Danmu } from './types';
+import { isRollingDanmu } from './utils/is';
 
 interface TrackForEachHandler<T extends Danmu> {
   (track: T, index: number, array: T[]): void;
@@ -28,6 +29,14 @@ export default class Track<T extends Danmu> {
       return;
     }
     this.danmus.splice(index, 1);
+  }
+
+  updateOffset() {
+    const lastDanmu = this.danmus[this.danmus.length - 1];
+    if (lastDanmu && isRollingDanmu(lastDanmu)) {
+      const { speed } = lastDanmu;
+      this.offset -= speed;
+    }
   }
 
   reset() {

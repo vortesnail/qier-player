@@ -17,7 +17,7 @@ const strategy: Strategy = {
     const { text, color = danmaku.opts.fontColor, size = danmaku.opts.fontSize } = rowDanmu;
     const fontColor = color;
     const fontSize = size * danmaku.opts.zoom;
-    // const trackWidth = danmaku.el!.offsetWidth;
+    const trackWidth = danmaku.el!.offsetWidth;
 
     if (type === 'rolling') {
       const danmu: RollingDanmu = {
@@ -25,6 +25,8 @@ const strategy: Strategy = {
         color: fontColor,
         size: fontSize,
         speed: 0,
+        width: 0,
+        offset: trackWidth,
       };
       danmaku.commanderMap[type].waitingQueue.push(danmu);
     } else {
