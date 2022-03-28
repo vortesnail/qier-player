@@ -11,7 +11,7 @@ window.onload = function () {
 
   // 创建弹幕的容器
   const danmuWrapper = document.createElement('div');
-  danmuWrapper.style.cssText = 'position: absolute; left: 0; top: 0; right: 0; bottom: 0';
+  danmuWrapper.style.cssText = 'position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden;';
   player.el.appendChild(danmuWrapper);
 
   // 弹幕实例
@@ -66,4 +66,11 @@ window.onload = function () {
     text: '你去大西瓜',
     color: '#0f0',
   });
+
+  setTimeout(() => {
+    danmaku.add({
+      text: '我爱你',
+      color: '#0f0',
+    });
+  }, 5000);
 };

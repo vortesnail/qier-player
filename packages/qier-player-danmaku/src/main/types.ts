@@ -22,7 +22,7 @@ export interface Danmu {
   color: string;
   size: number;
   width: number;
-  translateX: number;
+  offset: number;
   static?: boolean; // 静止
 }
 

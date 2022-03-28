@@ -21,8 +21,8 @@ class RollingCommander extends BaseRolling<RollingDanmu> {
       return false;
     }
 
-    const { text, color, size, translateX } = danmu;
-    const danmuDom = createDanmu(text, color, size, translateX);
+    const { text, color, size, offset } = danmu;
+    const danmuDom = createDanmu(text, color, size, offset);
     this.el.appendChild(danmuDom);
     const width = danmuDom.offsetWidth;
 
@@ -39,7 +39,7 @@ class RollingCommander extends BaseRolling<RollingDanmu> {
     }
     // 防止速度过快一闪而过，最大值只能为平均速度的 2 倍
     speed = Math.min(speed, this.defaultSpeed * 2);
-    const normalizedDanmu = { ...danmu, translateX: trackWidth, speed, width };
+    const normalizedDanmu = { ...danmu, offset: trackWidth, speed, width };
     this.objToElm.set(normalizedDanmu, danmuDom);
     this.elmToObj.set(danmuDom, normalizedDanmu);
     track.push(normalizedDanmu);
@@ -94,11 +94,11 @@ class RollingCommander extends BaseRolling<RollingDanmu> {
           return;
         }
         const danmuDom = objToElm.get(danmu)!;
-        const offset = danmu.translateX;
+        const offset = danmu.offset;
         danmuDom.style.transform = `translate(${offset}px, ${trackIdx * trackHeight}px)`;
         // 每一帧后弹幕的偏移量都会减少 speed 大小的距离
-        danmu.translateX -= danmu.speed;
-        if (danmu.translateX < 0 && Math.abs(danmu.translateX) > danmu.width) {
+        danmu.offset -= danmu.speed;
+        if (danmu.offset < 0 && Math.abs(danmu.offset) > danmu.width) {
           shouldRemove = true;
           removeIndex = danmuIdx;
         }
