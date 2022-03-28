@@ -66,5 +66,6 @@ module.exports = {
     'no-param-reassign': OFF,
     'consistent-return': OFF,
     'no-underscore-dangle': OFF,
+    'guard-for-in': OFF,
   },
 };

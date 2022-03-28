@@ -8,7 +8,7 @@ import Base from './commander/base';
 import { Commander, DanmakuOptions, RawDanmu, RollingDanmu, CommanderMap, CommanderMapKey } from './types';
 
 const defaultOpts: DanmakuOptions = {
-  tracksCnt: 4,
+  tracksCnt: 6,
   trackHeight: 20 * 1.5,
   fontSize: 20,
   fontColor: '#fff',

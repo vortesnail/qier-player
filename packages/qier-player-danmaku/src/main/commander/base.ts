@@ -70,7 +70,7 @@ export default abstract class Base<T extends Danmu> extends EventEmitter {
   /**
    * 从等待队列中抽取弹幕并放入弹幕
    */
-  abstract extractBarrage(): void;
+  abstract extractDanmu(): void;
 
   /**
    * 渲染函数

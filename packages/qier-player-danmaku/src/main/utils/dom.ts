@@ -9,6 +9,18 @@ export function getEle(el: HTMLElement | string | undefined | null): HTMLElement
   return null;
 }
 
+export function camel2line(str: string) {
+  return str.replace(/([A-Z])/g, '-$1').toLowerCase();
+}
+
+export function setStyle(el: HTMLElement, style: Partial<CSSStyleDeclaration>) {
+  let cssText = ';';
+  for (const key in style) {
+    cssText += `${camel2line(key)}: ${style[key]};`;
+  }
+  el.style.cssText = cssText;
+}
+
 export class DomListener implements Dispose {
   constructor(
     private node: EventTarget,

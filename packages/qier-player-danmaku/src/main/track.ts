@@ -10,7 +10,7 @@ export default class Track<T extends Danmu> {
 
   offset = 0;
 
-  forEach(handler: TrackForEachHandler<T>) {
+  each(handler: TrackForEachHandler<T>) {
     for (let i = 0; i < this.danmus.length; ++i) {
       handler(this.danmus[i], i, this.danmus);
     }
@@ -18,10 +18,6 @@ export default class Track<T extends Danmu> {
 
   push(...items: T[]) {
     this.danmus.push(...items);
-  }
-
-  removeTop() {
-    this.danmus.shift();
   }
 
   remove(index: number) {

@@ -22,7 +22,8 @@ export interface Danmu {
   color: string;
   size: number;
   width: number;
-  offset: number;
+  translateX: number;
+  static?: boolean; // 静止
 }
 
 export interface RollingDanmu extends Danmu {

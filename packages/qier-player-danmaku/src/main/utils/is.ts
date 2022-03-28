@@ -24,6 +24,10 @@ export function isHTMLElement(o: any): o is HTMLElement {
     : o && typeof o === 'object' && o.nodeType === 1 && typeof o.nodeName === 'string';
 }
 
+export function isEmptyArray<T>(array: T[]): boolean {
+  return array.length === 0;
+}
+
 export function isRollingDanmu(o: any): o is RollingDanmu {
   return Object.prototype.hasOwnProperty.call(o, 'speed') && Object.prototype.hasOwnProperty.call(o, 'offset');
 }

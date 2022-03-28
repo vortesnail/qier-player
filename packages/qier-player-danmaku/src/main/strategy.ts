@@ -26,7 +26,7 @@ const strategy: Strategy = {
         size: fontSize,
         speed: 0,
         width: 0,
-        offset: trackWidth,
+        translateX: trackWidth,
       };
       danmaku.commanderMap[type].waitingQueue.push(danmu);
     } else {

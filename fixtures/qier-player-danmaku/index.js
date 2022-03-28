@@ -33,7 +33,37 @@ window.onload = function () {
   });
 
   danmaku.add({
-    text: 'i am vortesnail',
+    text: '耐高温是要干嘛？',
+    color: '#fff',
+  });
+
+  danmaku.add({
+    text: '小哥哥你好啊',
+    color: '#fff',
+  });
+
+  danmaku.add({
+    text: '不想再写代码了，想躺平',
+    color: '#fff',
+  });
+
+  danmaku.add({
+    text: '我的天呐',
+    color: '#fff',
+  });
+
+  danmaku.add({
+    text: '我是个彩色弹幕',
     color: '#1890ff',
+  });
+
+  danmaku.add({
+    text: '哈哈哈哈哈哈笑死了',
+    color: '#1890ff',
+  });
+
+  danmaku.add({
+    text: '你去大西瓜',
+    color: '#0f0',
   });
 };
