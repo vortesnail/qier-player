@@ -22,7 +22,7 @@ class RollingCommander extends BaseRolling<RollingDanmu> {
     }
 
     const { text, color, size, offset } = danmu;
-    const danmuDom = createDanmu(text, color, size, offset);
+    const danmuDom = createDanmu(text, color, size, this.trackHeight, offset);
     this.el.appendChild(danmuDom);
     const width = danmuDom.offsetWidth;
 

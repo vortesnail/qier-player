@@ -1,10 +1,118 @@
 window.onload = function () {
+  const danmus = [
+    {
+      text: '在干嘛？',
+      color: '#fff',
+    },
+    {
+      text: '睡不着',
+      color: '#fff',
+    },
+    {
+      text: '压力太大了，现在的年轻人',
+      color: '#fff',
+    },
+    {
+      text: '我是说在座的各位都是好样的',
+      color: '#fff',
+    },
+    {
+      text: '大家有没有想过一个很严重的问题，就是非常严重的那种！',
+      color: '#0f0',
+    },
+    {
+      text: '我每天晚上都失眠，不知道该怎么办了。',
+      color: '#fff',
+    },
+    {
+      text: '生活是美好的，只属于少部分人',
+      color: '#00f',
+    },
+    {
+      text: '大家不要那么悲观嘛，撸起袖子加油干，要学会感恩啊。',
+      color: '#f00',
+    },
+    {
+      text: '啊啊啊啊啊啊啊啊，我快笑死了。',
+      color: '#0f0',
+    },
+    {
+      text: '无敌是多么寂寞啊',
+      color: '#0f0',
+    },
+    {
+      text: '不想上班吃什么？',
+      color: '#0f0',
+    },
+    {
+      text: '哈哈哈哈哈哈哈哈哈哈哈哈',
+      color: '#0f0',
+    },
+    {
+      text: '这个游戏实在是太完美了',
+      color: '#f00',
+    },
+    {
+      text: '我们都是同一条船的人了',
+      color: '#fff',
+    },
+    {
+      text: '真的没啥好说的',
+      color: '#fff',
+    },
+    {
+      text: '不是很清楚你们在想什么，好好做人不好嘛？',
+      color: '#fff',
+    },
+    {
+      text: '建议去看心理医生',
+      color: '#fff',
+    },
+    {
+      text: '人生得意须尽欢，莫使金樽空对月',
+      color: '#fff',
+    },
+    {
+      text: '如果有的选，我不想再来这个世界',
+      color: '#fff',
+    },
+    {
+      text: '加油，奥利给',
+      color: '#fff',
+    },
+    {
+      text: '要相信有光！',
+      color: '#0f0',
+    },
+    {
+      text: '起飞',
+      color: '#0f0',
+    },
+    {
+      text: '大家好啊，我是渣渣辉',
+      color: '#fff',
+    },
+    {
+      text: '如果有一天，我老无所依',
+      color: '#fff',
+    },
+    {
+      text: '写代码能创造什么价值',
+      color: '#fff',
+    },
+    {
+      text: '快乐时光就要开始啦！',
+      color: '#fff',
+    },
+  ];
+
   console.log(QierPlayer);
   const { Player, EVENT } = QierPlayer;
   const rootEle = document.querySelector('#app');
 
   const player = new Player({
-    src: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
+    src: 'https://vortesnail.github.io/qier-player-demo/static/media/video480p.d116ba09.mp4',
+    // src: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
   });
 
   player.mount(rootEle);
@@ -32,45 +140,17 @@ window.onload = function () {
     danmaku.stop();
   });
 
-  danmaku.add({
-    text: '耐高温是要干嘛？',
-    color: '#fff',
-  });
+  const genDanmu = (time, danmu) => {
+    if (!danmu) return;
+    setTimeout(() => {
+      danmaku.add(danmu);
+    }, time);
+  };
 
-  danmaku.add({
-    text: '小哥哥你好啊',
-    color: '#fff',
-  });
-
-  danmaku.add({
-    text: '不想再写代码了，想躺平',
-    color: '#fff',
-  });
-
-  danmaku.add({
-    text: '我的天呐',
-    color: '#fff',
-  });
-
-  danmaku.add({
-    text: '我是个彩色弹幕',
-    color: '#1890ff',
-  });
-
-  danmaku.add({
-    text: '哈哈哈哈哈哈笑死了',
-    color: '#1890ff',
-  });
-
-  danmaku.add({
-    text: '你去大西瓜',
-    color: '#0f0',
-  });
-
-  setTimeout(() => {
-    danmaku.add({
-      text: '我爱你',
-      color: '#0f0',
-    });
-  }, 5000);
+  setInterval(() => {
+    for (let i = 0; i < Math.random() * 2; i++) {
+      const danmu = danmus.shift();
+      genDanmu(Math.random() * 2 * 1000, danmu);
+    }
+  }, 1000);
 };
