@@ -53,6 +53,13 @@ export class Danmaku extends EventEmitter implements Dispose {
     this.commanderMap = {
       rolling: new RollingCommander(this.el, commanderConfig),
     };
+
+    this.resize();
+  }
+
+  resize(width?: number) {
+    width = width || this.el!.offsetWidth;
+    this.eachManager((manager) => manager.resize(width));
   }
 
   add(danmu: RawDanmu, type: CommanderMapKey = 'rolling') {
