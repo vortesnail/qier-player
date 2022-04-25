@@ -1,5 +1,7 @@
 import Base from './base';
-import { Danmu, Commander } from '../types';
+import { dispose, addDisposeListener } from '../utils/dispose';
+import type { Danmu, Commander, DanmakuOptionsInit } from '../types';
+import { removeEle } from '../utils/dom';
 
 export default abstract class BaseRolling<T extends Danmu> extends Base<T> {
   el: HTMLElement;
@@ -8,12 +10,24 @@ export default abstract class BaseRolling<T extends Danmu> extends Base<T> {
 
   elmToObj: WeakMap<HTMLElement, T> = new WeakMap();
 
-  constructor(el: HTMLElement, config: Commander) {
-    super(config);
+  constructor(el: HTMLElement, config: Commander, options: DanmakuOptionsInit) {
+    super(config, options);
 
     this.el = el;
 
-    const wrapper = config.eventProxyElement;
+    const proxyEl = options.eventProxyElement;
+    if (proxyEl) {
+      addDisposeListener(this, proxyEl, 'mousemove', this.mouseMoveEventHandler.bind(this));
+      addDisposeListener(this, proxyEl, 'click', this.mouseClickEventHandler.bind(this));
+    }
+  }
+
+  mouseMoveEventHandler(e: Event) {
+    console.log(1);
+  }
+
+  mouseClickEventHandler(e: Event) {
+    console.log(1);
   }
 
   removeElement(target: HTMLElement) {
@@ -21,6 +35,20 @@ export default abstract class BaseRolling<T extends Danmu> extends Base<T> {
   }
 
   reset(): void {
-    console.log('reset');
+    this.each((track) => {
+      track.each((danmu) => {
+        const el = this.objToElm.get(danmu);
+        if (!el) {
+          return;
+        }
+        this.removeElement(el);
+      });
+      track.reset();
+    });
+  }
+
+  dispose() {
+    removeEle(this.el);
+    dispose(this);
   }
 }

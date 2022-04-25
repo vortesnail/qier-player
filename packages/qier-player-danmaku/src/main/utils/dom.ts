@@ -21,6 +21,15 @@ export function setStyle(el: HTMLElement, style: Partial<CSSStyleDeclaration>) {
   el.style.cssText = cssText;
 }
 
+export function removeEle(el: Element): void {
+  if (!el) return;
+  if (el.remove) {
+    el.remove();
+  } else if (el.parentNode) {
+    el.parentNode.removeChild(el);
+  }
+}
+
 export class DomListener implements Dispose {
   constructor(
     private node: EventTarget,

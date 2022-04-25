@@ -9,7 +9,7 @@ export interface Strategy {
 
 const strategy: Strategy = {
   clear(danmaku: Danmaku): void {
-    console.log(123);
+    danmaku.eachManager((manager) => manager.reset());
   },
   add(danmaku: Danmaku, rowDanmu: RawDanmu, type: CommanderMapKey = 'rolling'): void {
     if (!danmaku.commanderMap) return;

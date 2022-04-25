@@ -5,7 +5,15 @@ import { getEle } from './utils/dom';
 import { requestAnimationFrame, cancelAnimationFrame } from './utils/common';
 import strategy from './strategy';
 import Base from './commander/base';
-import { Commander, DanmakuOptions, RawDanmu, RollingDanmu, CommanderMap, CommanderMapKey } from './types';
+import type {
+  Commander,
+  DanmakuOptions,
+  DanmakuOptionsInit,
+  RawDanmu,
+  RollingDanmu,
+  CommanderMap,
+  CommanderMapKey,
+} from './types';
 
 const defaultOpts: DanmakuOptions = {
   tracksCnt: 6,
@@ -17,8 +25,6 @@ const defaultOpts: DanmakuOptions = {
 
   eventProxyElement: undefined,
 };
-
-type DanmakuOptionsInit = Partial<DanmakuOptions>;
 
 export class Danmaku extends EventEmitter implements Dispose {
   el: HTMLElement | null;
@@ -45,13 +51,10 @@ export class Danmaku extends EventEmitter implements Dispose {
     this.el.style.pointerEvents = 'none';
 
     const commanderConfig: Commander = {
-      trackCnt: this.opts.tracksCnt,
       trackWidth: this.el.offsetWidth,
-      trackHeight: this.opts.trackHeight,
-      duration: this.opts.duration,
     };
     this.commanderMap = {
-      rolling: new RollingCommander(this.el, commanderConfig),
+      rolling: new RollingCommander(this.el, commanderConfig, this.opts),
     };
 
     this.resize();
@@ -60,6 +63,11 @@ export class Danmaku extends EventEmitter implements Dispose {
   resize(width?: number) {
     width = width || this.el!.offsetWidth;
     this.eachManager((manager) => manager.resize(width));
+  }
+
+  clear() {
+    const fn = strategy.clear;
+    return fn(this);
   }
 
   add(danmu: RawDanmu, type: CommanderMapKey = 'rolling') {
@@ -80,7 +88,7 @@ export class Danmaku extends EventEmitter implements Dispose {
     this.rAFId = null;
   }
 
-  private eachManager(handler: (commander: Base<RollingDanmu>) => any) {
+  eachManager(handler: (commander: Base<RollingDanmu>) => any) {
     if (!this.commanderMap) return;
     Object.keys(this.commanderMap).forEach((key) => handler.call(this, this.commanderMap![key as CommanderMapKey]));
   }

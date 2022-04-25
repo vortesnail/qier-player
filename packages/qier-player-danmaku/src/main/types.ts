@@ -11,6 +11,7 @@ export interface DanmakuOptions {
   eventProxyElement?: HTMLHtmlElement; // 弹幕交互的事件代理 dom 元素
 }
 
+export type DanmakuOptionsInit = Partial<DanmakuOptions>;
 export interface RawDanmu {
   text: string;
   color?: string;
@@ -36,11 +37,6 @@ export interface FixedDanmu extends Danmu {
 
 export interface Commander {
   trackWidth: number;
-  trackHeight: number;
-  duration: number;
-  trackCnt: number;
-
-  eventProxyElement?: HTMLHtmlElement;
 }
 
 export interface CommanderMap {

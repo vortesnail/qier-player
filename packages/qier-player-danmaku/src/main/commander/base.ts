@@ -1,5 +1,5 @@
 import { EventEmitter } from '../utils/eventmitter';
-import { Danmu, Commander } from '../types';
+import type { Danmu, Commander, DanmakuOptionsInit } from '../types';
 import Track from '../track';
 
 interface EachCommanderHandler<T extends Danmu> {
@@ -13,21 +13,21 @@ export default abstract class Base<T extends Danmu> extends EventEmitter {
 
   protected duration: number;
 
-  protected trackCnt: number;
+  protected tracksCnt: number;
 
   protected tracks: Track<T>[] = [];
 
   waitingQueue: T[] = [];
 
-  constructor(config: Commander) {
+  constructor(config: Commander, options: DanmakuOptionsInit) {
     super();
 
     this.trackWidth = config.trackWidth;
-    this.trackHeight = config.trackHeight;
-    this.duration = config.duration;
-    this.trackCnt = config.trackCnt;
+    this.trackHeight = options.trackHeight!;
+    this.duration = options.duration!;
+    this.tracksCnt = options.tracksCnt!;
 
-    for (let i = 0; i < config.trackCnt; ++i) {
+    for (let i = 0; i < options.tracksCnt!; ++i) {
       this.tracks[i] = new Track();
     }
   }
