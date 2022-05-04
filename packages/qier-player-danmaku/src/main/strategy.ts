@@ -4,7 +4,6 @@ import { RawDanmu, RollingDanmu, FixedDanmu, CommanderMapKey } from './types';
 export interface Strategy {
   clear(danmaku: Danmaku): void;
   add(danmaku: Danmaku, danmu: RawDanmu, type: CommanderMapKey): void;
-  // render(danmaku: Danmaku): void;
 }
 
 const strategy: Strategy = {
@@ -18,6 +17,7 @@ const strategy: Strategy = {
     const fontColor = color;
     const fontSize = size * danmaku.opts.zoom;
     const trackWidth = danmaku.el!.offsetWidth;
+    const duration = danmaku.opts.duration;
 
     if (type === 'rolling') {
       const danmu: RollingDanmu = {
@@ -30,12 +30,17 @@ const strategy: Strategy = {
       };
       danmaku.commanderMap[type].waitingQueue.push(danmu);
     } else {
-      console.log(1);
+      const danmu: FixedDanmu = {
+        text,
+        color: fontColor,
+        size: fontSize,
+        duration,
+        width: 0,
+        offset: trackWidth,
+      };
+      danmaku.commanderMap[type].waitingQueue.push(danmu);
     }
   },
-  // render(danmaku: Danmaku): void {
-  //   console.log(222, danmaku);
-  // },
 };
 
 export default strategy;

@@ -1,6 +1,6 @@
 import { EventEmitter } from './utils/eventmitter';
 import { dispose, Dispose } from './utils/dispose';
-import { RollingCommander } from './commander';
+import { RollingCommander, FixedBottomCommander } from './commander';
 import { getEle } from './utils/dom';
 import { requestAnimationFrame, cancelAnimationFrame } from './utils/common';
 import strategy from './strategy';
@@ -13,6 +13,7 @@ import type {
   RollingDanmu,
   CommanderMap,
   CommanderMapKey,
+  FixedDanmu,
 } from './types';
 
 const defaultOpts: DanmakuOptions = {
@@ -55,6 +56,7 @@ export class Danmaku extends EventEmitter implements Dispose {
     };
     this.commanderMap = {
       rolling: new RollingCommander(this, this.el, commanderConfig, this.opts),
+      'fixed-bottom': new FixedBottomCommander(this, this.el, commanderConfig, this.opts),
     };
 
     this.resize();
@@ -88,6 +90,10 @@ export class Danmaku extends EventEmitter implements Dispose {
     this.opts.duration = duration;
   }
 
+  setTrackCount(cnt: number) {
+    this.opts.tracksCnt = cnt;
+  }
+
   start() {
     if (this.rAFId) return;
 
@@ -101,7 +107,7 @@ export class Danmaku extends EventEmitter implements Dispose {
     this.rAFId = null;
   }
 
-  eachManager(handler: (commander: Base<RollingDanmu>) => any) {
+  eachManager(handler: (commander: Base<RollingDanmu> | Base<FixedDanmu>) => any) {
     if (!this.commanderMap) return;
     Object.keys(this.commanderMap).forEach((key) => handler.call(this, this.commanderMap![key as CommanderMapKey]));
   }

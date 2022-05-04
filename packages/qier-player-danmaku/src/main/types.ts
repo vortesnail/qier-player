@@ -42,7 +42,7 @@ export interface Commander {
 export interface CommanderMap {
   rolling: Base<RollingDanmu>;
   // 'fixed-top': Base<FixedBarrageObejct>
-  // 'fixed-bottom': Base<FixedBarrageObejct>
+  'fixed-bottom': Base<FixedDanmu>;
 }
 
 export type CommanderMapKey = keyof CommanderMap;

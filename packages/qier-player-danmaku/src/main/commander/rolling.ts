@@ -1,6 +1,6 @@
 import BaseRolling from './base-rolling';
 import { createDanmu } from '../helper';
-import { RollingDanmu, Commander } from '../types';
+import { RollingDanmu } from '../types';
 import { isEmptyArray } from '../utils/is';
 import { TIME_PER_FRAME } from '../constants';
 import { getArrayLast } from '../utils/get';
