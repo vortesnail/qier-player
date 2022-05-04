@@ -15,6 +15,7 @@ import type {
   CommanderMapKey,
   FixedDanmu,
 } from './types';
+import FixedTopCommander from './commander/fixed-top';
 
 const defaultOpts: DanmakuOptions = {
   tracksCnt: 6,
@@ -57,6 +58,7 @@ export class Danmaku extends EventEmitter implements Dispose {
     this.commanderMap = {
       rolling: new RollingCommander(this, this.el, commanderConfig, this.opts),
       'fixed-bottom': new FixedBottomCommander(this, this.el, commanderConfig, this.opts),
+      'fixed-top': new FixedTopCommander(this, this.el, commanderConfig, this.opts),
     };
 
     this.resize();

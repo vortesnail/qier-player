@@ -145,7 +145,7 @@ window.onload = function () {
   const genDanmu = (time, danmu) => {
     if (!danmu) return;
     setTimeout(() => {
-      danmaku.add(danmu, 'fixed-bottom');
+      danmaku.add(danmu, 'fixed-top');
     }, time);
   };
 

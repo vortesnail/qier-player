@@ -41,7 +41,7 @@ export interface Commander {
 
 export interface CommanderMap {
   rolling: Base<RollingDanmu>;
-  // 'fixed-top': Base<FixedBarrageObejct>
+  'fixed-top': Base<FixedDanmu>;
   'fixed-bottom': Base<FixedDanmu>;
 }
 
