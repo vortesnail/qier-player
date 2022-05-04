@@ -1,5 +1,5 @@
 import { EventEmitter } from './utils/eventmitter';
-import { addDispose, dispose, Dispose } from './utils/dispose';
+import { dispose, Dispose } from './utils/dispose';
 import { RollingCommander } from './commander';
 import { getEle } from './utils/dom';
 import { requestAnimationFrame, cancelAnimationFrame } from './utils/common';
@@ -54,7 +54,7 @@ export class Danmaku extends EventEmitter implements Dispose {
       trackWidth: this.el.offsetWidth,
     };
     this.commanderMap = {
-      rolling: new RollingCommander(this.el, commanderConfig, this.opts),
+      rolling: new RollingCommander(this, this.el, commanderConfig, this.opts),
     };
 
     this.resize();
@@ -73,6 +73,19 @@ export class Danmaku extends EventEmitter implements Dispose {
   add(danmu: RawDanmu, type: CommanderMapKey = 'rolling') {
     const fn = strategy.add;
     return fn(this, danmu, type);
+  }
+
+  setOpacity(opacity = 1) {
+    if (!this.el) return;
+    this.el.style.opacity = `${opacity}`;
+  }
+
+  setFontSize(zoom = 1) {
+    this.opts.zoom = zoom;
+  }
+
+  setDuration(duration: number) {
+    this.opts.duration = duration;
   }
 
   start() {

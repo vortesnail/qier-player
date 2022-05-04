@@ -123,7 +123,9 @@ window.onload = function () {
   player.el.appendChild(danmuWrapper);
 
   // 弹幕实例
-  const danmaku = new QierPlayerDanmaku(danmuWrapper, {});
+  const danmaku = new QierPlayerDanmaku(danmuWrapper, {
+    eventProxyElement: danmuWrapper,
+  });
 
   // setInterval(() => {
   //   danmaku.add({
@@ -153,4 +155,8 @@ window.onload = function () {
       genDanmu(Math.random() * 2 * 1000, danmu);
     }
   }, 1000);
+
+  danmaku.on('click', (danmu, ele) => {
+    console.log(danmu, ele);
+  });
 };

@@ -15,6 +15,7 @@ export function createDanmu(
     top: '0px',
     height: `${height}px`,
     lineHeight: `${height}px`,
+    padding: '0 8px',
     color,
     fontSize: `${fontSize}px`,
     transform: `translateX(${left}px)`,
@@ -26,4 +27,15 @@ export function createDanmu(
   });
   danmuDom.textContent = text;
   return danmuDom;
+}
+
+export function setHoverStyle(el: HTMLElement) {
+  el.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+  el.style.zIndex = '1000';
+  el.style.cursor = 'pointer';
+}
+
+export function setBlurStyle(el: HTMLElement) {
+  el.style.backgroundColor = 'transparent';
+  el.style.cursor = 'auto';
 }
