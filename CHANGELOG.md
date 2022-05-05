@@ -1,3 +1,34 @@
+## [2.0.3](https://github.com/vortesnail/qier-player/compare/v2.0.2...v2.0.3) (2022-05-05)
+
+### Bug Fixes
+
+- add box fix height for rolling danmu ([c67d6eb](https://github.com/vortesnail/qier-player/commit/c67d6ebe0dcb225421d2a351456223cefc815049))
+- resolve danmu can not be add to move ([79ee889](https://github.com/vortesnail/qier-player/commit/79ee88979dee967932a20f07e03e203c5dd9e4c5))
+- test cd /website is useful or not ([2d3ec05](https://github.com/vortesnail/qier-player/commit/2d3ec05f28d8093c835fe6bb4429a7242aea3359))
+- test cd website is useful or not ([1c877d5](https://github.com/vortesnail/qier-player/commit/1c877d59bcc14cdb16624030a65802e10da716e5))
+- test cd website is useful or not ([ce8c1ad](https://github.com/vortesnail/qier-player/commit/ce8c1adf87fe15b09e61c9ec71ca9a9803077ed5))
+- test cd website is useful or not ([51a0bc9](https://github.com/vortesnail/qier-player/commit/51a0bc90bda016d8fb95e662363da9e5a961f2e3))
+
+### Features
+
+- 弹幕挂载 ([f114141](https://github.com/vortesnail/qier-player/commit/f114141d6dca6b0553cce8b255aa52b9d4821df5))
+- add clear funciton ([b1e44dc](https://github.com/vortesnail/qier-player/commit/b1e44dcb34d5d001510196abdf6e70e378272f0d))
+- add fixed bottom danmu ([8a94923](https://github.com/vortesnail/qier-player/commit/8a949234505311f2de9354b44b4cc9dd77b3a5a8))
+- add fixed top danmu ([902a155](https://github.com/vortesnail/qier-player/commit/902a15595b61f1943018e054affcd0eca670f59f))
+- add mouseover and mouseout for danmu ([fd94516](https://github.com/vortesnail/qier-player/commit/fd94516532b6e733882acfdcbfb68063b5cc5a26))
+- danmaku add resize function ([bb4c3df](https://github.com/vortesnail/qier-player/commit/bb4c3df7621b4c6640ca57c1b6d695935de1e527))
+- danmaku initialize ([618e774](https://github.com/vortesnail/qier-player/commit/618e774b8df78df054c6df56f9330701d59cd67b))
+- danmu move ([8110bf6](https://github.com/vortesnail/qier-player/commit/8110bf6353e2639545f947b62c728ebbc8f6ebd2))
+- danmu raw config ([c9dabd6](https://github.com/vortesnail/qier-player/commit/c9dabd63e749eb44a6b93afc46bada083e2a2da7))
+- define commander base class ([b6ff4ad](https://github.com/vortesnail/qier-player/commit/b6ff4adbd3ed54f9426ced4c65898772b6064447))
+- findTrack strategy code ([c707fbd](https://github.com/vortesnail/qier-player/commit/c707fbd0eb92656b8469b9518f5737591259dd8c))
+- qier-player-danmaku initialize ([fccc51c](https://github.com/vortesnail/qier-player/commit/fccc51cec6f8fa342cc4e1a6589b43eb31ff5b33))
+- start, stop, render function code ([c792851](https://github.com/vortesnail/qier-player/commit/c7928515d469e323f3129e4b21c33e50e8237536))
+
+### Reverts
+
+- abandon docusaurus to generate website ([97cd971](https://github.com/vortesnail/qier-player/commit/97cd97114ed95f581bcf0745e7c4030c6ec34316))
+
 ## [2.0.2](https://github.com/vortesnail/qier-player/compare/v2.0.1...v2.0.2) (2021-08-22)
 
 ## [2.0.1](https://github.com/vortesnail/qier-player/compare/v2.0.0...v2.0.1) (2021-08-20)

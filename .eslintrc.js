@@ -38,7 +38,7 @@ module.exports = {
     ],
     'import/no-dynamic-require': OFF,
     'import/prefer-default-export': OFF,
-    'import/no-extraneous-dependencies': [ERROR, { devDependencies: true }],
+    'import/no-extraneous-dependencies': OFF,
 
     '@typescript-eslint/no-non-null-assertion': OFF,
     '@typescript-eslint/no-unused-vars': WARN,
