@@ -94,7 +94,7 @@
     "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.11.2",
     "webpack-merge": "^5.8.0",
-    "webpackbar": "^5.0.0-3"
+    "webpackbar": "^6.0.0"
   },
   "dependencies": {
     "@babel/runtime-corejs3": "^7.14.8"
