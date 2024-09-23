@@ -1,0 +1,83 @@
+/**
+ * Colors
+ * -------------------------------------------------------------------------- */
+
+:root {
+  /* blue */
+  --c-blue-1: #0781a4;
+  --c-blue-2: #0894bc;
+  --c-blue-3: #09a8d5;
+  --c-blue-4: #0abbed;
+  --c-blue-5: #1bc5f5;
+  --c-blue-6: #34ccf6;
+  --c-blue-7: #4cd2f7;
+  /* dark */
+  --c-white-dark: #f8f8f8;
+  --c-black-darker: #0d121b;
+  --c-black: #111827;
+  --c-black-light: #161f32;
+  --c-black-lighter: #262a44;
+  /* main theme */
+  --theme-color: var(--c-blue-4);
+}
+
+html.dark:root {
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(
+    120deg,
+    var(--c-blue-7) 50%,
+    var(--c-blue-4)
+  );
+  --vp-home-hero-image-background-image: linear-gradient(-45deg, var(--c-blue-3) 50%, var(--c-blue-4) 50%);
+}
+
+/**
+ * Component: Button
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vp-button-brand-border: var(--c-blue-3);
+  --vp-button-brand-text: var(--c-white-dark);
+  --vp-button-brand-bg: var(--c-blue-4);
+  --vp-button-brand-hover-border: var(--c-blue-3);
+  --vp-button-brand-hover-text: var(--c-white-dark);
+  --vp-button-brand-hover-bg: var(--c-blue-6);
+  --vp-button-brand-active-border: var(--c-blue-3);
+  --vp-button-brand-active-text: var(--c-black-darker);
+  --vp-button-brand-active-bg: var(--c-blue-3);
+}
+
+/**
+ * Component: Home
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(
+    120deg,
+    var(--c-blue-7) 50%,
+    var(--c-blue-4)
+  );
+  --vp-home-hero-image-background-image: linear-gradient(-45deg, var(--c-blue-7) 50%, var(--c-blue-7) 50%);
+  --vp-home-hero-image-filter: blur(124px);
+}
+
+@media (min-width: 640px) {
+  :root {
+    --vp-home-hero-image-filter: blur(136px);
+  }
+}
+
+@media (min-width: 960px) {
+  :root {
+    --vp-home-hero-image-filter: blur(148px);
+  }
+}
+
+/**
+ * Component: Brand
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vp-c-brand-1: var(--c-blue-1);
+}

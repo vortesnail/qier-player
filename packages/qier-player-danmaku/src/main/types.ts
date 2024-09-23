@@ -8,7 +8,7 @@ export interface DanmakuOptions {
   duration: number;
   zoom: number;
 
-  eventProxyElement?: HTMLHtmlElement; // 弹幕交互的事件代理 dom 元素
+  eventProxyElement?: HTMLElement; // 弹幕交互的事件代理 dom 元素
 }
 
 export type DanmakuOptionsInit = Partial<DanmakuOptions>;

@@ -49,12 +49,6 @@ npm install --save qier-player
 yarn add qier-player
 ```
 
-Of course you can also use CDN service:
-
-```html
-<script src="https://unpkg.com/qier-player@latest/dist/umd/index.min.js"></script>
-```
-
 ### Use
 
 ```js
@@ -65,14 +59,3 @@ const player = new Player({
 });
 player.mount('#app');
 ```
-
-## Ecosystem
-
-| Name | version | gzip size |
-| --- | --- | --- |
-| [qier-player-for-react]() | [![npm](https://img.shields.io/npm/v/@qier-player/react?logo=npm&style=flat-square)](https://www.npmjs.com/package/@qier-player/react) | [![gzip size](https://img.shields.io/bundlephobia/minzip/@qier-player/react?label=gzip%20size&style=flat-square)](https://unpkg.com/@qier-player/react@2.0.1/dist/umd/index.min.js) |
-
-## Future features
-
-- `@qier-player/vue` for Vue developer.
-- `@qier-player/danmaku` plungin.

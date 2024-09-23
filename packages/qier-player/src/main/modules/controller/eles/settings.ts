@@ -56,6 +56,7 @@ class Settings extends DomNode implements IControllerEle {
     this.items = player.settingItems;
     this.el.appendChild(Icon.settings());
 
+    // 占位填充弹框和 icon 之间的空白，防止光标移开 icon 弹框就消失
     this.stuffing = this.el.appendChild(createEle('div.controller_settings_stuffing'));
 
     this.popover = new Popover(this.el, { willChange: 'width, height' });

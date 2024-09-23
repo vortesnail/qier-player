@@ -1,36 +1,21 @@
 {
-  "private": true,
-  "name": "dumi-app",
-  "scripts": {
-    "start": "dumi dev",
-    "build": "dumi build",
-    "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\""
-  },
+  "name": "qier-player-docs",
+  "version": "0.1.0",
+  "description": "qier player docs",
   "main": "dist/index.js",
-  "module": "dist/index.esm.js",
-  "typings": "dist/index.d.ts",
-  "gitHooks": {
-    "pre-commit": "lint-staged"
+  "type": "module",
+  "scripts": {
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "preview": "vitepress preview docs"
   },
-  "lint-staged": {
-    "*.{js,jsx,less,md,json}": [
-      "prettier --write"
-    ],
-    "*.ts?(x)": [
-      "prettier --parser=typescript --write"
-    ]
-  },
+  "author": "vortesnail",
+  "license": "MIT",
   "devDependencies": {
-    "@umijs/plugin-sass": "^1.1.1",
-    "dumi": "^1.1.26",
-    "lint-staged": "^10.0.7",
-    "prettier": "^2.2.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "yorkie": "^2.0.0"
+    "vitepress": "^1.3.4"
   },
   "dependencies": {
-    "prism-react-renderer": "^1.2.1",
-    "qier-player": "^2.0.2"
+    "@qier-player/danmaku": "^2.0.3",
+    "qier-player": "^2.0.3"
   }
 }
