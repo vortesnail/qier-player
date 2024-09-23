@@ -170,7 +170,7 @@ const initPlayer = () => {
               checkedItem.checked = true
               item.dom?.classList.add('qier-player_controller_quantity_item--active')
               this.btn.textContent = item.label
-              player.video.src = `/test-video_${item.id}.mp4`
+              player.video.src = `/qier-player/test-video_${item.id}.mp4`
             }
           }
         })
@@ -181,7 +181,7 @@ const initPlayer = () => {
   }
 
   player.value = new PlayerClass.value({
-    src: '/test-video_1080p.mp4',
+    src: '/qier-player/test-video_1080p.mp4',
     menus: ['loop', pip, screenshot],
     controller: {
       progress: ['progress'],
