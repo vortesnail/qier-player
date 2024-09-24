@@ -2,7 +2,7 @@
   <a href="https://github.com/vortesnail/qier-player">
     <img src="website/docs/public/logo.svg" height="140" width="140" />
   </a>
-  <h4>qier-player</h4>
+  <h4>QierPlayer</h4>
   <br />
   <a href="https://www.npmjs.com/package/qier-player">
     <img src="https://img.shields.io/npm/v/qier-player?style=flat-square&logo=npm" />
@@ -27,13 +27,11 @@
 
 ## Introduction
 
-`qier-player` is a simple and easy-to-use H5 video player with a highly customizable UI and rich features, supporting Danmaku (bullet comments).
+QierPlayer is a simple and easy-to-use H5 video player with a highly customizable UI and rich features, supporting Danmaku (bullet comments).
 
 ## Documentation and Demo
 
-<a src="https://vortesnail.github.io/qier-player/guide/what-is-qier-player" style="max-width:620px;">
-  QierPlayer Documentation
-</a>
+[QierPlayer Documentation](https://vortesnail.github.io/qier-player/guide/what-is-qier-player)
 
 ## Screenshots
 

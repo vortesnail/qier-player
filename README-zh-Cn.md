@@ -2,7 +2,7 @@
   <a href="https://github.com/vortesnail/qier-player">
     <img src="website/docs/public/logo.svg" height="140" width="140"/>
   </a>
-  <h4>qier-player</h4>
+  <h4>QierPlayer</h4>
   <br>
 	<a href="https://www.npmjs.com/package/qier-player">
 		<img src="https://img.shields.io/npm/v/qier-player?style=flat-square&logo=npm">
@@ -26,13 +26,11 @@
 
 ## 介绍
 
-`qier-player` 是一个简单易用的 h5 视频播放器，UI 高度可定制化且功能丰富，支持弹幕。
+QierPlayer 是一个简单易用的 h5 视频播放器，UI 高度可定制化且功能丰富，支持弹幕。
 
 ## 文档及 Demo
 
-<a src="https://vortesnail.github.io/qier-player/guide/what-is-qier-player" style="max-width:620px;">
-qier-player 文档
-</a>
+[QierPlayer 文档](https://vortesnail.github.io/qier-player/zh/guide/what-is-qier-player)
 
 ## 截图
 
