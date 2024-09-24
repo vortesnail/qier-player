@@ -193,7 +193,7 @@ const initPlayer = () => {
       startSecond: 0,
       gapSecond: 1,
       images: [
-        '/thumbnails/t1.jpg',
+        '/qier-player/thumbnails/t1.jpg',
       ],
     },
   });
