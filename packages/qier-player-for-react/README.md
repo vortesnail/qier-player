@@ -1,1 +1,0 @@
-# qier-player-for-react

@@ -4,7 +4,7 @@
   "description": "Easy to use and powerful html5 player.",
   "main": "dist/es/index.js",
   "module": "dist/es/index.js",
-  "typings": "dist/es/index.d.ts",
+  "types": "dist/es/index.d.ts",
   "author": "vortesnail <1091331061@qq.com>",
   "files": [
     "dist"
