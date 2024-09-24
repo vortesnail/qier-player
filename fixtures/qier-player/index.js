@@ -57,7 +57,7 @@ window.onload = function () {
   const player = new QierPlayer.Player({
     // container: rootEle,
     src: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
-    // src: 'https://vortesnail.github.io/qier-player-demo/static/media/video480p.d116ba09.mp4',
+    // src: 'https://vortesnail.github.io/qier-player/test-video_1080p.mp4',
     // src: 'http://upload.wikimedia.org/wikipedia/commons/transcoded/c/c0/Big_Buck_Bunny_4K.webm/Big_Buck_Bunny_4K.webm.480p.vp9.webm',
     // src: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4',
     videoProps: {},

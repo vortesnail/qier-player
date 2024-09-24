@@ -26,7 +26,7 @@ $ yarn add qier-player
 import Player from 'qier-player'
 
 const player = new Player({
-  src: 'https://vortesnail.github.io/qier-player-demo/static/media/video480p.d116ba09.mp4',
+  src: 'https://vortesnail.github.io/qier-player/test-video_1080p.mp4',
 })
 
 player.mount(document.body)
@@ -48,7 +48,7 @@ After calling the `mount` method, you can access internal members through the in
 import Player from 'qier-player'
 
 const player = new Player({
-  src: 'https://vortesnail.github.io/qier-player-demo/static/media/video480p.d116ba09.mp4',
+  src: 'https://vortesnail.github.io/qier-player/test-video_1080p.mp4',
 })
 
 player.mount(document.body)
